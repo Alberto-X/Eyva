@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="DELETE">
+        <includes/>
+        <macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</macroponent>
+        <name>event_selectedItem</name>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+  * @param {params} params
+  * @param {api} params.api
+  * @param {TransformApiHelpers} params.helpers
+  */
+function evaluateProperty({api, helpers}) {
+  const firstEvent = api.data.look_up_events.results.0;
+	return firstEvent.map(e => ({
+    id: e._row_data.uniqueValue,
+    label: e.name.displayValue,
+    sublabel: e.description.displayValue
+  }));
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-07-01 03:52:45</sys_created_on>
+        <sys_id>2d0101eb2f901110da77c886f699b6f9</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>event_selectedItem</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_client_script_2d0101eb2f901110da77c886f699b6f9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-07-01 03:52:49</sys_updated_on>
+        <type>transform</type>
+    </sys_ux_client_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Eyva">04928fc32fd41110da77c886f699b615</application>
+        <file_path/>
+        <instance_id>2847bb90dbf4101cad8dd7c8f4961907</instance_id>
+        <instance_name>dev103134</instance_name>
+        <name>sys_ux_client_script_2d0101eb2f901110da77c886f699b6f9</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ux_client_script"&gt;&lt;sys_ux_client_script action="INSERT_OR_UPDATE"&gt;&lt;includes/&gt;&lt;macroponent display_value="Assignments"&gt;d86858672f101110da77c886f699b6d4&lt;/macroponent&gt;&lt;name&gt;event_selectedItem&lt;/name&gt;&lt;required_translations&gt;[ ]&lt;/required_translations&gt;&lt;script&gt;&lt;![CDATA[/**
+  * @param {params} params
+  * @param {api} params.api
+  * @param {TransformApiHelpers} params.helpers
+  */
+function evaluateProperty({api, helpers}) {
+  const firstEvent = api.data.look_up_events.results.0;
+	return firstEvent.map(e =&gt; ({
+    id: e._row_data.uniqueValue,
+    label: e.name.displayValue,
+    sublabel: e.description.displayValue
+  }));
+}]]&gt;&lt;/script&gt;&lt;script_api_version&gt;2.0.0&lt;/script_api_version&gt;&lt;sys_class_name&gt;sys_ux_client_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-01 03:52:45&lt;/sys_created_on&gt;&lt;sys_id&gt;2d0101eb2f901110da77c886f699b6f9&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;event_selectedItem&lt;/sys_name&gt;&lt;sys_package display_value="Eyva" source="x_802331_eyva"&gt;04928fc32fd41110da77c886f699b615&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Eyva"&gt;04928fc32fd41110da77c886f699b615&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ux_client_script_2d0101eb2f901110da77c886f699b6f9&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-07-01 03:52:49&lt;/sys_updated_on&gt;&lt;type&gt;transform&lt;/type&gt;&lt;/sys_ux_client_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>324473451</payload_hash>
+        <record_name>event_selectedItem</record_name>
+        <reverted_from/>
+        <source>84928fc32fd41110da77c886f699b617</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-07-01 03:52:49</sys_created_on>
+        <sys_id>2e01896b2f901110da77c886f699b614</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>181b7e3cf760000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-07-01 03:52:49</sys_updated_on>
+        <type>UX Client Script</type>
+        <update_guid>2601896b7090111097a693edc4787514</update_guid>
+        <update_guid_history>2601896b7090111097a693edc4787514:324473451,a10101eb1a9011101238234620ebbcfc:426218513</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-07-01 03:54:55</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_client_script">sys_ux_client_script</sys_db_object>
+        <sys_id>9c6fa0969aff483c8abbb8ca9a440c10</sys_id>
+        <sys_metadata>2d0101eb2f901110da77c886f699b6f9</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>event_selectedItem</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_scope_delete display_value="">240812431724428091a64e1ecd53f240</sys_scope_delete>
+        <sys_update_name>sys_ux_client_script_2d0101eb2f901110da77c886f699b6f9</sys_update_name>
+        <sys_update_version display_value="sys_ux_client_script_2d0101eb2f901110da77c886f699b6f9">2e01896b2f901110da77c886f699b614</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-07-01 03:54:55</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

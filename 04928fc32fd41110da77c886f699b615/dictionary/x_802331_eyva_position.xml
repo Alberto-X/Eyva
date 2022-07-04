@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Position" max_length="40" name="x_802331_eyva_position" sizeclass="7" type="collection">
+        <element default="1" label="Active" max_length="40" name="active" type="boolean"/>
+        <element display="true" hint="Name of the position" label="Name" mandatory="true" max_length="40" name="name" type="string"/>
+        <element hint="Color to use when displaying this position" label="Primary color" max_length="40" name="primary_color" type="color"/>
+        <element hint="The venue this position is at" label="Venue" max_length="32" name="venue" reference="x_802331_eyva_venue" type="reference"/>
+        <index name="index">
+            <element name="venue"/>
+        </index>
+    </element>
+</database>

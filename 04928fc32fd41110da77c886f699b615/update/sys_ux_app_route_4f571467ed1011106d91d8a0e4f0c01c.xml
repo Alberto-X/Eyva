@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_app_route">
+    <sys_ux_app_route action="INSERT_OR_UPDATE">
+        <app_config display_value="Eyva Config">fe57d0672f101110da77c886f699b6e8</app_config>
+        <description/>
+        <fields/>
+        <icon/>
+        <name>Security and login</name>
+        <optional_parameters/>
+        <order>100</order>
+        <parent_macroponent display_value="Settings Page">4f571467d91011103d9bc9af4ca1b71d</parent_macroponent>
+        <parent_macroponent_composition_element_id>tab_set_1</parent_macroponent_composition_element_id>
+        <route_type>cketv4vef00013g8ybmju8dpb</route_type>
+        <screen_type display_value="Security and login">4b571467fe1011100949c8ec2e21b21c</screen_type>
+        <sys_class_name>sys_ux_app_route</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2022-07-01 00:50:47</sys_created_on>
+        <sys_id>4f571467ed1011106d91d8a0e4f0c01c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Security and login</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_app_route_4f571467ed1011106d91d8a0e4f0c01c</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2022-07-01 00:50:47</sys_updated_on>
+    </sys_ux_app_route>
+    <sys_translated_text action="delete_multiple" query="documentkey=4f571467ed1011106d91d8a0e4f0c01c"/>
+</record_update>

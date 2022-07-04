@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Event" max_length="40" name="x_802331_eyva_event" sizeclass="2" type="collection">
+        <element hint="Description of the event" label="Description" max_length="500" name="description" type="string"/>
+        <element display="true" hint="Name of the event" label="Name" mandatory="true" max_length="40" name="name" type="string"/>
+        <element hint="First day workers are needed for the event" label="Start date" max_length="40" name="start_date" type="glide_date"/>
+    </element>
+</database>

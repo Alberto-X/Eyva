@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Skill Mastery" max_length="40" name="x_802331_eyva_skill_mastery" sizeclass="4" type="collection">
+        <element default="1" label="Active" max_length="40" name="active" type="boolean"/>
+        <element hint="Description of the mastery level" label="Description" max_length="500" name="description" type="string"/>
+        <element display="true" hint="Name of the mastery level" label="Name" mandatory="true" max_length="40" name="name" type="string"/>
+        <element hint="Numeric value of the mastery level" label="Value" mandatory="true" max_length="40" name="value" type="integer"/>
+    </element>
+</database>

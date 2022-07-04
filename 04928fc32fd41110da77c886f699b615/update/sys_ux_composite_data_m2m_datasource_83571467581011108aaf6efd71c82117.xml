@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_composite_data_m2m_datasource">
+    <sys_ux_composite_data_m2m_datasource action="INSERT_OR_UPDATE">
+        <dataset display_value="Custom Portal Landing - My Requests Dataset">8f571467081011101749e0b408690218</dataset>
+        <datasource display_value="My Requests - Requested Item Datasource">4b5714671a1011103fc30000a23f3f18</datasource>
+        <sys_class_name>sys_ux_composite_data_m2m_datasource</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2022-07-01 00:50:49</sys_created_on>
+        <sys_id>83571467581011108aaf6efd71c82117</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_composite_data_m2m_datasource_83571467581011108aaf6efd71c82117</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2022-07-01 00:50:49</sys_updated_on>
+    </sys_ux_composite_data_m2m_datasource>
+</record_update>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Position Skill" max_length="40" name="x_802331_eyva_position_skill" sizeclass="0" type="collection">
+        <element display="true" hint="The position related to the skill" label="Position" mandatory="true" max_length="32" name="position" reference="x_802331_eyva_position" type="reference"/>
+        <element hint="The skill related to the position" label="Skill" mandatory="true" max_length="32" name="skill" reference="x_802331_eyva_skill" type="reference"/>
+        <index name="index">
+            <element name="skill"/>
+        </index>
+        <index name="index2">
+            <element name="position"/>
+        </index>
+    </element>
+</database>

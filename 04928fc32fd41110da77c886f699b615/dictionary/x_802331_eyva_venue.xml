@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Venue" max_length="40" name="x_802331_eyva_venue" sizeclass="1" type="collection">
+        <element hint="Description of the event" label="Description" max_length="500" name="description" type="string"/>
+        <element display="true" hint="Name of the venue" label="Name" mandatory="true" max_length="40" name="name" type="string"/>
+    </element>
+</database>

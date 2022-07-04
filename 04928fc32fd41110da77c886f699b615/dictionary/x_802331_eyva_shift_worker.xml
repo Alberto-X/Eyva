@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Shift Worker" max_length="40" name="x_802331_eyva_shift_worker" sizeclass="0" type="collection">
+        <element hint="Time the worker is arriving" label="Arriving at" max_length="40" name="arriving_at" type="glide_time"/>
+        <element hint="Time the worker is leaving" label="Leaving at" max_length="40" name="leaving_at" type="glide_time"/>
+        <element hint="The shift being worked" label="Shift" mandatory="true" max_length="32" name="shift" reference="x_802331_eyva_shift" type="reference"/>
+        <element display="true" hint="The worker working the shift" label="Worker" mandatory="true" max_length="32" name="worker" reference="x_802331_eyva_worker" type="reference"/>
+        <index name="index">
+            <element name="shift"/>
+        </index>
+        <index name="index2">
+            <element name="worker"/>
+        </index>
+    </element>
+</database>

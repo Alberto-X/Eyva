@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Worker" max_length="40" name="x_802331_eyva_worker" sizeclass="8" type="collection">
+        <element hint="Things to know about the worker" label="Notes" max_length="500" name="notes" type="string"/>
+        <element display="true" hint="The associated user" label="User" mandatory="true" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

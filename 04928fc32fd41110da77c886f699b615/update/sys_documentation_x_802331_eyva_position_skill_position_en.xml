@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="position" label="Position" language="en" table="x_802331_eyva_position_skill">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>position</element>
+            <help/>
+            <hint>The position related to the skill</hint>
+            <label>Position</label>
+            <language>en</language>
+            <name>x_802331_eyva_position_skill</name>
+            <plural/>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-06-30 07:28:44</sys_created_on>
+            <sys_id>73d8a8932f5c1110da77c886f699b62a</sys_id>
+            <sys_mod_count>5</sys_mod_count>
+            <sys_name>Position</sys_name>
+            <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+            <sys_update_name>sys_documentation_x_802331_eyva_position_skill_position_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2022-06-30 07:36:00</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

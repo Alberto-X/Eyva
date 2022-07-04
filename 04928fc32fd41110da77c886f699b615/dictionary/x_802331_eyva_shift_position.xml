@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Shift Position" max_length="40" name="x_802331_eyva_shift_position" sizeclass="0" type="collection">
+        <element hint="Used to display positions for a shift in the proper order" label="Order" max_length="40" name="order" type="integer"/>
+        <element display="true" hint="The position needed for a shift" label="Position" mandatory="true" max_length="32" name="position" reference="x_802331_eyva_position" type="reference"/>
+        <element hint="The shift needing a position" label="Shift" mandatory="true" max_length="32" name="shift" reference="x_802331_eyva_shift" type="reference"/>
+        <index name="index">
+            <element name="shift"/>
+        </index>
+        <index name="index2">
+            <element name="position"/>
+        </index>
+    </element>
+</database>

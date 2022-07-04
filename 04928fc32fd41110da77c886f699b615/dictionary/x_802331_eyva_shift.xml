@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Shift" max_length="40" name="x_802331_eyva_shift" sizeclass="4" type="collection">
+        <element hint="The level of difficulty for this shift" label="Difficulty" max_length="32" name="difficulty" reference="x_802331_eyva_shift_difficulty" type="reference"/>
+        <element hint="Time the shift ends" label="End time" max_length="40" name="end_time" type="glide_date_time"/>
+        <element hint="The event this shift is for" label="Event" max_length="32" name="event" reference="x_802331_eyva_event" type="reference"/>
+        <element hint="Used to order the shifts that occur on the same day" label="Order in the day" max_length="40" name="order_in_the_day" type="integer"/>
+        <element display="true" hint="Time the shift starts" label="Start time" mandatory="true" max_length="40" name="start_time" type="glide_date_time"/>
+        <index name="index">
+            <element name="difficulty"/>
+        </index>
+        <index name="index2">
+            <element name="event"/>
+        </index>
+    </element>
+</database>
