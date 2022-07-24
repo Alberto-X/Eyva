@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_uib_screen_test_values">
+    <sys_uib_screen_test_values action="INSERT_OR_UPDATE">
+        <macroponent_config>{
+  "date" : "08-13-2022",
+  "shift" : "1"
+}</macroponent_config>
+        <screen display_value="Shift Assignments default">8122c9de2fb05110da77c886f699b61b</screen>
+        <sys_class_name>sys_uib_screen_test_values</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-07-22 03:33:28</sys_created_on>
+        <sys_id>880681d22ff05110da77c886f699b6e0</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_uib_screen_test_values_880681d22ff05110da77c886f699b6e0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-07-22 03:44:51</sys_updated_on>
+    </sys_uib_screen_test_values>
+</record_update>

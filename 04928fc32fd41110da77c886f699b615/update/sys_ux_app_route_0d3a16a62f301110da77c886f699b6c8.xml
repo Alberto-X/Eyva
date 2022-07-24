@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_app_route">
+    <sys_ux_app_route action="INSERT_OR_UPDATE">
+        <app_config display_value="Eyva Config">fe57d0672f101110da77c886f699b6e8</app_config>
+        <description/>
+        <fields/>
+        <icon/>
+        <name>Viewport Test</name>
+        <optional_parameters/>
+        <order>0</order>
+        <parent_macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</parent_macroponent>
+        <parent_macroponent_composition_element_id>viewport_owr</parent_macroponent_composition_element_id>
+        <route_type>viewport-test</route_type>
+        <screen_type display_value="Viewport Test">0d3a16e22f301110da77c886f699b64d</screen_type>
+        <sys_class_name>sys_ux_app_route</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-07-23 04:19:51</sys_created_on>
+        <sys_id>0d3a16a62f301110da77c886f699b6c8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Viewport Test</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_app_route_0d3a16a62f301110da77c886f699b6c8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-07-23 04:19:51</sys_updated_on>
+    </sys_ux_app_route>
+    <sys_translated_text action="delete_multiple" query="documentkey=0d3a16a62f301110da77c886f699b6c8"/>
+</record_update>
