@@ -440,8 +440,12 @@
           "elementLabel" : "Stylized text 1",
           "propertyValues" : {
             "text" : {
-              "type" : "JSON_LITERAL",
-              "value" : "Let's workflow it."
+              "type" : "TRANSLATION_LITERAL",
+              "value" : {
+                "code" : null,
+                "message" : "The morning shift.",
+                "comment" : ""
+              }
             },
             "tag" : {
               "type" : "JSON_LITERAL",
@@ -465,7 +469,10 @@
           },
           "isHero" : false,
           "isNonDestructive" : false,
-          "styles" : { }
+          "styles" : {
+            "padding" : "initial",
+            "padding-left" : "var(--now-static-space--sm)"
+          }
         } ],
         "layout" : {
           "default" : {
@@ -882,7 +889,7 @@
               "propertyValues" : {
                 "variant" : {
                   "type" : "JSON_LITERAL",
-                  "value" : "secondary"
+                  "value" : "secondary-negative"
                 },
                 "size" : {
                   "type" : "JSON_LITERAL",
@@ -1687,8 +1694,6 @@
                 "type" : "JSON_LITERAL",
                 "value" : [ {
                   "task" : "A"
-                }, {
-                  "task" : "B"
                 } ]
               },
               "styles" : {
@@ -1741,8 +1746,6 @@
         "type" : "JSON_LITERAL",
         "value" : [ {
           "task" : "A"
-        }, {
-          "task" : "B"
         } ]
       },
       "styles" : {
@@ -1773,8 +1776,6 @@
     "type" : "JSON_LITERAL",
     "value" : [ {
       "task" : "A"
-    }, {
-      "task" : "B"
     } ]
   },
   "styles" : {
@@ -1962,6 +1963,131 @@
     }
   },
   "readEvaluationMode" : "EAGER"
+}, {
+  "definition" : {
+    "id" : "b997a84053021010cbc2ddeeff7b1228",
+    "type" : "COMPOSITE"
+  },
+  "elementId" : "look_up_shift_positions",
+  "elementLabel" : "Look Up Shift Positions",
+  "eventMappings" : [ ],
+  "inputValues" : {
+    "table" : {
+      "type" : "JSON_LITERAL",
+      "value" : "x_802331_eyva_shift_position"
+    },
+    "encodedQuery" : {
+      "type" : "CLIENT_TRANSFORM",
+      "transform" : {
+        "operands" : {
+          "type" : "LIST_CONTAINER",
+          "container" : [ {
+            "type" : "JSON_LITERAL",
+            "value" : "shift.start_timeON"
+          }, {
+            "type" : "STATE_BINDING",
+            "binding" : {
+              "address" : [ "selected_date" ]
+            }
+          }, {
+            "type" : "JSON_LITERAL",
+            "value" : "^shift.event=12e7f8132f9c1110da77c886f699b6b9"
+          } ]
+        },
+        "operator" : "CONCAT"
+      }
+    },
+    "returnFields" : {
+      "type" : "JSON_LITERAL",
+      "value" : "position,order"
+    },
+    "orderBy" : {
+      "type" : "JSON_LITERAL",
+      "value" : "order"
+    },
+    "sortType" : {
+      "type" : "JSON_LITERAL",
+      "value" : "asc"
+    },
+    "limit" : {
+      "type" : "JSON_LITERAL",
+      "value" : "100"
+    },
+    "offset" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "queryCategory" : {
+      "type" : "JSON_LITERAL",
+      "value" : ""
+    },
+    "returnFieldMetadata" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    }
+  },
+  "readEvaluationMode" : "EAGER"
+}, {
+  "definition" : {
+    "id" : "b997a84053021010cbc2ddeeff7b1228",
+    "type" : "COMPOSITE"
+  },
+  "elementId" : "look_up_shift_position_workers",
+  "elementLabel" : "Look Up Shift Position Workers",
+  "eventMappings" : [ ],
+  "inputValues" : {
+    "table" : {
+      "type" : "JSON_LITERAL",
+      "value" : "x_802331_eyva_shift_position_worker"
+    },
+    "encodedQuery" : {
+      "type" : "CLIENT_TRANSFORM",
+      "transform" : {
+        "operands" : {
+          "type" : "LIST_CONTAINER",
+          "container" : [ {
+            "type" : "JSON_LITERAL",
+            "value" : "shift_position.shift.event=12e7f8132f9c1110da77c886f699b6b9^shift_position.shift.start_timeON"
+          }, {
+            "type" : "STATE_BINDING",
+            "binding" : {
+              "address" : [ "selected_date" ]
+            }
+          } ]
+        },
+        "operator" : "CONCAT"
+      }
+    },
+    "returnFields" : {
+      "type" : "JSON_LITERAL",
+      "value" : "shift_worker.worker,order,shift_worker.arriving_at,shift_worker.leaving_at"
+    },
+    "orderBy" : {
+      "type" : "JSON_LITERAL",
+      "value" : "order"
+    },
+    "sortType" : {
+      "type" : "JSON_LITERAL",
+      "value" : "asc"
+    },
+    "limit" : {
+      "type" : "JSON_LITERAL",
+      "value" : "100"
+    },
+    "offset" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "queryCategory" : {
+      "type" : "JSON_LITERAL",
+      "value" : ""
+    },
+    "returnFieldMetadata" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    }
+  },
+  "readEvaluationMode" : "EAGER"
 } ]</data>
         <dispatched_events>8b29b6bf2fd45110da77c886f699b61f</dispatched_events>
         <extends display_value="Page Template">19be392623033300f4b4c50947bf65ba</extends>
@@ -2070,6 +2196,9 @@
 }, {
   "message" : "Search",
   "comment" : ""
+}, {
+  "message" : "The morning shift.",
+  "comment" : ""
 } ]</required_translations>
         <root_component/>
         <root_component_config>{ }</root_component_config>
@@ -2099,18 +2228,29 @@
     "type" : "JSON_LITERAL",
     "value" : null
   }
+}, {
+  "name" : "selected_date",
+  "label" : "selected_date",
+  "fieldType" : "",
+  "valueType" : "",
+  "shape" : "",
+  "description" : "",
+  "initialValue" : {
+    "type" : "JSON_LITERAL",
+    "value" : "08/13/22"
+  }
 } ]</state_properties>
         <sys_class_name>sys_ux_macroponent</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>124</sys_mod_count>
+        <sys_mod_count>127</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-07-24 04:13:44</sys_updated_on>
+        <sys_updated_on>2022-07-28 03:10:50</sys_updated_on>
     </sys_ux_macroponent>
 </record_update>
