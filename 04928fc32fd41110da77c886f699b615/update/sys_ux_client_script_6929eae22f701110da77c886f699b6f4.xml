@@ -10,30 +10,24 @@
   * @param {TransformApiHelpers} params.helpers
   */
 function evaluateProperty({api, helpers}) {
-	// Show positions from api.item.value.min - max
+	// Show positions between current column's min & max
   return api.data.look_up_shift_positions.results.filter(function(it) {
     return it.order.value >= api.item.value.min && it.order.value <= api.item.value.max;
   });
-
-  /*return [{
-    "position": api.item.value.min <= 100 ? "Red" : "Point Alpha"
-  },{
-    "position": api.item.value.min <= 100 ? "Orange" : "Point Bravo"
-  }];*/
 }]]></script>
         <script_api_version>2.0.0</script_api_version>
         <sys_class_name>sys_ux_client_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-23 05:25:08</sys_created_on>
         <sys_id>6929eae22f701110da77c886f699b6f4</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>repeater_2_repeatWith</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_client_script_6929eae22f701110da77c886f699b6f4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-07-28 03:47:25</sys_updated_on>
+        <sys_updated_on>2022-07-29 01:49:35</sys_updated_on>
         <type>transform</type>
     </sys_ux_client_script>
 </record_update>

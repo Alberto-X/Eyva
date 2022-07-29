@@ -2,7 +2,7 @@
     <sys_ux_client_script action="INSERT_OR_UPDATE">
         <includes/>
         <macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</macroponent>
-        <name>repeater_3_repeatWith</name>
+        <name>pill_1_label</name>
         <required_translations>[ ]</required_translations>
         <script><![CDATA[/**
   * @param {params} params
@@ -10,24 +10,22 @@
   * @param {TransformApiHelpers} params.helpers
   */
 function evaluateProperty({api, helpers}) {
-	// Show workers for current position
-  return api.data.look_up_shift_position_workers.results.filter(function(it) {
-    return it.shift_position._reference.position.value == api.item.value.position.value;
-  });
+  var arrivalTimePieces = api.item.value.shift_worker._reference.arriving_at.displayValue.split(':');
+	return 'In @' + parseInt(arrivalTimePieces[0]) + ':' + arrivalTimePieces[1];
 }]]></script>
         <script_api_version>2.0.0</script_api_version>
         <sys_class_name>sys_ux_client_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2022-07-23 05:27:27</sys_created_on>
-        <sys_id>93a922262f701110da77c886f699b6bf</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>repeater_3_repeatWith</sys_name>
+        <sys_created_on>2022-07-29 02:00:53</sys_created_on>
+        <sys_id>3fe3b0e42f815110da77c886f699b68d</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>pill_1_label</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
-        <sys_update_name>sys_ux_client_script_93a922262f701110da77c886f699b6bf</sys_update_name>
+        <sys_update_name>sys_ux_client_script_3fe3b0e42f815110da77c886f699b68d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-07-29 01:49:36</sys_updated_on>
+        <sys_updated_on>2022-07-29 04:10:11</sys_updated_on>
         <type>transform</type>
     </sys_ux_client_script>
 </record_update>

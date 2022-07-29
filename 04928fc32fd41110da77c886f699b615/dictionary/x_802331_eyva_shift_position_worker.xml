@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Shift Position Worker" max_length="40" name="x_802331_eyva_shift_position_worker" sizeclass="0" type="collection">
+    <element label="Shift Position Worker" max_length="40" name="x_802331_eyva_shift_position_worker" sizeclass="4" type="collection">
         <element hint="Used to display workers for a shift position in the proper order" label="Order" max_length="40" name="order" type="integer"/>
-        <element hint="The shift position being worked" label="Shift position" mandatory="true" max_length="32" name="shift_position" reference="x_802331_eyva_shift_position" type="reference"/>
-        <element display="true" hint="The shift worker at the position" label="Shift worker" mandatory="true" max_length="32" name="shift_worker" reference="x_802331_eyva_shift_worker" type="reference"/>
+        <element attributes="encode_utf8=false,ref_ac_columns=shift,ref_auto_completer=AJAXTableCompleter" hint="The shift position being worked" label="Shift position" mandatory="true" max_length="32" name="shift_position" reference="x_802331_eyva_shift_position" type="reference"/>
+        <element attributes="encode_utf8=false,ref_ac_columns=shift,ref_auto_completer=AJAXTableCompleter" display="true" hint="The shift worker at the position" label="Shift worker" mandatory="true" max_length="32" name="shift_worker" reference="x_802331_eyva_shift_worker" type="reference"/>
         <index name="index">
             <element name="shift_position"/>
         </index>

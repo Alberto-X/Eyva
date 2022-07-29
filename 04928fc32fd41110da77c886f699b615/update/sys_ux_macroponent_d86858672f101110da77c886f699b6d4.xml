@@ -1025,11 +1025,10 @@
                           "value" : "md"
                         },
                         "label" : {
-                          "type" : "TRANSLATION_LITERAL",
-                          "value" : {
-                            "code" : null,
-                            "message" : "Button",
-                            "comment" : ""
+                          "type" : "REPEATER_ITEM_BINDING",
+                          "binding" : {
+                            "address" : [ "shift_worker", "_reference", "worker", "displayValue" ],
+                            "category" : "value"
                           }
                         },
                         "iconStart" : {
@@ -1088,11 +1087,10 @@
                           "value" : "md"
                         },
                         "label" : {
-                          "type" : "TRANSLATION_LITERAL",
-                          "value" : {
-                            "code" : null,
-                            "message" : "Button",
-                            "comment" : ""
+                          "type" : "REPEATER_ITEM_BINDING",
+                          "binding" : {
+                            "address" : [ "shift_worker", "_reference", "worker", "displayValue" ],
+                            "category" : "value"
                           }
                         },
                         "iconStart" : {
@@ -1133,7 +1131,7 @@
                       "overrides" : null,
                       "isHidden" : {
                         "type" : "JSON_LITERAL",
-                        "value" : null
+                        "value" : true
                       },
                       "isHero" : false,
                       "isNonDestructive" : false,
@@ -1151,11 +1149,10 @@
                           "value" : "md"
                         },
                         "label" : {
-                          "type" : "TRANSLATION_LITERAL",
-                          "value" : {
-                            "code" : null,
-                            "message" : "Button",
-                            "comment" : ""
+                          "type" : "REPEATER_ITEM_BINDING",
+                          "binding" : {
+                            "address" : [ "shift_worker", "_reference", "worker", "displayValue" ],
+                            "category" : "value"
                           }
                         },
                         "iconStart" : {
@@ -1196,7 +1193,7 @@
                       "overrides" : null,
                       "isHidden" : {
                         "type" : "JSON_LITERAL",
-                        "value" : null
+                        "value" : true
                       },
                       "isHero" : false,
                       "isNonDestructive" : false,
@@ -1206,16 +1203,16 @@
                       "elementLabel" : "Pill 1",
                       "propertyValues" : {
                         "label" : {
-                          "type" : "TRANSLATION_LITERAL",
-                          "value" : {
-                            "code" : null,
-                            "message" : "Issue 42",
-                            "comment" : ""
+                          "type" : "CLIENT_TRANSFORM_SCRIPT",
+                          "script" : {
+                            "apiVersion" : "2.0.0",
+                            "inlineScript" : null,
+                            "scriptSysId" : "3fe3b0e42f815110da77c886f699b68d"
                           }
                         },
                         "size" : {
                           "type" : "JSON_LITERAL",
-                          "value" : "md"
+                          "value" : "sm"
                         },
                         "icon" : {
                           "type" : "JSON_LITERAL",
@@ -1242,8 +1239,12 @@
                       },
                       "overrides" : null,
                       "isHidden" : {
-                        "type" : "JSON_LITERAL",
-                        "value" : null
+                        "type" : "CLIENT_TRANSFORM_SCRIPT",
+                        "script" : {
+                          "apiVersion" : "2.0.0",
+                          "inlineScript" : null,
+                          "scriptSysId" : "6d453ce82f815110da77c886f699b6ce"
+                        }
                       },
                       "isHero" : false,
                       "isNonDestructive" : false,
@@ -1253,16 +1254,16 @@
                       "elementLabel" : "Pill 2",
                       "propertyValues" : {
                         "label" : {
-                          "type" : "TRANSLATION_LITERAL",
-                          "value" : {
-                            "code" : null,
-                            "message" : "Issue 42",
-                            "comment" : ""
+                          "type" : "CLIENT_TRANSFORM_SCRIPT",
+                          "script" : {
+                            "apiVersion" : "2.0.0",
+                            "inlineScript" : null,
+                            "scriptSysId" : "a004b8a82f815110da77c886f699b666"
                           }
                         },
                         "size" : {
                           "type" : "JSON_LITERAL",
-                          "value" : "md"
+                          "value" : "sm"
                         },
                         "icon" : {
                           "type" : "JSON_LITERAL",
@@ -1289,8 +1290,12 @@
                       },
                       "overrides" : null,
                       "isHidden" : {
-                        "type" : "JSON_LITERAL",
-                        "value" : null
+                        "type" : "CLIENT_TRANSFORM_SCRIPT",
+                        "script" : {
+                          "apiVersion" : "2.0.0",
+                          "inlineScript" : null,
+                          "scriptSysId" : "a525b4282f815110da77c886f699b65f"
+                        }
                       },
                       "isHero" : false,
                       "isNonDestructive" : false,
@@ -1430,7 +1435,7 @@
                         "items" : [{"element_id":"button_iconic_2","styles":{}},{"element_id":"checkbox_1","styles":{}},{"element_id":"button_bare_1","styles":{}},{"element_id":"button_bare_2","styles":{}},{"element_id":"button_bare_3","styles":{}},{"element_id":"pill_1","styles":{}},{"element_id":"pill_2","styles":{}},{"element_id":"button_iconic_1","styles":{}}],
                         "root" : null,
                         "rules" : null,
-                        "styles" : {"flex-direction":"column","display":"grid","grid-template-columns":"min-content 1fr min-content","grid-template-rows":"1fr 1fr 1fr 1fr 1fr","grid-auto-flow":"column","align-items":"center","justify-items":"start","justify-content":"space-between","grid-auto-columns":"min-content"},
+                        "styles" : {"flex-direction":"column","display":"grid","grid-template-columns":"min-content 1fr min-content","grid-template-rows":"min-content min-content min-content min-content min-content","grid-auto-flow":"column","align-items":"center","justify-items":"start","justify-content":"space-between","grid-auto-columns":"min-content","grid-auto-rows":"min-content"},
                         "templateId" : "5832fd4d53c31010e6bcddeeff7b12db",
                         "type" : "grid"
                       },
@@ -1474,7 +1479,7 @@
                 "items" : [{"element_id":"card_base_header_1","styles":{}},{"element_id":"button_1","styles":{}},{"element_id":"button_2","styles":{}},{"element_id":"card_base_divider_1","styles":{}},{"element_id":"repeater_3","styles":{}},{"element_id":"repeater_4","styles":{}}],
                 "root" : null,
                 "rules" : null,
-                "styles" : {"flex-direction":"column"},
+                "styles" : {"flex-direction":"column","align-items":"stretch"},
                 "templateId" : "5832fd4d53c31010e6bcddeeff7b12db",
                 "type" : "flex"
               },
@@ -1487,7 +1492,9 @@
           },
           "isHero" : false,
           "isNonDestructive" : false,
-          "styles" : { }
+          "styles" : {
+            "align-self" : "stretch"
+          }
         } ],
         "layout" : {
           "default" : {
@@ -2060,7 +2067,7 @@
     },
     "returnFields" : {
       "type" : "JSON_LITERAL",
-      "value" : "shift_worker.worker,order,shift_worker.arriving_at,shift_worker.leaving_at"
+      "value" : "shift_position.position,shift_worker.worker,order,shift_worker.arriving_at,shift_worker.leaving_at"
     },
     "orderBy" : {
       "type" : "JSON_LITERAL",
@@ -2179,9 +2186,6 @@
   "message" : "Event",
   "comment" : ""
 }, {
-  "message" : "Issue 42",
-  "comment" : ""
-}, {
   "message" : "Morning",
   "comment" : ""
 }, {
@@ -2244,13 +2248,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>127</sys_mod_count>
+        <sys_mod_count>136</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-07-28 03:10:50</sys_updated_on>
+        <sys_updated_on>2022-07-29 04:10:13</sys_updated_on>
     </sys_ux_macroponent>
 </record_update>
