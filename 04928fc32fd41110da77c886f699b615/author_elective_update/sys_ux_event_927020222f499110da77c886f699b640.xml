@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_event">
+    <sys_ux_event action="DELETE">
+        <description/>
+        <event_name>WORKER_CLICKED</event_name>
+        <interfaces/>
+        <label>Worker clicked</label>
+        <props>[{"name":"worker","fieldType":"","label":"Worker","interfaceApiName":"","typeMetadata":null,"mandatory":false,"readOnly":false}]</props>
+        <required_translations>[ {
+  "message" : "Worker",
+  "comment" : ""
+} ]</required_translations>
+        <schema_version>1.0.0</schema_version>
+        <sys_class_name>sys_ux_event</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-08-04 05:43:41</sys_created_on>
+        <sys_id>927020222f499110da77c886f699b640</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Worker clicked</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_event_927020222f499110da77c886f699b640</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-08-04 05:43:41</sys_updated_on>
+    </sys_ux_event>
+    <sys_translated_text action="DELETE" query="documentkey=927020222f499110da77c886f699b640"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Eyva">04928fc32fd41110da77c886f699b615</application>
+        <file_path/>
+        <instance_id>2847bb90dbf4101cad8dd7c8f4961907</instance_id>
+        <instance_name>dev103134</instance_name>
+        <name>sys_ux_event_927020222f499110da77c886f699b640</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_event"><sys_ux_event action="INSERT_OR_UPDATE"><description/><event_name>WORKER_CLICKED</event_name><interfaces/><label>Worker clicked</label><props>[{"name":"worker","fieldType":"","label":"Worker","interfaceApiName":"","typeMetadata":null,"mandatory":false,"readOnly":false}]</props><required_translations>[ {
+  "message" : "Worker",
+  "comment" : ""
+} ]</required_translations><schema_version>1.0.0</schema_version><sys_class_name>sys_ux_event</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-08-04 05:43:41</sys_created_on><sys_id>927020222f499110da77c886f699b640</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Worker clicked</sys_name><sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package><sys_policy/><sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope><sys_update_name>sys_ux_event_927020222f499110da77c886f699b640</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-08-04 05:43:41</sys_updated_on></sys_ux_event><sys_translated_text action="delete_multiple" query="documentkey=927020222f499110da77c886f699b640"/></record_update>]]></payload>
+        <payload_hash>580868578</payload_hash>
+        <record_name>Worker clicked</record_name>
+        <reverted_from/>
+        <source>1d7c88382f201110da77c886f699b68e</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-08-04 05:43:41</sys_created_on>
+        <sys_id>567020222f499110da77c886f699b644</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18267618a5b0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-08-04 05:43:41</sys_updated_on>
+        <type>UX Event</type>
+        <update_guid>9e702022d749911006d09355c51d3743</update_guid>
+        <update_guid_history>9e702022d749911006d09355c51d3743:580868578</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-08-04 06:09:03</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_event">sys_ux_event</sys_db_object>
+        <sys_id>57018068a6654068a0b60d4162333c40</sys_id>
+        <sys_metadata>927020222f499110da77c886f699b640</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Worker clicked</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_scope_delete display_value="">240812431724428091a64e1ecd53f240</sys_scope_delete>
+        <sys_update_name>sys_ux_event_927020222f499110da77c886f699b640</sys_update_name>
+        <sys_update_version display_value="sys_ux_event_927020222f499110da77c886f699b640">567020222f499110da77c886f699b644</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-08-04 06:09:03</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

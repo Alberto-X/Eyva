@@ -392,7 +392,57 @@
       "value" : "md"
     }
   },
-  "eventMappings" : [ ],
+  "eventMappings" : [ {
+    "eventMappingId" : "clggbidaaddhhaabbccrddshhddbbtcjjjjcbbr",
+    "isConfiguration" : false,
+    "offRowStorageId" : null,
+    "sourceEventApiName" : "now_uxf_tab_set.UXF_TAB_SET#TAB_SELECTED",
+    "sourceEventCorrelationId" : null,
+    "sourceEventDefinition" : {
+      "apiName" : "now_uxf_tab_set.UXF_TAB_SET#TAB_SELECTED",
+      "id" : null,
+      "type" : "UXEVENT"
+    },
+    "sourceEventSysId" : null,
+    "targets" : [ {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+        "payload" : {
+          "type" : "MAP_CONTAINER",
+          "container" : {
+            "propName" : {
+              "type" : "JSON_LITERAL",
+              "value" : "selected_shift"
+            },
+            "value" : {
+              "type" : "BINARY",
+              "operation" : {
+                "left" : {
+                  "type" : "EVENT_PAYLOAD_BINDING",
+                  "binding" : {
+                    "address" : [ "selectedTabIndex" ]
+                  }
+                },
+                "operator" : "ADD",
+                "right" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : 1
+                }
+              }
+            }
+          }
+        },
+        "sysId" : "32408b42ff7a10109046e490703bf176"
+      },
+      "operation" : null,
+      "targetId" : "clggbidaaddiiaabbccsddshhddjjqggbbhvaff",
+      "type" : "EVENT"
+    } ]
+  } ],
   "slot" : null,
   "definition" : {
     "id" : "b324da974cef96f2db1d484cfeda4e3e",
@@ -440,11 +490,11 @@
           "elementLabel" : "Stylized text 1",
           "propertyValues" : {
             "text" : {
-              "type" : "TRANSLATION_LITERAL",
-              "value" : {
-                "code" : null,
-                "message" : "The morning shift.",
-                "comment" : ""
+              "type" : "CLIENT_TRANSFORM_SCRIPT",
+              "script" : {
+                "apiVersion" : "2.0.0",
+                "inlineScript" : null,
+                "scriptSysId" : "f059dfce2f855110da77c886f699b6b4"
               }
             },
             "tag" : {
@@ -533,12 +583,50 @@
         "type" : "MACROPONENT"
       },
       "overrides" : {
-        "composition" : [ ],
+        "composition" : [ {
+          "elementId" : "stylized_text_2",
+          "elementLabel" : "Stylized text 2",
+          "propertyValues" : {
+            "text" : {
+              "type" : "TRANSLATION_LITERAL",
+              "value" : {
+                "code" : null,
+                "message" : "The afternoon shift.",
+                "comment" : ""
+              }
+            },
+            "tag" : {
+              "type" : "JSON_LITERAL",
+              "value" : "p"
+            },
+            "css" : {
+              "type" : "JSON_LITERAL",
+              "value" : "* { }"
+            }
+          },
+          "eventMappings" : [ ],
+          "slot" : null,
+          "definition" : {
+            "id" : "4335ba6dca80378f7ba7a67cd6667bec",
+            "type" : "MACROPONENT"
+          },
+          "overrides" : null,
+          "isHidden" : {
+            "type" : "JSON_LITERAL",
+            "value" : null
+          },
+          "isHero" : false,
+          "isNonDestructive" : false,
+          "styles" : {
+            "padding" : "initial",
+            "padding-left" : "var(--now-static-space--sm)"
+          }
+        } ],
         "layout" : {
           "default" : {
             "children" : null,
             "isInline" : null,
-            "items" : [],
+            "items" : [{"element_id":"stylized_text_2","styles":{}}],
             "root" : null,
             "rules" : null,
             "styles" : {"flex-direction":"column"},
@@ -593,12 +681,50 @@
         "type" : "MACROPONENT"
       },
       "overrides" : {
-        "composition" : [ ],
+        "composition" : [ {
+          "elementId" : "stylized_text_3",
+          "elementLabel" : "Stylized text 3",
+          "propertyValues" : {
+            "text" : {
+              "type" : "TRANSLATION_LITERAL",
+              "value" : {
+                "code" : null,
+                "message" : "The evening shift.",
+                "comment" : ""
+              }
+            },
+            "tag" : {
+              "type" : "JSON_LITERAL",
+              "value" : "p"
+            },
+            "css" : {
+              "type" : "JSON_LITERAL",
+              "value" : "* { }"
+            }
+          },
+          "eventMappings" : [ ],
+          "slot" : null,
+          "definition" : {
+            "id" : "4335ba6dca80378f7ba7a67cd6667bec",
+            "type" : "MACROPONENT"
+          },
+          "overrides" : null,
+          "isHidden" : {
+            "type" : "JSON_LITERAL",
+            "value" : null
+          },
+          "isHero" : false,
+          "isNonDestructive" : false,
+          "styles" : {
+            "padding" : "initial",
+            "padding-left" : "var(--now-static-space--sm)"
+          }
+        } ],
         "layout" : {
           "default" : {
             "children" : null,
             "isInline" : null,
-            "items" : [],
+            "items" : [{"element_id":"stylized_text_3","styles":{}}],
             "root" : null,
             "rules" : null,
             "styles" : {"flex-direction":"column"},
@@ -653,12 +779,50 @@
         "type" : "MACROPONENT"
       },
       "overrides" : {
-        "composition" : [ ],
+        "composition" : [ {
+          "elementId" : "stylized_text_4",
+          "elementLabel" : "Stylized text 4",
+          "propertyValues" : {
+            "text" : {
+              "type" : "TRANSLATION_LITERAL",
+              "value" : {
+                "code" : null,
+                "message" : "The night shift.",
+                "comment" : ""
+              }
+            },
+            "tag" : {
+              "type" : "JSON_LITERAL",
+              "value" : "p"
+            },
+            "css" : {
+              "type" : "JSON_LITERAL",
+              "value" : "* { }"
+            }
+          },
+          "eventMappings" : [ ],
+          "slot" : null,
+          "definition" : {
+            "id" : "4335ba6dca80378f7ba7a67cd6667bec",
+            "type" : "MACROPONENT"
+          },
+          "overrides" : null,
+          "isHidden" : {
+            "type" : "JSON_LITERAL",
+            "value" : null
+          },
+          "isHero" : false,
+          "isNonDestructive" : false,
+          "styles" : {
+            "padding" : "initial",
+            "padding-left" : "var(--now-static-space--sm)"
+          }
+        } ],
         "layout" : {
           "default" : {
             "children" : null,
             "isInline" : null,
-            "items" : [],
+            "items" : [{"element_id":"stylized_text_4","styles":{}}],
             "root" : null,
             "rules" : null,
             "styles" : {"flex-direction":"column"},
@@ -877,8 +1041,12 @@
               },
               "overrides" : null,
               "isHidden" : {
-                "type" : "JSON_LITERAL",
-                "value" : null
+                "type" : "CLIENT_TRANSFORM_SCRIPT",
+                "script" : {
+                  "apiVersion" : "2.0.0",
+                  "inlineScript" : null,
+                  "scriptSysId" : "d2e2e9352f811110da77c886f699b606"
+                }
               },
               "isHero" : false,
               "isNonDestructive" : false,
@@ -932,8 +1100,12 @@
               },
               "overrides" : null,
               "isHidden" : {
-                "type" : "JSON_LITERAL",
-                "value" : null
+                "type" : "CLIENT_TRANSFORM_SCRIPT",
+                "script" : {
+                  "apiVersion" : "2.0.0",
+                  "inlineScript" : null,
+                  "scriptSysId" : "5c03e9352f811110da77c886f699b676"
+                }
               },
               "isHero" : false,
               "isNonDestructive" : false,
@@ -1060,7 +1232,44 @@
                           "container" : { }
                         }
                       },
-                      "eventMappings" : [ ],
+                      "eventMappings" : [ {
+                        "eventMappingId" : "clggencctkxaaddbzddshhddoiswaobbhh",
+                        "isConfiguration" : false,
+                        "offRowStorageId" : null,
+                        "sourceEventApiName" : "sn_button.NOW_BUTTON_BARE#CLICKED",
+                        "sourceEventCorrelationId" : null,
+                        "sourceEventDefinition" : {
+                          "apiName" : "sn_button.NOW_BUTTON_BARE#CLICKED",
+                          "id" : null,
+                          "type" : "UXEVENT"
+                        },
+                        "sourceEventSysId" : null,
+                        "targets" : [ {
+                          "broker" : null,
+                          "clientScript" : null,
+                          "conditional" : null,
+                          "declarativeAction" : null,
+                          "event" : {
+                            "apiName" : "x_802331_eyva.WORKER_CLICKED",
+                            "payload" : {
+                              "type" : "MAP_CONTAINER",
+                              "container" : {
+                                "worker" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "shift_worker", "_reference", "worker", "value" ],
+                                    "category" : "value"
+                                  }
+                                }
+                              }
+                            },
+                            "sysId" : "4b53ace22f499110da77c886f699b6fe"
+                          },
+                          "operation" : null,
+                          "targetId" : "clggencctkyaaddcaaddshhddbhhhiipddnhh",
+                          "type" : "EVENT"
+                        } ]
+                      } ],
                       "slot" : null,
                       "definition" : {
                         "id" : "67d8bc45906c355a3100c0782f45487b",
@@ -1306,7 +1515,7 @@
                       "propertyValues" : {
                         "icon" : {
                           "type" : "JSON_LITERAL",
-                          "value" : "magnifying-glass-outline"
+                          "value" : "record-details-outline"
                         },
                         "variant" : {
                           "type" : "JSON_LITERAL",
@@ -1363,12 +1572,14 @@
                       "overrides" : null,
                       "isHidden" : {
                         "type" : "JSON_LITERAL",
-                        "value" : null
+                        "value" : true
                       },
                       "isHero" : false,
                       "isNonDestructive" : false,
                       "styles" : {
-                        "grid-row" : "1 / -1"
+                        "grid-row" : "1 / -1",
+                        "padding" : "initial",
+                        "padding-left" : "var(--now-static-space--sm)"
                       }
                     }, {
                       "elementId" : "checkbox_1",
@@ -1788,6 +1999,203 @@
   "styles" : {
     "align-self" : "center"
   }
+}, {
+  "elementId" : "input_1",
+  "elementLabel" : "Input 1",
+  "propertyValues" : {
+    "type" : {
+      "type" : "JSON_LITERAL",
+      "value" : "text"
+    },
+    "label" : {
+      "type" : "TRANSLATION_LITERAL",
+      "value" : {
+        "code" : null,
+        "message" : "Date",
+        "comment" : ""
+      }
+    },
+    "placeholder" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "name" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "value" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "readonly" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    },
+    "required" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    },
+    "hideRequiredIndicator" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    },
+    "optional" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    },
+    "min" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "max" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "minlength" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "maxlength" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "multiple" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "pattern" : {
+      "type" : "JSON_LITERAL",
+      "value" : "^(\\d|\\d{2})\\/(\\d|\\d{2})\\/\\d{4}$"
+    },
+    "autofocus" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    },
+    "disabled" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    },
+    "invalid" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    },
+    "helperContent" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "messages" : {
+      "type" : "LIST_CONTAINER",
+      "container" : [ ]
+    }
+  },
+  "eventMappings" : [ {
+    "eventMappingId" : "clggeomysqaaddmaddshhddjjylodaft",
+    "isConfiguration" : false,
+    "offRowStorageId" : null,
+    "sourceEventApiName" : "sn_input.NOW_INPUT#INPUT",
+    "sourceEventCorrelationId" : null,
+    "sourceEventDefinition" : {
+      "apiName" : "sn_input.NOW_INPUT#INPUT",
+      "id" : null,
+      "type" : "UXEVENT"
+    },
+    "sourceEventSysId" : null,
+    "targets" : [ {
+      "broker" : null,
+      "clientScript" : {
+        "sysId" : "6f24c3fb2f185110da77c886f699b641"
+      },
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : null,
+      "operation" : null,
+      "targetId" : "clggepdiitiaaccddeeddshhddjjjjjiihhffea",
+      "type" : "CLIENT_SCRIPT"
+    } ]
+  }, {
+    "eventMappingId" : "clggeoccaajzaaddlccddshhddcwyrjjoeer",
+    "isConfiguration" : false,
+    "offRowStorageId" : null,
+    "sourceEventApiName" : "sn_input.NOW_INPUT#VALUE_SET",
+    "sourceEventCorrelationId" : null,
+    "sourceEventDefinition" : {
+      "apiName" : "sn_input.NOW_INPUT#VALUE_SET",
+      "id" : null,
+      "type" : "UXEVENT"
+    },
+    "sourceEventSysId" : null,
+    "targets" : [ {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+        "payload" : {
+          "type" : "MAP_CONTAINER",
+          "container" : {
+            "propName" : {
+              "type" : "JSON_LITERAL",
+              "value" : "selected_date"
+            },
+            "value" : {
+              "type" : "EVENT_PAYLOAD_BINDING",
+              "binding" : {
+                "address" : [ "value" ]
+              }
+            }
+          }
+        },
+        "sysId" : "32408b42ff7a10109046e490703bf176"
+      },
+      "operation" : null,
+      "targetId" : "clggeoccaajzaaddlddddshhddvsrajjjggc",
+      "type" : "EVENT"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : null,
+      "operation" : {
+        "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
+        "operationName" : "REFRESH",
+        "parentResourceId" : "look_up_shift_positions",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : { }
+        }
+      },
+      "targetId" : "clggeoddggiffaaddlwddshhddyzsuggjfa",
+      "type" : "DATABROKER_OP"
+    }, {
+      "broker" : null,
+      "clientScript" : {
+        "sysId" : "6f24c3fb2f185110da77c886f699b641"
+      },
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : null,
+      "operation" : null,
+      "targetId" : "clggephzbuaaccggbbddshhddlddddncctkq",
+      "type" : "CLIENT_SCRIPT"
+    } ]
+  } ],
+  "slot" : null,
+  "definition" : {
+    "id" : "bb0f92e8d7eff1590624bfe69d316f23",
+    "type" : "MACROPONENT"
+  },
+  "overrides" : null,
+  "isHidden" : {
+    "type" : "JSON_LITERAL",
+    "value" : null
+  },
+  "isHero" : false,
+  "isNonDestructive" : false,
+  "styles" : {
+    "padding" : "var(--now-static-space--lg)"
+  }
 } ]</composition>
         <da_relay_models/>
         <data>[ {
@@ -1990,15 +2398,20 @@
           "type" : "LIST_CONTAINER",
           "container" : [ {
             "type" : "JSON_LITERAL",
-            "value" : "shift.start_timeON"
+            "value" : "shift.event="
+          }, {
+            "type" : "STATE_BINDING",
+            "binding" : {
+              "address" : [ "selected_event" ]
+            }
+          }, {
+            "type" : "JSON_LITERAL",
+            "value" : "^shift.start_timeON"
           }, {
             "type" : "STATE_BINDING",
             "binding" : {
               "address" : [ "selected_date" ]
             }
-          }, {
-            "type" : "JSON_LITERAL",
-            "value" : "^shift.event=12e7f8132f9c1110da77c886f699b6b9"
           } ]
         },
         "operator" : "CONCAT"
@@ -2006,7 +2419,7 @@
     },
     "returnFields" : {
       "type" : "JSON_LITERAL",
-      "value" : "position,order"
+      "value" : "position,order,shift.order_in_the_day"
     },
     "orderBy" : {
       "type" : "JSON_LITERAL",
@@ -2054,7 +2467,15 @@
           "type" : "LIST_CONTAINER",
           "container" : [ {
             "type" : "JSON_LITERAL",
-            "value" : "shift_position.shift.event=12e7f8132f9c1110da77c886f699b6b9^shift_position.shift.start_timeON"
+            "value" : "shift_position.shift.event="
+          }, {
+            "type" : "STATE_BINDING",
+            "binding" : {
+              "address" : [ "selected_event" ]
+            }
+          }, {
+            "type" : "JSON_LITERAL",
+            "value" : "^shift_position.shift.start_timeON"
           }, {
             "type" : "STATE_BINDING",
             "binding" : {
@@ -2067,7 +2488,7 @@
     },
     "returnFields" : {
       "type" : "JSON_LITERAL",
-      "value" : "shift_position.position,shift_worker.worker,order,shift_worker.arriving_at,shift_worker.leaving_at"
+      "value" : "shift_position.position,shift_worker.worker,order,shift_worker.arriving_at,shift_worker.leaving_at,shift_worker.shift.order_in_the_day"
     },
     "orderBy" : {
       "type" : "JSON_LITERAL",
@@ -2095,13 +2516,119 @@
     }
   },
   "readEvaluationMode" : "EAGER"
+}, {
+  "definition" : {
+    "id" : "b997a84053021010cbc2ddeeff7b1228",
+    "type" : "COMPOSITE"
+  },
+  "elementId" : "look_up_shift_workers",
+  "elementLabel" : "Look Up Shift Workers",
+  "eventMappings" : [ ],
+  "inputValues" : {
+    "table" : {
+      "type" : "JSON_LITERAL",
+      "value" : "x_802331_eyva_shift_worker"
+    },
+    "encodedQuery" : {
+      "type" : "CLIENT_TRANSFORM",
+      "transform" : {
+        "operands" : {
+          "type" : "LIST_CONTAINER",
+          "container" : [ {
+            "type" : "JSON_LITERAL",
+            "value" : "shift.event="
+          }, {
+            "type" : "STATE_BINDING",
+            "binding" : {
+              "address" : [ "selected_event" ]
+            }
+          }, {
+            "type" : "JSON_LITERAL",
+            "value" : "^shift.start_timeON"
+          }, {
+            "type" : "STATE_BINDING",
+            "binding" : {
+              "address" : [ "selected_date" ]
+            }
+          }, {
+            "type" : "JSON_LITERAL",
+            "value" : "^shift.order_in_the_day="
+          }, {
+            "type" : "STATE_BINDING",
+            "binding" : {
+              "address" : [ "selected_shift" ]
+            }
+          } ]
+        },
+        "operator" : "CONCAT"
+      }
+    },
+    "returnFields" : {
+      "type" : "JSON_LITERAL",
+      "value" : "worker,shift,arriving_at,leaving_at"
+    },
+    "orderBy" : {
+      "type" : "JSON_LITERAL",
+      "value" : "worker"
+    },
+    "sortType" : {
+      "type" : "JSON_LITERAL",
+      "value" : "asc"
+    },
+    "limit" : {
+      "type" : "JSON_LITERAL",
+      "value" : "500"
+    },
+    "offset" : {
+      "type" : "JSON_LITERAL",
+      "value" : null
+    },
+    "queryCategory" : {
+      "type" : "JSON_LITERAL",
+      "value" : ""
+    },
+    "returnFieldMetadata" : {
+      "type" : "JSON_LITERAL",
+      "value" : false
+    }
+  },
+  "readEvaluationMode" : "EAGER"
+}, {
+  "definition" : {
+    "id" : "a72ab0ea2f899110da77c886f699b641",
+    "type" : "TRANSFORM"
+  },
+  "elementId" : "get_skills_for_shift_workers_1",
+  "elementLabel" : "Get skills for shift workers 1",
+  "eventMappings" : [ ],
+  "inputValues" : {
+    "shiftWorkers" : {
+      "type" : "DATA_OUTPUT_BINDING",
+      "binding" : {
+        "address" : [ "look_up_shift_workers", "results" ]
+      }
+    }
+  },
+  "readEvaluationMode" : "EAGER"
 } ]</data>
         <dispatched_events>8b29b6bf2fd45110da77c886f699b61f</dispatched_events>
         <extends display_value="Page Template">19be392623033300f4b4c50947bf65ba</extends>
-        <handled_events/>
+        <handled_events>4b53ace22f499110da77c886f699b6fe</handled_events>
         <interactions/>
         <interfaces/>
         <internal_event_mappings>{
+  "x_802331_eyva.WORKER_CLICKED" : [ {
+    "broker" : null,
+    "clientScript" : {
+      "sysId" : "030120ae2f099110da77c886f699b629"
+    },
+    "conditional" : null,
+    "declarativeAction" : null,
+    "event" : null,
+    "operation" : null,
+    "targetId" : "clggenbbfffoaaddbrddshhddaeueewplg",
+    "type" : "CLIENT_SCRIPT"
+  } ],
   "MACROPONENT_READY" : [ {
     "broker" : null,
     "clientScript" : null,
@@ -2152,7 +2679,7 @@
   "default" : {
     "children" : null,
     "isInline" : null,
-    "items" : [{"element_id":"page_title","styles":{}},{"element_id":"event","styles":{}},{"element_id":"repeater_7","styles":{}},{"element_id":"viewport_qag","styles":{}},{"element_id":"repeater_1","styles":{}}],
+    "items" : [{"element_id":"page_title","styles":{}},{"element_id":"event","styles":{}},{"element_id":"input_1","styles":{}},{"element_id":"repeater_7","styles":{}},{"element_id":"viewport_qag","styles":{}},{"element_id":"repeater_1","styles":{}}],
     "root" : null,
     "rules" : null,
     "styles" : {"flex-direction":"column","display":"flex","grid-template-columns":"1fr 1fr","grid-template-rows":"1fr","gap":""},
@@ -2175,6 +2702,9 @@
   "comment" : ""
 }, {
   "message" : "Chat",
+  "comment" : ""
+}, {
+  "message" : "Date",
   "comment" : ""
 }, {
   "message" : "Enter a label",
@@ -2201,7 +2731,13 @@
   "message" : "Search",
   "comment" : ""
 }, {
-  "message" : "The morning shift.",
+  "message" : "The afternoon shift.",
+  "comment" : ""
+}, {
+  "message" : "The evening shift.",
+  "comment" : ""
+}, {
+  "message" : "The night shift.",
   "comment" : ""
 } ]</required_translations>
         <root_component/>
@@ -2230,7 +2766,7 @@
   "description" : "",
   "initialValue" : {
     "type" : "JSON_LITERAL",
-    "value" : null
+    "value" : "12e7f8132f9c1110da77c886f699b6b9"
   }
 }, {
   "name" : "selected_date",
@@ -2243,18 +2779,40 @@
     "type" : "JSON_LITERAL",
     "value" : "08/13/22"
   }
+}, {
+  "name" : "selected_shift",
+  "label" : "selected_shift",
+  "fieldType" : "",
+  "valueType" : "",
+  "shape" : "",
+  "description" : "",
+  "initialValue" : {
+    "type" : "JSON_LITERAL",
+    "value" : "1"
+  }
+}, {
+  "name" : "active_worker",
+  "label" : "active_worker",
+  "fieldType" : "",
+  "valueType" : "",
+  "shape" : "",
+  "description" : "",
+  "initialValue" : {
+    "type" : "JSON_LITERAL",
+    "value" : null
+  }
 } ]</state_properties>
         <sys_class_name>sys_ux_macroponent</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>136</sys_mod_count>
+        <sys_mod_count>167</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-07-29 04:10:13</sys_updated_on>
+        <sys_updated_on>2022-08-04 09:47:53</sys_updated_on>
     </sys_ux_macroponent>
 </record_update>
