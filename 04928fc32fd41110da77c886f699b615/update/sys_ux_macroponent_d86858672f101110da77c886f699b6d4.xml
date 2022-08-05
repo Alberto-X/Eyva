@@ -2598,14 +2598,20 @@
     "id" : "a72ab0ea2f899110da77c886f699b641",
     "type" : "TRANSFORM"
   },
-  "elementId" : "get_skills_for_shift_workers_1",
-  "elementLabel" : "Get skills for shift workers 1",
+  "elementId" : "get_qualified_positions_for_shift_workers_1",
+  "elementLabel" : "Get qualified positions for shift workers 1",
   "eventMappings" : [ ],
   "inputValues" : {
     "shiftWorkers" : {
       "type" : "DATA_OUTPUT_BINDING",
       "binding" : {
         "address" : [ "look_up_shift_workers", "results" ]
+      }
+    },
+    "event" : {
+      "type" : "STATE_BINDING",
+      "binding" : {
+        "address" : [ "selected_event" ]
       }
     }
   },
@@ -2806,13 +2812,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>167</sys_mod_count>
+        <sys_mod_count>172</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-08-04 09:47:53</sys_updated_on>
+        <sys_updated_on>2022-08-05 11:49:23</sys_updated_on>
     </sys_ux_macroponent>
 </record_update>

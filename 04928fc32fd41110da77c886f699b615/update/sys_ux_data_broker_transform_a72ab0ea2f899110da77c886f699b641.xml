@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_data_broker_transform">
     <sys_ux_data_broker_transform action="INSERT_OR_UPDATE">
         <acl_failure_result/>
-        <api_name>x_802331_eyva.Get skills for shift workers</api_name>
-        <description>Retrieves a list of skills for each given shift worker.</description>
+        <api_name>x_802331_eyva.Get qualified positions for shift workers</api_name>
+        <description>Retrieves a list of qualified positions for each shift worker.</description>
         <mutates_server_data>false</mutates_server_data>
-        <name>Get skills for shift workers</name>
+        <name>Get qualified positions for shift workers</name>
         <output_schema/>
         <private>false</private>
         <props>[&#13;
@@ -16,10 +16,25 @@
     "fieldType": "array",&#13;
     "mandatory": "true",&#13;
     "defaultValue": []&#13;
+  },&#13;
+  {&#13;
+    "name": "event",&#13;
+    "label": "Event",&#13;
+    "description": "ID of the selected event",&#13;
+    "readOnly": "false",&#13;
+    "fieldType": "string",&#13;
+    "mandatory": "false",&#13;
+    "defaultValue": ""&#13;
   }&#13;
 ]</props>
         <required_translations>[ {
   "message" : "Array of shift workers",
+  "comment" : ""
+}, {
+  "message" : "Event",
+  "comment" : ""
+}, {
+  "message" : "ID of the selected event",
   "comment" : ""
 }, {
   "message" : "Shift workers",
@@ -27,36 +42,45 @@
 } ]</required_translations>
         <schema_version>1.0.0</schema_version>
         <script><![CDATA[function transform(input) {
-	var workerSkills = {};
+	var eyvaUtils  = new EyvaUtils();
+	var workerPositions = {};
+	workerPositions[eyvaUtils.PROFICIENT.label] = {};
+	workerPositions[eyvaUtils.NEEDSHELP.label] = {};
 	input.shiftWorkers.forEach(function(shWkr) {
 		var worker = shWkr.worker;
-		workerSkills[worker.value] = [];
+		workerPositions[eyvaUtils.PROFICIENT.label][worker.value] = [];
+		workerPositions[eyvaUtils.NEEDSHELP.label][worker.value] = [];
 		
-		// Get skills for a given worker
-		var skillGr = new GlideRecord('x_802331_eyva_worker_skill');
-		skillGr.addQuery('worker', worker.value);
-		skillGr.query();
-		while (skillGr.next()) {
-			workerSkills[worker.value].push({
-				name: skillGr.getDisplayValue(),
-				sysid: skillGr.sys_id.toString()
-			});
+		var workerGr = new GlideRecord('x_802331_eyva_worker');
+		workerGr.get(worker.value);
+		
+		// Go thru all positions
+		var positionGr = new GlideRecord('x_802331_eyva_position');
+		positionGr.query();
+		while (positionGr.next()) {
+			var qualifiedLevel = eyvaUtils.isWorkerQualifiedForPosition(workerGr, positionGr);
+			if (qualifiedLevel) {
+				workerPositions[qualifiedLevel][worker.value].push({
+					name: positionGr.name.getDisplayValue(),
+					sys_id: positionGr.sys_id.toString()
+				});
+			}
 		}
 	});
-	return workerSkills;
+	return workerPositions;
 }]]></script>
         <sys_class_name>sys_ux_data_broker_transform</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-08-04 08:03:05</sys_created_on>
         <sys_id>a72ab0ea2f899110da77c886f699b641</sys_id>
-        <sys_mod_count>4</sys_mod_count>
-        <sys_name>Get skills for shift workers</sys_name>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Get qualified positions for shift workers</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_data_broker_transform_a72ab0ea2f899110da77c886f699b641</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-08-04 09:23:23</sys_updated_on>
+        <sys_updated_on>2022-08-05 10:33:29</sys_updated_on>
     </sys_ux_data_broker_transform>
     <sys_translated_text action="delete_multiple" query="documentkey=a72ab0ea2f899110da77c886f699b641"/>
 </record_update>
