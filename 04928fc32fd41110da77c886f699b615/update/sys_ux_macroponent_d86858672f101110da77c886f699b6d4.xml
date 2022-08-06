@@ -987,7 +987,7 @@
               "overrides" : null,
               "isHidden" : {
                 "type" : "JSON_LITERAL",
-                "value" : null
+                "value" : true
               },
               "isHero" : false,
               "isNonDestructive" : false,
@@ -1002,14 +1002,13 @@
                 },
                 "size" : {
                   "type" : "JSON_LITERAL",
-                  "value" : "md"
+                  "value" : "sm"
                 },
                 "label" : {
-                  "type" : "TRANSLATION_LITERAL",
-                  "value" : {
-                    "code" : null,
-                    "message" : "Button",
-                    "comment" : ""
+                  "type" : "REPEATER_ITEM_BINDING",
+                  "binding" : {
+                    "address" : [ "position", "displayValue" ],
+                    "category" : "value"
                   }
                 },
                 "icon" : {
@@ -1021,11 +1020,11 @@
                   "value" : false
                 },
                 "tooltipContent" : {
-                  "type" : "TRANSLATION_LITERAL",
-                  "value" : {
-                    "code" : null,
-                    "message" : "Enter a label",
-                    "comment" : ""
+                  "type" : "CLIENT_TRANSFORM_SCRIPT",
+                  "script" : {
+                    "apiVersion" : "2.0.0",
+                    "inlineScript" : null,
+                    "scriptSysId" : "9e0736032f8d1510da77c886f699b66c"
                   }
                 },
                 "configAria" : {
@@ -1045,12 +1044,15 @@
                 "script" : {
                   "apiVersion" : "2.0.0",
                   "inlineScript" : null,
-                  "scriptSysId" : "d2e2e9352f811110da77c886f699b606"
+                  "scriptSysId" : "42b932072f8d1510da77c886f699b68d"
                 }
               },
               "isHero" : false,
               "isNonDestructive" : false,
-              "styles" : { }
+              "styles" : {
+                "align-self" : "stretch",
+                "height" : "2.5em"
+              }
             }, {
               "elementId" : "button_2",
               "elementLabel" : "Button 2",
@@ -1061,14 +1063,13 @@
                 },
                 "size" : {
                   "type" : "JSON_LITERAL",
-                  "value" : "md"
+                  "value" : "sm"
                 },
                 "label" : {
-                  "type" : "TRANSLATION_LITERAL",
-                  "value" : {
-                    "code" : null,
-                    "message" : "Button",
-                    "comment" : ""
+                  "type" : "REPEATER_ITEM_BINDING",
+                  "binding" : {
+                    "address" : [ "position", "displayValue" ],
+                    "category" : "value"
                   }
                 },
                 "icon" : {
@@ -1080,11 +1081,11 @@
                   "value" : false
                 },
                 "tooltipContent" : {
-                  "type" : "TRANSLATION_LITERAL",
-                  "value" : {
-                    "code" : null,
-                    "message" : "Enter a label",
-                    "comment" : ""
+                  "type" : "CLIENT_TRANSFORM_SCRIPT",
+                  "script" : {
+                    "apiVersion" : "2.0.0",
+                    "inlineScript" : null,
+                    "scriptSysId" : "c3c7bacf2f4d1510da77c886f699b608"
                   }
                 },
                 "configAria" : {
@@ -1104,12 +1105,15 @@
                 "script" : {
                   "apiVersion" : "2.0.0",
                   "inlineScript" : null,
-                  "scriptSysId" : "5c03e9352f811110da77c886f699b676"
+                  "scriptSysId" : "cfc932072f8d1510da77c886f699b645"
                 }
               },
               "isHero" : false,
               "isNonDestructive" : false,
-              "styles" : { }
+              "styles" : {
+                "align-self" : "stretch",
+                "height" : "2.5em"
+              }
             }, {
               "elementId" : "card_base_divider_1",
               "elementLabel" : "Card Base Divider 1",
@@ -1120,7 +1124,7 @@
                 },
                 "blockSpacing" : {
                   "type" : "JSON_LITERAL",
-                  "value" : "lg"
+                  "value" : "sm"
                 }
               },
               "eventMappings" : [ ],
@@ -1682,12 +1686,208 @@
               "styles" : {
                 "align-self" : "flex-start"
               }
+            }, {
+              "elementId" : "button_bare_4",
+              "elementLabel" : "Button bare 4",
+              "propertyValues" : {
+                "variant" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : "tertiary"
+                },
+                "size" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : "md"
+                },
+                "label" : {
+                  "type" : "REPEATER_ITEM_BINDING",
+                  "binding" : {
+                    "address" : [ "position", "displayValue" ],
+                    "category" : "value"
+                  }
+                },
+                "iconStart" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : null
+                },
+                "iconEnd" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : null
+                },
+                "disabled" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "hidePadding" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "showInlinePadding" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "highContrast" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "configAria" : {
+                  "type" : "MAP_CONTAINER",
+                  "container" : { }
+                }
+              },
+              "eventMappings" : [ ],
+              "slot" : null,
+              "definition" : {
+                "id" : "67d8bc45906c355a3100c0782f45487b",
+                "type" : "MACROPONENT"
+              },
+              "overrides" : null,
+              "isHidden" : {
+                "type" : "CLIENT_TRANSFORM_SCRIPT",
+                "script" : {
+                  "apiVersion" : "2.0.0",
+                  "inlineScript" : null,
+                  "scriptSysId" : "cdd836832f8d1510da77c886f699b6a5"
+                }
+              },
+              "isHero" : false,
+              "isNonDestructive" : false,
+              "styles" : { }
+            }, {
+              "elementId" : "button_bare_5",
+              "elementLabel" : "Button bare 5",
+              "propertyValues" : {
+                "variant" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : "tertiary"
+                },
+                "size" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : "md"
+                },
+                "label" : {
+                  "type" : "REPEATER_ITEM_BINDING",
+                  "binding" : {
+                    "address" : [ "position", "displayValue" ],
+                    "category" : "value"
+                  }
+                },
+                "iconStart" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : null
+                },
+                "iconEnd" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : null
+                },
+                "disabled" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "hidePadding" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "showInlinePadding" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "highContrast" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "configAria" : {
+                  "type" : "MAP_CONTAINER",
+                  "container" : { }
+                }
+              },
+              "eventMappings" : [ ],
+              "slot" : null,
+              "definition" : {
+                "id" : "67d8bc45906c355a3100c0782f45487b",
+                "type" : "MACROPONENT"
+              },
+              "overrides" : null,
+              "isHidden" : {
+                "type" : "JSON_LITERAL",
+                "value" : true
+              },
+              "isHero" : false,
+              "isNonDestructive" : false,
+              "styles" : {
+                "background" : "RGBA(var(--now-button--secondary--background-color,var(--now-color_background--tertiary,var(--now-color--neutral-2,228,230,231))),var(--now-button--secondary--background-color-alpha,1))",
+                "align-self" : "stretch"
+              }
+            }, {
+              "elementId" : "button_bare_6",
+              "elementLabel" : "Button bare 6",
+              "propertyValues" : {
+                "variant" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : "tertiary"
+                },
+                "size" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : "md"
+                },
+                "label" : {
+                  "type" : "REPEATER_ITEM_BINDING",
+                  "binding" : {
+                    "address" : [ "position", "displayValue" ],
+                    "category" : "value"
+                  }
+                },
+                "iconStart" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : null
+                },
+                "iconEnd" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : null
+                },
+                "disabled" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "hidePadding" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "showInlinePadding" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "highContrast" : {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                },
+                "configAria" : {
+                  "type" : "MAP_CONTAINER",
+                  "container" : { }
+                }
+              },
+              "eventMappings" : [ ],
+              "slot" : null,
+              "definition" : {
+                "id" : "67d8bc45906c355a3100c0782f45487b",
+                "type" : "MACROPONENT"
+              },
+              "overrides" : null,
+              "isHidden" : {
+                "type" : "JSON_LITERAL",
+                "value" : true
+              },
+              "isHero" : false,
+              "isNonDestructive" : false,
+              "styles" : {
+                "background" : "RGBA(var(--now-button--secondary-negative--background-color,var(--now-color_alert--critical-0,241,206,205)),var(--now-button--secondary-negative--background-color-alpha,1))",
+                "align-self" : "stretch"
+              }
             } ],
             "layout" : {
               "default" : {
                 "children" : null,
                 "isInline" : null,
-                "items" : [{"element_id":"card_base_header_1","styles":{}},{"element_id":"button_1","styles":{}},{"element_id":"button_2","styles":{}},{"element_id":"card_base_divider_1","styles":{}},{"element_id":"repeater_3","styles":{}},{"element_id":"repeater_4","styles":{}}],
+                "items" : [{"element_id":"card_base_header_1","styles":{}},{"element_id":"button_bare_4","styles":{}},{"element_id":"button_bare_5","styles":{}},{"element_id":"button_bare_6","styles":{}},{"element_id":"button_1","styles":{}},{"element_id":"button_2","styles":{}},{"element_id":"card_base_divider_1","styles":{}},{"element_id":"repeater_3","styles":{}},{"element_id":"repeater_4","styles":{}}],
                 "root" : null,
                 "rules" : null,
                 "styles" : {"flex-direction":"column","align-items":"stretch"},
@@ -2701,9 +2901,6 @@
   "message" : "Afternoon",
   "comment" : ""
 }, {
-  "message" : "Button",
-  "comment" : ""
-}, {
   "message" : "Card actions",
   "comment" : ""
 }, {
@@ -2812,13 +3009,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>172</sys_mod_count>
+        <sys_mod_count>181</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-08-05 11:49:23</sys_updated_on>
+        <sys_updated_on>2022-08-06 06:16:50</sys_updated_on>
     </sys_ux_macroponent>
 </record_update>
