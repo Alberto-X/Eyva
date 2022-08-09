@@ -57,6 +57,54 @@ EyvaUtils.prototype = {
 		// If made it here, worker is proficient (or position requires nothing special)
 		return this.PROFICIENT.label;
 	},
+	
+	getNextOrder: function(table, filter, groupByField, orderField) {
+		var ga = new GlideAggregate(table);
+		ga.addEncodedQuery(filter);
+		ga.addAggregate('MAX', orderField);
+		ga.groupBy(groupByField);
+		ga.orderByDesc(orderField);
+		ga.query();
+		if (ga.next()) {
+			return parseInt(ga.getAggregate('MAX', orderField) || 0) + 1;
+		} else {
+			return 1;
+		}
+	},
+	
+	setPreviousShiftPosition: function(shiftWorker) {
+		
+	},
+	
+	getPreviousShiftPosition: function(shiftWorker) {
+		
+	},
+	
+	isInSamePositionAsPreviousShift: function(shiftPositionWorker) {
+		var prevShiftPos = '';//Search "api.data.look_up_shift_position_workers" for same worker in previous shift
+			//this.getPreviousShiftPosition(shiftPositionWorker.shift_worker.value);
+		var currShiftPos = '';//Search "api.data.look_up_shift_position_workers" for same worker in previous shift
+			//new GlideRecord('x_802331_eyva_shift_position');
+		return prevShiftPos._reference.position.value == currShiftPos._reference.position.value;
+	},
+	
+	isInSameAreaAsPreviousShift: function(shiftPositionWorker) {
+		var prevShiftPos = '';//Search "api.data.look_up_shift_position_workers" for same worker in previous shift
+		var currShiftPos = '';//Search "api.data.look_up_shift_position_workers" for same worker in previous shift
+		return prevShiftPos._reference.position._reference.area.value == currShiftPos._reference.position._reference.area.value;
+		
+		// Points
+		
+		// Green / Orange
+		
+		// Point D / Point E / Point G / Green
+		
+		// Point C / Orange / Media
+		
+		// Diamond / 15-Minute / Point A
+		
+		// Shuttles
+	},
 
     type: 'EyvaUtils'
 };]]></script>
@@ -64,13 +112,13 @@ EyvaUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-08-05 09:58:37</sys_created_on>
         <sys_id>15b6d2fe2f4dd110da77c886f699b620</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>EyvaUtils</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_script_include_15b6d2fe2f4dd110da77c886f699b620</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-08-05 10:00:55</sys_updated_on>
+        <sys_updated_on>2022-08-09 06:10:00</sys_updated_on>
     </sys_script_include>
 </record_update>
