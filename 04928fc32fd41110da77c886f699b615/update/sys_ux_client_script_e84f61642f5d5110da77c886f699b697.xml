@@ -2,7 +2,7 @@
     <sys_ux_client_script action="INSERT_OR_UPDATE">
         <includes/>
         <macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</macroponent>
-        <name>button_bare_7___isHidden__</name>
+        <name>button_bare_8___isHidden__</name>
         <required_translations>[ ]</required_translations>
         <script><![CDATA[/**
   * @param {params} params
@@ -27,31 +27,22 @@ function evaluateProperty({api, helpers}) {
         && it.shift_worker._reference.shift._reference.order_in_the_day.value == api.item.value.shift_worker._reference.shift._reference.order_in_the_day.value - 1);
     });
     var currShiftPositionWorker = api.item.value;
-
-    // Hide light red bg if both of the below are true:
-    //   (1) previous position's 'area' is different, or 'area' of previous & current are null
-    //   (2) previous position's 'work performed' is different, or 'area' of previous & current are null
-    var prevArea = prevShiftPositionWorker.shift_position._reference.position._reference.area.value;
-    var currArea = currShiftPositionWorker.shift_position._reference.position._reference.area.value;
-    var prevWorkPerformed = prevShiftPositionWorker.shift_position._reference.position._reference.work_performed.value;
-    var currWorkPerformed = currShiftPositionWorker.shift_position._reference.position._reference.work_performed.value;
-    return (prevArea != currArea || currArea == null)
-      && (prevWorkPerformed != currWorkPerformed || currWorkPerformed == null);
+    return prevShiftPositionWorker.shift_position._reference.position.value != currShiftPositionWorker.shift_position._reference.position.value;
   }
 }]]></script>
         <script_api_version>2.0.0</script_api_version>
         <sys_class_name>sys_ux_client_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2022-08-08 06:27:30</sys_created_on>
-        <sys_id>43d015372fc1d510da77c886f699b635</sys_id>
-        <sys_mod_count>12</sys_mod_count>
-        <sys_name>button_bare_7___isHidden__</sys_name>
+        <sys_created_on>2022-08-10 16:35:46</sys_created_on>
+        <sys_id>e84f61642f5d5110da77c886f699b697</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>button_bare_8___isHidden__</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
-        <sys_update_name>sys_ux_client_script_43d015372fc1d510da77c886f699b635</sys_update_name>
+        <sys_update_name>sys_ux_client_script_e84f61642f5d5110da77c886f699b697</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-08-10 17:03:44</sys_updated_on>
+        <sys_updated_on>2022-08-10 17:03:46</sys_updated_on>
         <type>transform</type>
     </sys_ux_client_script>
 </record_update>

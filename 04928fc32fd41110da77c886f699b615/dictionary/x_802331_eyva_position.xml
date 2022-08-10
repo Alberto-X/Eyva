@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Position" max_length="40" name="x_802331_eyva_position" sizeclass="7" type="collection">
         <element default="1" label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="1" hint="The physical area a position is located in" label="Area" max_length="40" name="area" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Green/Gamma/Echo" sequence="0" value="green"/>
+                <element inactive_on_update="false" label="Orange/Media" sequence="1" value="orange"/>
+                <element inactive_on_update="false" label="Diamond/Alpha/Bravo/Chesapeake/Delta/15-Minute" sequence="2" value="diamond"/>
+            </choice>
+        </element>
         <element display="true" hint="Name of the position" label="Name" mandatory="true" max_length="40" name="name" type="string"/>
         <element hint="Color to use when displaying this position" label="Primary color" max_length="40" name="primary_color" type="color"/>
         <element hint="The venue this position is at" label="Venue" max_length="32" name="venue" reference="x_802331_eyva_venue" type="reference"/>
+        <element choice="1" hint="Type of work performed at this position" label="Work performed" max_length="40" name="work_performed" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Point" sequence="0" value="point"/>
+                <element inactive_on_update="false" label="Main south lot" sequence="1" value="main_south_lot"/>
+                <element inactive_on_update="false" label="Shuttle" sequence="2" value="shuttle"/>
+            </choice>
+        </element>
         <index name="index">
             <element name="venue"/>
         </index>

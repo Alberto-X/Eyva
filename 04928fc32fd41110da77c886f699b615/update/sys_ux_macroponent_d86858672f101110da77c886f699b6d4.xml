@@ -8,23 +8,11 @@
   "elementLabel" : "Page title - Heading",
   "propertyValues" : {
     "label" : {
-      "type" : "CLIENT_TRANSFORM",
-      "transform" : {
-        "operands" : {
-          "type" : "LIST_CONTAINER",
-          "container" : [ {
-            "type" : "STATE_BINDING",
-            "binding" : {
-              "address" : [ "selected_event_name" ]
-            }
-          }, {
-            "type" : "STATE_BINDING",
-            "binding" : {
-              "address" : [ "first_event" ]
-            }
-          } ]
-        },
-        "operator" : "CONCAT"
+      "type" : "TRANSLATION_LITERAL",
+      "value" : {
+        "code" : null,
+        "message" : "Western &amp; Southern 2022",
+        "comment" : ""
       }
     },
     "level" : {
@@ -33,7 +21,7 @@
     },
     "variant" : {
       "type" : "JSON_LITERAL",
-      "value" : "header-primary"
+      "value" : "header-secondary"
     },
     "wontWrap" : {
       "type" : "JSON_LITERAL",
@@ -41,7 +29,7 @@
     },
     "hasNoMargin" : {
       "type" : "JSON_LITERAL",
-      "value" : false
+      "value" : true
     }
   },
   "eventMappings" : [ ],
@@ -58,8 +46,7 @@
   "isHero" : false,
   "isNonDestructive" : false,
   "styles" : {
-    "align-self" : "center",
-    "padding" : "var(--now-static-space--lg)"
+    "align-self" : "center"
   }
 }, {
   "elementId" : "event",
@@ -221,7 +208,7 @@
   "overrides" : null,
   "isHidden" : {
     "type" : "JSON_LITERAL",
-    "value" : null
+    "value" : true
   },
   "isHero" : false,
   "isNonDestructive" : false,
@@ -588,11 +575,11 @@
           "elementLabel" : "Stylized text 2",
           "propertyValues" : {
             "text" : {
-              "type" : "TRANSLATION_LITERAL",
-              "value" : {
-                "code" : null,
-                "message" : "The afternoon shift.",
-                "comment" : ""
+              "type" : "CLIENT_TRANSFORM_SCRIPT",
+              "script" : {
+                "apiVersion" : "2.0.0",
+                "inlineScript" : null,
+                "scriptSysId" : "7210bed42f915110da77c886f699b629"
               }
             },
             "tag" : {
@@ -686,11 +673,11 @@
           "elementLabel" : "Stylized text 3",
           "propertyValues" : {
             "text" : {
-              "type" : "TRANSLATION_LITERAL",
-              "value" : {
-                "code" : null,
-                "message" : "The evening shift.",
-                "comment" : ""
+              "type" : "CLIENT_TRANSFORM_SCRIPT",
+              "script" : {
+                "apiVersion" : "2.0.0",
+                "inlineScript" : null,
+                "scriptSysId" : "6f20be982f915110da77c886f699b61f"
               }
             },
             "tag" : {
@@ -784,11 +771,11 @@
           "elementLabel" : "Stylized text 4",
           "propertyValues" : {
             "text" : {
-              "type" : "TRANSLATION_LITERAL",
-              "value" : {
-                "code" : null,
-                "message" : "The night shift.",
-                "comment" : ""
+              "type" : "CLIENT_TRANSFORM_SCRIPT",
+              "script" : {
+                "apiVersion" : "2.0.0",
+                "inlineScript" : null,
+                "scriptSysId" : "3330fe182f915110da77c886f699b650"
               }
             },
             "tag" : {
@@ -1055,7 +1042,7 @@
                       "type" : "CLIENT_TRANSFORM_SCRIPT",
                       "script" : {
                         "apiVersion" : "1.0.0",
-                        "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n* @param {any} params.imports\n*/\nfunction evaluateEvent({api, event, imports}) {\n\tvar params = {};\n\tif (api.state.active_worker.position == 'unassigned') {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'create',\n\t\t\ttemplateFields: `shift_worker=${api.state.active_worker.shiftWorker}^shift_position=${api.item.value._row_data.uniqueValue}`\n\t\t};\n\t} else if (api.item.value.unassignedWorkers) {\n\t\tparams = {\n\t\t\toperation: 'delete',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker\n\t\t}\n\t} else {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'update',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker,\n\t\t\ttemplateFields: `shift_position=${api.item.value._row_data.uniqueValue}^orderISEMPTY`\n\t\t};\n\t}\n\treturn params;\n}",
+                        "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n* @param {any} params.imports\n*/\nfunction evaluateEvent({api, event, imports}) {\n\tvar params = {};\n\tif (api.state.active_worker.position == 'unassigned') {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'create',\n\t\t\ttemplateFields: `shift_worker=${api.state.active_worker.shiftWorker}^shift_position=${api.item.value._row_data.uniqueValue}`\n\t\t};\n\t} else if (api.item.value.unassignedWorkers) {\n\t\tparams = {\n\t\t\toperation: 'delete',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker\n\t\t}\n\t} else {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'update',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker,\n\t\t\ttemplateFields: `shift_position=${api.item.value._row_data.uniqueValue}^order=0`\n\t\t};\n\t}\n\treturn params;\n}",
                         "scriptSysId" : null
                       }
                     },
@@ -1149,7 +1136,7 @@
                       "type" : "CLIENT_TRANSFORM_SCRIPT",
                       "script" : {
                         "apiVersion" : "1.0.0",
-                        "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n* @param {any} params.imports\n*/\nfunction evaluateEvent({api, event, imports}) {\n\tvar params = {};\n\tif (api.state.active_worker.position == 'unassigned') {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'create',\n\t\t\ttemplateFields: `shift_worker=${api.state.active_worker.shiftWorker}^shift_position=${api.item.value._row_data.uniqueValue}`\n\t\t};\n\t} else if (api.item.value.unassignedWorkers) {\n\t\tparams = {\n\t\t\toperation: 'delete',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker\n\t\t}\n\t} else {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'update',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker,\n\t\t\ttemplateFields: `shift_position=${api.item.value._row_data.uniqueValue}^order=9`\n\t\t};\n\t}\n\treturn params;\n}",
+                        "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n* @param {any} params.imports\n*/\nfunction evaluateEvent({api, event, imports}) {\n\tvar params = {};\n\tif (api.state.active_worker.position == 'unassigned') {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'create',\n\t\t\ttemplateFields: `shift_worker=${api.state.active_worker.shiftWorker}^shift_position=${api.item.value._row_data.uniqueValue}`\n\t\t};\n\t} else if (api.item.value.unassignedWorkers) {\n\t\tparams = {\n\t\t\toperation: 'delete',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker\n\t\t}\n\t} else {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'update',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker,\n\t\t\ttemplateFields: `shift_position=${api.item.value._row_data.uniqueValue}^order=0`\n\t\t};\n\t}\n\treturn params;\n}",
                         "scriptSysId" : null
                       }
                     },
@@ -1368,8 +1355,12 @@
                       },
                       "overrides" : null,
                       "isHidden" : {
-                        "type" : "JSON_LITERAL",
-                        "value" : null
+                        "type" : "CLIENT_TRANSFORM_SCRIPT",
+                        "script" : {
+                          "apiVersion" : "2.0.0",
+                          "inlineScript" : null,
+                          "scriptSysId" : "d89025282f1d5110da77c886f699b672"
+                        }
                       },
                       "isHero" : false,
                       "isNonDestructive" : false,
@@ -1801,6 +1792,51 @@
                           "conditional" : null,
                           "declarativeAction" : null,
                           "event" : {
+                            "apiName" : "x_802331_eyva.WORKER_CLICKED",
+                            "payload" : {
+                              "type" : "MAP_CONTAINER",
+                              "container" : {
+                                "worker" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "shift_worker", "_reference", "worker", "value" ],
+                                    "category" : "value"
+                                  }
+                                },
+                                "position" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "value", "position", "value" ],
+                                    "category" : "parent"
+                                  }
+                                },
+                                "shiftWorker" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "shift_worker", "value" ],
+                                    "category" : "value"
+                                  }
+                                },
+                                "shiftPositionWorker" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "_row_data", "uniqueValue" ],
+                                    "category" : "value"
+                                  }
+                                }
+                              }
+                            },
+                            "sysId" : "4b53ace22f499110da77c886f699b6fe"
+                          },
+                          "operation" : null,
+                          "targetId" : "clggkfccaaosaacccczddrhhddffiitmjjdbu",
+                          "type" : "EVENT"
+                        }, {
+                          "broker" : null,
+                          "clientScript" : null,
+                          "conditional" : null,
+                          "declarativeAction" : null,
+                          "event" : {
                             "apiName" : null,
                             "payload" : {
                               "type" : "JSON_LITERAL",
@@ -1809,7 +1845,7 @@
                             "sysId" : null
                           },
                           "operation" : null,
-                          "targetId" : "clggkfccaaosaacccczddrhhddffiitmjjdbu",
+                          "targetId" : "clggnrlaagyaabbeewddrhhddatjjcctffyd",
                           "type" : "EVENT"
                         } ]
                       } ],
@@ -1832,12 +1868,138 @@
                       "styles" : {
                         "background" : "RGBA(var(--now-button--secondary-negative--background-color,var(--now-color_alert--critical-0,241,206,205)),var(--now-button--secondary-negative--background-color-alpha,1))"
                       }
+                    }, {
+                      "elementId" : "button_bare_8",
+                      "elementLabel" : "Button bare 8",
+                      "propertyValues" : {
+                        "variant" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : "primary"
+                        },
+                        "size" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : "md"
+                        },
+                        "label" : {
+                          "type" : "REPEATER_ITEM_BINDING",
+                          "binding" : {
+                            "address" : [ "shift_worker", "_reference", "worker", "displayValue" ],
+                            "category" : "value"
+                          }
+                        },
+                        "iconStart" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : null
+                        },
+                        "iconEnd" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : null
+                        },
+                        "disabled" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : false
+                        },
+                        "hidePadding" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : false
+                        },
+                        "showInlinePadding" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : false
+                        },
+                        "highContrast" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : false
+                        },
+                        "configAria" : {
+                          "type" : "MAP_CONTAINER",
+                          "container" : { }
+                        }
+                      },
+                      "eventMappings" : [ {
+                        "eventMappingId" : "clggnuaahgggaabbfmddrhhddghrzbghdd",
+                        "isConfiguration" : false,
+                        "offRowStorageId" : null,
+                        "sourceEventApiName" : "sn_button.NOW_BUTTON_BARE#CLICKED",
+                        "sourceEventCorrelationId" : null,
+                        "sourceEventDefinition" : {
+                          "apiName" : "sn_button.NOW_BUTTON_BARE#CLICKED",
+                          "id" : null,
+                          "type" : "UXEVENT"
+                        },
+                        "sourceEventSysId" : null,
+                        "targets" : [ {
+                          "broker" : null,
+                          "clientScript" : null,
+                          "conditional" : null,
+                          "declarativeAction" : null,
+                          "event" : {
+                            "apiName" : "x_802331_eyva.WORKER_CLICKED",
+                            "payload" : {
+                              "type" : "MAP_CONTAINER",
+                              "container" : {
+                                "worker" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "shift_worker", "_reference", "worker", "value" ],
+                                    "category" : "value"
+                                  }
+                                },
+                                "position" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "value", "position", "value" ],
+                                    "category" : "parent"
+                                  }
+                                },
+                                "shiftWorker" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "shift_worker", "value" ],
+                                    "category" : "value"
+                                  }
+                                },
+                                "shiftPositionWorker" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "_row_data", "uniqueValue" ],
+                                    "category" : "value"
+                                  }
+                                }
+                              }
+                            },
+                            "sysId" : "4b53ace22f499110da77c886f699b6fe"
+                          },
+                          "operation" : null,
+                          "targetId" : "clggnuaahgggaabbfnddrhhddhhjjjcdgzjj",
+                          "type" : "EVENT"
+                        } ]
+                      } ],
+                      "slot" : null,
+                      "definition" : {
+                        "id" : "67d8bc45906c355a3100c0782f45487b",
+                        "type" : "MACROPONENT"
+                      },
+                      "overrides" : null,
+                      "isHidden" : {
+                        "type" : "CLIENT_TRANSFORM_SCRIPT",
+                        "script" : {
+                          "apiVersion" : "2.0.0",
+                          "inlineScript" : null,
+                          "scriptSysId" : "e84f61642f5d5110da77c886f699b697"
+                        }
+                      },
+                      "isHero" : false,
+                      "isNonDestructive" : false,
+                      "styles" : {
+                        "background" : "RGBA(var(--now-button--primary-negative--background-color,var(--now-color_alert--critical-0,241,206,205)),var(--now-button--primary-negative--background-color-alpha,1))"
+                      }
                     } ],
                     "layout" : {
                       "default" : {
                         "children" : null,
                         "isInline" : null,
-                        "items" : [{"element_id":"button_iconic_2","styles":{}},{"element_id":"checkbox_1","styles":{}},{"element_id":"button_bare_1","styles":{}},{"element_id":"button_bare_2","styles":{}},{"element_id":"button_bare_3","styles":{}},{"element_id":"button_bare_7","styles":{}},{"element_id":"pill_1","styles":{}},{"element_id":"pill_2","styles":{}},{"element_id":"button_iconic_1","styles":{}}],
+                        "items" : [{"element_id":"button_iconic_2","styles":{}},{"element_id":"checkbox_1","styles":{}},{"element_id":"button_bare_1","styles":{}},{"element_id":"button_bare_2","styles":{}},{"element_id":"button_bare_3","styles":{}},{"element_id":"button_bare_7","styles":{}},{"element_id":"button_bare_8","styles":{}},{"element_id":"pill_1","styles":{}},{"element_id":"pill_2","styles":{}},{"element_id":"button_iconic_1","styles":{}}],
                         "root" : null,
                         "rules" : null,
                         "styles" : {"flex-direction":"column","display":"grid","grid-template-columns":"min-content 1fr min-content","grid-template-rows":"min-content min-content min-content min-content min-content","grid-auto-flow":"column","align-items":"start","justify-items":"start","justify-content":"space-between","grid-auto-columns":"min-content","grid-auto-rows":"min-content"},
@@ -2645,7 +2807,7 @@
   "isHero" : false,
   "isNonDestructive" : false,
   "styles" : {
-    "padding" : "var(--now-static-space--lg)"
+    "padding" : "var(--now-static-space--sm)"
   }
 } ]</composition>
         <da_relay_models/>
@@ -2939,7 +3101,7 @@
     },
     "returnFields" : {
       "type" : "JSON_LITERAL",
-      "value" : "shift_position.position,shift_worker.worker,order,shift_worker.arriving_at,shift_worker.leaving_at,shift_worker.shift.order_in_the_day"
+      "value" : "shift_position.position,shift_worker.worker,order,shift_worker.arriving_at,shift_worker.leaving_at,shift_worker.shift.order_in_the_day,shift_position.position.area,shift_position.position.work_performed"
     },
     "orderBy" : {
       "type" : "JSON_LITERAL",
@@ -3325,13 +3487,7 @@
   "message" : "Search",
   "comment" : ""
 }, {
-  "message" : "The afternoon shift.",
-  "comment" : ""
-}, {
-  "message" : "The evening shift.",
-  "comment" : ""
-}, {
-  "message" : "The night shift.",
+  "message" : "Western &amp; Southern 2022",
   "comment" : ""
 } ]</required_translations>
         <root_component/>
@@ -3371,7 +3527,7 @@
   "description" : "",
   "initialValue" : {
     "type" : "JSON_LITERAL",
-    "value" : "2022-08-14@javascript:gs.dateGenerate('2022-08-14','start')@javascript:gs.dateGenerate('2022-08-14','end')"
+    "value" : "2022-08-13@javascript:gs.dateGenerate('2022-08-13','start')@javascript:gs.dateGenerate('2022-08-13','end')"
   }
 }, {
   "name" : "selected_shift",
@@ -3400,13 +3556,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>235</sys_mod_count>
+        <sys_mod_count>244</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-08-09 10:18:10</sys_updated_on>
+        <sys_updated_on>2022-08-10 17:03:47</sys_updated_on>
     </sys_ux_macroponent>
 </record_update>

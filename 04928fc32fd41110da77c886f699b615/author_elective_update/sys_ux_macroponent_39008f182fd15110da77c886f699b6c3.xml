@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_macroponent">
+    <sys_ux_macroponent action="DELETE">
+        <associated_types>d8899a0473000010f7353c78caf6a750</associated_types>
+        <category>primitives</category>
+        <component_dependencies/>
+        <composition>[]</composition>
+        <da_relay_models/>
+        <data/>
+        <dispatched_events>ba9a16c4d089443deb56044cc64a70fd</dispatched_events>
+        <extends/>
+        <handled_events/>
+        <interactions/>
+        <interfaces/>
+        <internal_event_mappings/>
+        <layout>{}</layout>
+        <macroponent_dependencies/>
+        <name>Button bare</name>
+        <props>[{"name":"variant","label":"Variant","fieldType":"choice","readOnly":false,"typeMetadata":{"choices":[{"label":"Primary","value":"primary"},{"label":"Secondary","value":"secondary"},{"label":"Tertiary","value":"tertiary"}],"schema":{"type":"string","enum":["primary","secondary","tertiary"]}},"defaultValue":"primary","description":"Sets the button style","selectable":false,"valueType":"string","mandatory":false},{"name":"size","label":"Size","fieldType":"choice","readOnly":false,"typeMetadata":{"choices":[{"label":"Small","value":"sm"},{"label":"Medium","value":"md"},{"label":"Large","value":"lg"}],"schema":{"type":"string","enum":["sm","md","lg"]}},"defaultValue":"md","description":"Sets the button size","selectable":false,"valueType":"string","mandatory":false},{"name":"label","label":"Label","fieldType":"string","readOnly":false,"typeMetadata":{"translatable":true,"schema":{"type":"string"}},"defaultValue":"Button","description":"Text displayed inside the button","selectable":false,"valueType":"string","mandatory":false},{"name":"iconStart","label":"Icon left of label","fieldType":"icon","readOnly":false,"typeMetadata":{"schema":{"type":"string"}},"description":"Displays an icon at the start of the button","selectable":false,"valueType":"string","mandatory":false},{"name":"iconEnd","label":"Icon right of label","fieldType":"icon","readOnly":false,"typeMetadata":{"schema":{"type":"string"}},"description":"Displays an icon at the end of the button","selectable":false,"valueType":"string","mandatory":false},{"name":"disabled","label":"Disabled","fieldType":"boolean","readOnly":false,"typeMetadata":{"schema":{"type":"boolean"}},"defaultValue":false,"description":"Disables user click interactions","selectable":false,"valueType":"string","mandatory":false},{"name":"hidePadding","label":"Hide block padding","fieldType":"boolean","readOnly":false,"typeMetadata":{"schema":{"type":"boolean"}},"defaultValue":false,"description":"By default, the button's height is based on the size. Select to reduce the button height. This sets the button height to the size of the text. Buttons with this property do not align vertically with other button types","selectable":false,"valueType":"string","mandatory":false},{"name":"showInlinePadding","label":"Show inline padding","fieldType":"boolean","readOnly":false,"typeMetadata":{"schema":{"type":"boolean"}},"defaultValue":false,"description":"By default, a bare button's width is based on the button's content. Set this to add inline padding either side of the button's content","selectable":false,"valueType":"string","mandatory":false},{"name":"highContrast","label":"High contrast","fieldType":"boolean","readOnly":false,"typeMetadata":{"schema":{"type":"boolean"}},"defaultValue":false,"description":"Increases the accessibility contrast ratio of the icon and label when displayed on darker backgrounds","selectable":false,"valueType":"string","mandatory":false},{"name":"configAria","label":"ARIA properties","fieldType":"json","readOnly":false,"typeMetadata":{"schema":{"oneOf":[{"type":"object","properties":{"button":{"type":"object","properties":{"aria-braillelabel":{"type":"string","translatable":true},"aria-brailleroledescription":{"type":"string","translatable":true},"aria-colindextext":{"type":"string","translatable":true},"aria-description":{"type":"string","translatable":true},"aria-label":{"type":"string","translatable":true},"aria-placeholder":{"type":"string","translatable":true},"aria-roledescription":{"type":"string","translatable":true},"aria-rowindextext":{"type":"string","translatable":true},"aria-valuetext":{"type":"string","translatable":true}},"patternProperties":{"^aria-":{"type":"string"}},"additionalProperties":false}},"additionalProperties":false},{"type":"object","properties":{"aria-braillelabel":{"type":"string","translatable":true},"aria-brailleroledescription":{"type":"string","translatable":true},"aria-colindextext":{"type":"string","translatable":true},"aria-description":{"type":"string","translatable":true},"aria-label":{"type":"string","translatable":true},"aria-placeholder":{"type":"string","translatable":true},"aria-roledescription":{"type":"string","translatable":true},"aria-rowindextext":{"type":"string","translatable":true},"aria-valuetext":{"type":"string","translatable":true}},"patternProperties":{"^aria-":{"type":"string"}},"additionalProperties":false}]}},"defaultValue":"{}","description":"ARIA properties that are set on the inner html. See https://www.w3.org/TR/wai-aria-1.1/#button for properties and accepted values","selectable":false,"valueType":"string","mandatory":false}]</props>
+        <required_translations>[ ]</required_translations>
+        <root_component display_value="now-button-bare">93b0d33ddefcddf9a81e2eb4aa4b98f0</root_component>
+        <root_component_config>{"variant":"@context/variant","size":"@context/size","label":"@context/label","iconStart":"@context/iconStart","iconEnd":"@context/iconEnd","disabled":"@context/disabled","hidePadding":"@context/hidePadding","showInlinePadding":"@context/showInlinePadding","highContrast":"@context/highContrast","configAria":"@context/configAria"}</root_component_config>
+        <root_component_definition>{"availableSlots":[]}</root_component_definition>
+        <schema_version>1.0.0</schema_version>
+        <state_properties/>
+        <sys_class_name>sys_ux_macroponent</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-08-10 03:50:10</sys_created_on>
+        <sys_id>39008f182fd15110da77c886f699b6c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Button bare</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_macroponent_39008f182fd15110da77c886f699b6c3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-08-10 03:50:10</sys_updated_on>
+    </sys_ux_macroponent>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Eyva">04928fc32fd41110da77c886f699b615</application>
+        <file_path/>
+        <instance_id>2847bb90dbf4101cad8dd7c8f4961907</instance_id>
+        <instance_name>dev103134</instance_name>
+        <name>sys_ux_macroponent_39008f182fd15110da77c886f699b6c3</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_macroponent"><sys_ux_macroponent action="INSERT_OR_UPDATE"><associated_types>d8899a0473000010f7353c78caf6a750</associated_types><category>primitives</category><component_dependencies/><composition>[]</composition><da_relay_models/><data/><dispatched_events>ba9a16c4d089443deb56044cc64a70fd</dispatched_events><extends/><handled_events/><interactions/><interfaces/><internal_event_mappings/><layout>{}</layout><macroponent_dependencies/><name>Button bare</name><props>[{"name":"variant","label":"Variant","fieldType":"choice","readOnly":false,"typeMetadata":{"choices":[{"label":"Primary","value":"primary"},{"label":"Secondary","value":"secondary"},{"label":"Tertiary","value":"tertiary"}],"schema":{"type":"string","enum":["primary","secondary","tertiary"]}},"defaultValue":"primary","description":"Sets the button style","selectable":false,"valueType":"string","mandatory":false},{"name":"size","label":"Size","fieldType":"choice","readOnly":false,"typeMetadata":{"choices":[{"label":"Small","value":"sm"},{"label":"Medium","value":"md"},{"label":"Large","value":"lg"}],"schema":{"type":"string","enum":["sm","md","lg"]}},"defaultValue":"md","description":"Sets the button size","selectable":false,"valueType":"string","mandatory":false},{"name":"label","label":"Label","fieldType":"string","readOnly":false,"typeMetadata":{"translatable":true,"schema":{"type":"string"}},"defaultValue":"Button","description":"Text displayed inside the button","selectable":false,"valueType":"string","mandatory":false},{"name":"iconStart","label":"Icon left of label","fieldType":"icon","readOnly":false,"typeMetadata":{"schema":{"type":"string"}},"description":"Displays an icon at the start of the button","selectable":false,"valueType":"string","mandatory":false},{"name":"iconEnd","label":"Icon right of label","fieldType":"icon","readOnly":false,"typeMetadata":{"schema":{"type":"string"}},"description":"Displays an icon at the end of the button","selectable":false,"valueType":"string","mandatory":false},{"name":"disabled","label":"Disabled","fieldType":"boolean","readOnly":false,"typeMetadata":{"schema":{"type":"boolean"}},"defaultValue":false,"description":"Disables user click interactions","selectable":false,"valueType":"string","mandatory":false},{"name":"hidePadding","label":"Hide block padding","fieldType":"boolean","readOnly":false,"typeMetadata":{"schema":{"type":"boolean"}},"defaultValue":false,"description":"By default, the button's height is based on the size. Select to reduce the button height. This sets the button height to the size of the text. Buttons with this property do not align vertically with other button types","selectable":false,"valueType":"string","mandatory":false},{"name":"showInlinePadding","label":"Show inline padding","fieldType":"boolean","readOnly":false,"typeMetadata":{"schema":{"type":"boolean"}},"defaultValue":false,"description":"By default, a bare button's width is based on the button's content. Set this to add inline padding either side of the button's content","selectable":false,"valueType":"string","mandatory":false},{"name":"highContrast","label":"High contrast","fieldType":"boolean","readOnly":false,"typeMetadata":{"schema":{"type":"boolean"}},"defaultValue":false,"description":"Increases the accessibility contrast ratio of the icon and label when displayed on darker backgrounds","selectable":false,"valueType":"string","mandatory":false},{"name":"configAria","label":"ARIA properties","fieldType":"json","readOnly":false,"typeMetadata":{"schema":{"oneOf":[{"type":"object","properties":{"button":{"type":"object","properties":{"aria-braillelabel":{"type":"string","translatable":true},"aria-brailleroledescription":{"type":"string","translatable":true},"aria-colindextext":{"type":"string","translatable":true},"aria-description":{"type":"string","translatable":true},"aria-label":{"type":"string","translatable":true},"aria-placeholder":{"type":"string","translatable":true},"aria-roledescription":{"type":"string","translatable":true},"aria-rowindextext":{"type":"string","translatable":true},"aria-valuetext":{"type":"string","translatable":true}},"patternProperties":{"^aria-":{"type":"string"}},"additionalProperties":false}},"additionalProperties":false},{"type":"object","properties":{"aria-braillelabel":{"type":"string","translatable":true},"aria-brailleroledescription":{"type":"string","translatable":true},"aria-colindextext":{"type":"string","translatable":true},"aria-description":{"type":"string","translatable":true},"aria-label":{"type":"string","translatable":true},"aria-placeholder":{"type":"string","translatable":true},"aria-roledescription":{"type":"string","translatable":true},"aria-rowindextext":{"type":"string","translatable":true},"aria-valuetext":{"type":"string","translatable":true}},"patternProperties":{"^aria-":{"type":"string"}},"additionalProperties":false}]}},"defaultValue":"{}","description":"ARIA properties that are set on the inner html. See https://www.w3.org/TR/wai-aria-1.1/#button for properties and accepted values","selectable":false,"valueType":"string","mandatory":false}]</props><required_translations>[ ]</required_translations><root_component display_value="now-button-bare">93b0d33ddefcddf9a81e2eb4aa4b98f0</root_component><root_component_config>{"variant":"@context/variant","size":"@context/size","label":"@context/label","iconStart":"@context/iconStart","iconEnd":"@context/iconEnd","disabled":"@context/disabled","hidePadding":"@context/hidePadding","showInlinePadding":"@context/showInlinePadding","highContrast":"@context/highContrast","configAria":"@context/configAria"}</root_component_config><root_component_definition>{"availableSlots":[]}</root_component_definition><schema_version>1.0.0</schema_version><state_properties/><sys_class_name>sys_ux_macroponent</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-08-10 03:50:10</sys_created_on><sys_id>39008f182fd15110da77c886f699b6c3</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Button bare</sys_name><sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package><sys_policy/><sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope><sys_update_name>sys_ux_macroponent_39008f182fd15110da77c886f699b6c3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-08-10 03:50:10</sys_updated_on></sys_ux_macroponent></record_update>]]></payload>
+        <payload_hash>-1713781547</payload_hash>
+        <record_name>Button bare</record_name>
+        <reverted_from/>
+        <source>1d7c88382f201110da77c886f699b68e</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-08-10 03:50:10</sys_created_on>
+        <sys_id>0a0007582fd15110da77c886f699b6b3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18285dfc4560000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-08-10 03:50:10</sys_updated_on>
+        <type>UX Macroponent Definition</type>
+        <update_guid>f9008f1868d1511006f3e11fc402b1c5</update_guid>
+        <update_guid_history>f9008f1868d1511006f3e11fc402b1c5:-1713781547</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-08-10 03:51:39</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_macroponent">sys_ux_macroponent</sys_db_object>
+        <sys_id>00572eacaf914490bddd9d2a56293810</sys_id>
+        <sys_metadata>39008f182fd15110da77c886f699b6c3</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Button bare</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_scope_delete display_value="">240812431724428091a64e1ecd53f240</sys_scope_delete>
+        <sys_update_name>sys_ux_macroponent_39008f182fd15110da77c886f699b6c3</sys_update_name>
+        <sys_update_version display_value="sys_ux_macroponent_39008f182fd15110da77c886f699b6c3">0a0007582fd15110da77c886f699b6b3</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-08-10 03:51:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
