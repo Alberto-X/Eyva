@@ -1176,7 +1176,7 @@
                       "script" : {
                         "apiVersion" : "1.0.0",
                         "controllerElementId" : null,
-                        "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n* @param {any} params.imports\n*/\nfunction evaluateEvent({api, event, imports}) {\n\tvar params = {};\n\tif (api.state.active_worker.position == 'unassigned') {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'create',\n\t\t\ttemplateFields: `shift_worker=${api.state.active_worker.shiftWorker}^shift_position=${api.item.value._row_data.uniqueValue}`\n\t\t};\n\t} else if (api.item.value.unassignedWorkers) {\n\t\tparams = {\n\t\t\toperation: 'delete',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker\n\t\t}\n\t} else {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'update',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker,\n\t\t\ttemplateFields: `shift_position=${api.item.value._row_data.uniqueValue}^order=0`\n\t\t};\n\t}\n\treturn params;\n}",
+                        "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n* @param {any} params.imports\n*/\nfunction evaluateEvent({api, event, imports}) {\n\tvar params = {};\n\tif (api.state.active_worker.position == 'unassigned') {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'create',\n\t\t\ttemplateFields: `shift_worker=${api.state.active_worker.shiftWorker}^shift_position=${api.item.value._row_data.uniqueValue}`\n\t\t};\n\t} else if (api.item.value.unassignedWorkers) {\n\t\tparams = {\n\t\t\toperation: 'delete',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker\n\t\t};\n\t} else {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'update',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker,\n\t\t\ttemplateFields: `shift_position=${api.item.value._row_data.uniqueValue}^order=0`\n\t\t};\n\t}\n\tparams.newPosition = api.item.value.position.value;\n\treturn params;\n}",
                         "scriptSysId" : null,
                         "target" : null
                       }
@@ -1275,7 +1275,7 @@
                       "script" : {
                         "apiVersion" : "1.0.0",
                         "controllerElementId" : null,
-                        "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n* @param {any} params.imports\n*/\nfunction evaluateEvent({api, event, imports}) {\n\tvar params = {};\n\tif (api.state.active_worker.position == 'unassigned') {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'create',\n\t\t\ttemplateFields: `shift_worker=${api.state.active_worker.shiftWorker}^shift_position=${api.item.value._row_data.uniqueValue}`\n\t\t};\n\t} else if (api.item.value.unassignedWorkers) {\n\t\tparams = {\n\t\t\toperation: 'delete',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker\n\t\t}\n\t} else {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'update',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker,\n\t\t\ttemplateFields: `shift_position=${api.item.value._row_data.uniqueValue}^order=0`\n\t\t};\n\t}\n\treturn params;\n}",
+                        "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n* @param {any} params.imports\n*/\nfunction evaluateEvent({api, event, imports}) {\n\tvar params = {};\n\tif (api.state.active_worker.position == 'unassigned') {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'create',\n\t\t\ttemplateFields: `shift_worker=${api.state.active_worker.shiftWorker}^shift_position=${api.item.value._row_data.uniqueValue}`\n\t\t};\n\t} else if (api.item.value.unassignedWorkers) {\n\t\tparams = {\n\t\t\toperation: 'delete',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker\n\t\t};\n\t} else {\n\t\t//order = imports.EyvaUtils.getNextOrder('x_802331_eyva_shift_position_worker', `shift_position=${api.item.value._row_data.uniqueValue}`, 'shift_position', 'order');\n\t\tparams = {\n\t\t\toperation: 'update',\n\t\t\trecordId: api.state.active_worker.shiftPositionWorker,\n\t\t\ttemplateFields: `shift_position=${api.item.value._row_data.uniqueValue}^order=0`\n\t\t};\n\t}\n\tparams.newPosition = api.item.value.position.value;\n\treturn params;\n}",
                         "scriptSysId" : null,
                         "target" : null
                       }
@@ -2182,7 +2182,7 @@
                       "default" : {
                         "children" : null,
                         "isInline" : null,
-                        "items" : [{"element_id":"button_iconic_2","styles":{}},{"element_id":"checkbox_1","styles":{"grid-row":"1 / -1","padding":"initial","padding-top":"var(--now-static-space--xs)"}},{"element_id":"button_bare_1","styles":{}},{"element_id":"button_bare_2","styles":{"background":"RGBA(var(--now-button--secondary--background-color,var(--now-color_background--tertiary,var(--now-color--neutral-2,228,230,231))),var(--now-button--secondary--background-color-alpha,1))"}},{"element_id":"button_bare_3","styles":{"background":"RGBA(var(--now-button--secondary-positive--background-color,var(--now-color_alert--positive-0,201,224,202)),var(--now-button--secondary-positive--background-color-alpha,1))"}},{"element_id":"button_bare_7","styles":{"background":"RGBA(var(--now-button--secondary-negative--background-color,var(--now-color_alert--critical-0,241,206,205)),var(--now-button--secondary-negative--background-color-alpha,1))"}},{"element_id":"button_bare_8","styles":{"background":"RGBA(var(--now-button--primary-negative--background-color,var(--now-color_alert--critical-0,241,206,205)),var(--now-button--primary-negative--background-color-alpha,1))"}},{"element_id":"pill_1","styles":{}},{"element_id":"pill_2","styles":{}},{"element_id":"button_iconic_1","styles":{"grid-row":"1 / -1","padding":"initial","padding-left":"var(--now-static-space--sm)"}}],
+                        "items" : [{"element_id":"button_iconic_2","styles":{}},{"element_id":"checkbox_1","styles":{"grid-row":"1 / -1","padding":"initial","padding-top":"var(--now-static-space--xs)"}},{"element_id":"button_bare_1","styles":{}},{"element_id":"button_bare_2","styles":{"background":"RGBA(var(--now-button--secondary--background-color,var(--now-color_background--tertiary,var(--now-color--neutral-2,228,230,231))),var(--now-button--secondary--background-color-alpha,1))"}},{"element_id":"button_bare_3","styles":{"background":"RGBA(var(--now-button--secondary-positive--background-color,var(--now-color_alert--positive-0,201,224,202)),var(--now-button--secondary-positive--background-color-alpha,1))"}},{"element_id":"button_bare_7","styles":{"background":"RGBA(var(--now-button--secondary-negative--background-color,var(--now-color_alert--critical-0,241,206,205)),var(--now-button--secondary-negative--background-color-alpha,1))"}},{"element_id":"button_bare_8","styles":{"background":"RGBA(var(--now-button--primary-negative--background-color,var(--now-color_alert--critical-0,241,206,205)),var(--now-button--primary-negative--background-color-alpha,1))","color":"black"}},{"element_id":"pill_1","styles":{}},{"element_id":"pill_2","styles":{}},{"element_id":"button_iconic_1","styles":{"grid-row":"1 / -1","padding":"initial","padding-left":"var(--now-static-space--sm)"}}],
                         "root" : null,
                         "rules" : null,
                         "styles" : {"flex-direction":"column","display":"grid","grid-template-columns":"min-content 1fr min-content","grid-template-rows":"min-content min-content min-content min-content min-content","grid-auto-flow":"column","align-items":"start","justify-items":"start","justify-content":"space-between","grid-auto-columns":"min-content","grid-auto-rows":"min-content"},
@@ -3686,6 +3686,72 @@
       },
       "targetId" : "clgglrddiiuddaabbriddrhhddskbbsekrk",
       "type" : "DATABROKER_OP"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : {
+        "type" : "CLIENT_TRANSFORM",
+        "transform" : {
+          "operands" : {
+            "type" : "LIST_CONTAINER",
+            "container" : [ {
+              "type" : "BINARY",
+              "operation" : {
+                "left" : {
+                  "type" : "STATE_BINDING",
+                  "binding" : {
+                    "address" : [ "active_worker" ]
+                  }
+                },
+                "operator" : "AND",
+                "right" : {
+                  "type" : "BINARY",
+                  "operation" : {
+                    "left" : {
+                      "type" : "STATE_BINDING",
+                      "binding" : {
+                        "address" : [ "active_worker", "shiftWorker" ]
+                      }
+                    },
+                    "operator" : "EQUAL",
+                    "right" : {
+                      "type" : "EVENT_PAYLOAD_BINDING",
+                      "binding" : {
+                        "address" : [ "data", "output", "data", "GlideRecord_Mutation", "insert_x_802331_eyva_shift_position_worker", "shift_worker", "value" ]
+                      }
+                    }
+                  }
+                }
+              }
+            }, {
+              "type" : "JSON_LITERAL",
+              "value" : true
+            }, {
+              "type" : "JSON_LITERAL",
+              "value" : false
+            } ]
+          },
+          "operator" : "IF"
+        }
+      },
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+        "payload" : {
+          "type" : "CLIENT_TRANSFORM_SCRIPT",
+          "script" : {
+            "apiVersion" : "1.0.0",
+            "controllerElementId" : null,
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tvar activeWorker = api.state.active_worker;\n\tactiveWorker.shiftPositionWorker = event.payload.data.output.data.GlideRecord_Mutation.insert_x_802331_eyva_shift_position_worker.sys_id.value;\n\treturn {\n\t\tpropName: 'active_worker',\n\t\tvalue: activeWorker\n\t};\n}",
+            "scriptSysId" : null,
+            "target" : null
+          }
+        },
+        "sysId" : "32408b42ff7a10109046e490703bf176"
+      },
+      "operation" : null,
+      "targetId" : "clklbzkngaaccdzddobomiizpkrta",
+      "type" : "EVENT"
     } ]
   } ],
   "inputValues" : { },
@@ -3956,14 +4022,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>258</sys_mod_count>
+        <sys_mod_count>266</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-07-27 06:33:46</sys_updated_on>
+        <sys_updated_on>2023-07-27 17:25:44</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=d86858672f101110da77c886f699b6d4"/>
 </record_update>

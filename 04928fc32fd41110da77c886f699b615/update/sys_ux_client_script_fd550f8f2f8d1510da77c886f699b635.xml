@@ -13,17 +13,24 @@
 * @param {ApiHelpers} params.helpers
 */
 function handler({api, event, helpers, imports}) {
+    // Update active worker's position
+	var activeWorker = api.state.active_worker;
+	activeWorker.position = event.payload.newPosition;
+    
+    // Update shift position worker on server
     if (event.payload.operation == 'create') {
         api.data.create_record_1.execute({
             'table': 'x_802331_eyva_shift_position_worker',
             'templateFields': event.payload.templateFields,
             'useSetDisplayValue': false
         });
+        // active_worker.shiftPositionWorker is updated after successful create action
     } else if (event.payload.operation == 'delete') {
         api.data.delete_record_1.execute({
             'table': 'x_802331_eyva_shift_position_worker',
             'recordId': event.payload.recordId,
         });
+        activeWorker.shiftPositionWorker = null;
     } else {
         //console.log('Updating record: ' + event.payload.recordId);
         //console.log('> Using template fields: ' + event.payload.templateFields);
@@ -34,20 +41,21 @@ function handler({api, event, helpers, imports}) {
             'useSetDisplayValue': false
         });
     }
+    api.setState('active_worker', activeWorker);
 }]]></script>
         <script_api_version>2.0.0</script_api_version>
         <sys_class_name>sys_ux_client_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-08-06 07:00:58</sys_created_on>
         <sys_id>fd550f8f2f8d1510da77c886f699b635</sys_id>
-        <sys_mod_count>13</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_name>Reassign worker</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_client_script_fd550f8f2f8d1510da77c886f699b635</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-07-27 06:27:59</sys_updated_on>
+        <sys_updated_on>2023-07-27 16:14:48</sys_updated_on>
         <target/>
         <type>default</type>
     </sys_ux_client_script>
