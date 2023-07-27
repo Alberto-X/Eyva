@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_view_table">
+    <sys_db_view_table action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <left_join>false</left_join>
+        <order>100</order>
+        <sys_class_name>sys_db_view_table</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-07-10 02:11:26</sys_created_on>
+        <sys_id>cc6c6e3b477fa1102dabcd9bd36d4328</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_802331_eyva_worker</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_db_view_table_cc6c6e3b477fa1102dabcd9bd36d4328</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-10 02:11:26</sys_updated_on>
+        <table>x_802331_eyva_worker</table>
+        <variable_prefix>worker</variable_prefix>
+        <view display_value="x_802331_eyva_workers_with_sysid">0cfbe277477fa1102dabcd9bd36d43a2</view>
+        <where_clause/>
+    </sys_db_view_table>
+</record_update>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="acce5d77470031102dabcd9bd36d43c9" extends="sys_import_set_row" label="Imp Tmpl X 802331 Eyva Shift Position" max_length="40" name="u_imp_tmpl_x_802331_eyva_shift_position" type="collection">
+        <element attributes="import_attribute_name=Order" label="Order" max_length="40" name="u_order" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Position" label="Position" max_length="32" name="u_position" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Shift" label="Shift" max_length="32" name="u_shift" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="bddd818147a321102dabcd9bd36d43b2" extends="sys_import_set_row" label="Imp Tmpl X 802331 Eyva Worker" max_length="40" name="u_imp_tmpl_x_802331_eyva_worker" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Adult" label="Adult" max_length="255" name="u_adult" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Group" label="Group" max_length="40" name="u_group" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Notes" label="Notes" max_length="500" name="u_notes" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=User" label="User" max_length="32" name="u_user" type="string"/>
+    </element>
+</database>

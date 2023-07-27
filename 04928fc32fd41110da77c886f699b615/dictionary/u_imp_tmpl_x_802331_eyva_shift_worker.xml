@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="650c490d471031102dabcd9bd36d4345" extends="sys_import_set_row" label="Imp Tmpl X 802331 Eyva Shift Worker" max_length="40" name="u_imp_tmpl_x_802331_eyva_shift_worker" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Arriving at" label="Arriving at" max_length="40" name="u_arriving_at" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Leaving at" label="Leaving at" max_length="40" name="u_leaving_at" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Shift" label="Shift" max_length="32" name="u_shift" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Worker" label="Worker" max_length="32" name="u_worker" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="INSERT_OR_UPDATE">
+        <includes/>
+        <macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</macroponent>
+        <name>Update position repetition statuses</name>
+        <preset/>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+    const NO_REPEAT = 'no-repeat';
+    const SAME_AREA = 'same-area';
+    const SAME_WORK_PERFORMED = 'same-work-performed';
+    const SAME_POSITION = 'same-position';
+
+    var position_repetition_status = {};
+    api.data.look_up_shift_position_workers.results.forEach(spw => {
+        var repetitionStatus;
+        var shiftNumber = spw.shift_worker._reference.shift._reference.order_in_the_day.value;
+        if (shiftNumber > 1) {
+            // Find previous position
+            var prevShiftPositionWorker = api.data.look_up_shift_position_workers.results.find(function(prevSpw) {
+                return (prevSpw.shift_worker._reference.worker.value == spw.shift_worker._reference.worker.value
+                    && prevSpw.shift_worker._reference.shift.value == api.data.look_up_shifts_for_selected_day.results[shiftNumber - 2]._row_data.uniqueValue);
+            });
+            
+            if (prevShiftPositionWorker) {
+                var prevArea = prevShiftPositionWorker.shift_position._reference.position._reference.area.value;
+                var currArea = spw.shift_position._reference.position._reference.area.value;
+                var prevWorkPerformed = prevShiftPositionWorker.shift_position._reference.position._reference.work_performed.value;
+                var currWorkPerformed = spw.shift_position._reference.position._reference.work_performed.value;
+                var prevPosition = prevShiftPositionWorker.shift_position._reference.position.value;
+                var currPosition = spw.shift_position._reference.position.value;
+                
+                // Position repeated
+                if (prevPosition == currPosition) {
+                    repetitionStatus = SAME_POSITION;
+                }
+                // Area repeated
+                else if (prevArea == currArea && currArea) {
+                    repetitionStatus = SAME_AREA;
+                }
+                // 'Work performed' repeated
+                else if (prevWorkPerformed == currWorkPerformed && currWorkPerformed) {
+                    repetitionStatus = SAME_WORK_PERFORMED;
+                }
+                // Nothing is repeated
+                else {
+                    repetitionStatus = NO_REPEAT;
+                }
+            } else {
+                // Worker not in previous shift
+                repetitionStatus = NO_REPEAT;
+            }
+        } else {
+            // First shift
+            repetitionStatus = NO_REPEAT;
+        }
+        position_repetition_status[spw.shift_worker.value] = repetitionStatus;
+    });
+    api.setState('position_repetition_status', position_repetition_status);
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-07-27 03:23:16</sys_created_on>
+        <sys_id>4eef1a15479071102dabcd9bd36d4382</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Update position repetition statuses</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_client_script_4eef1a15479071102dabcd9bd36d4382</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-27 06:46:03</sys_updated_on>
+        <target>macroponent</target>
+        <type>default</type>
+    </sys_ux_client_script>
+</record_update>

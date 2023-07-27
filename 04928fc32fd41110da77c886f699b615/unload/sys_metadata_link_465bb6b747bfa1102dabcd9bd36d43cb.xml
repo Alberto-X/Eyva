@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload</directory>
+        <documentkey>1683723f477fa1102dabcd9bd36d43fc</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_802331_eyva_skill">
+    <x_802331_eyva_skill action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <name>Basic point</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-07-10 02:42:45</sys_created_on>
+        <sys_id>1683723f477fa1102dabcd9bd36d43fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-10 02:42:45</sys_updated_on>
+    </x_802331_eyva_skill>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-07-10 03:16:34</sys_created_on>
+        <sys_id>465bb6b747bfa1102dabcd9bd36d43cb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Basic point</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_metadata_link_465bb6b747bfa1102dabcd9bd36d43cb</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-10 03:16:34</sys_updated_on>
+        <tablename>x_802331_eyva_skill</tablename>
+    </sys_metadata_link>
+</record_update>

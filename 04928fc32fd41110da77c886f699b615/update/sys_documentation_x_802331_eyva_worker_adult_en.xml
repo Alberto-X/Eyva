@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="adult" label="Adult" language="en" table="x_802331_eyva_worker">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>adult</element>
+            <help/>
+            <hint>Is the worker an adult? (i.e. out of high school)</hint>
+            <label>Adult</label>
+            <language>en</language>
+            <name>x_802331_eyva_worker</name>
+            <plural>Adults</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2023-06-18 19:53:40</sys_created_on>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_name>Adult</sys_name>
+            <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+            <sys_update_name>sys_documentation_x_802331_eyva_worker_adult_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2023-06-18 19:53:40</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

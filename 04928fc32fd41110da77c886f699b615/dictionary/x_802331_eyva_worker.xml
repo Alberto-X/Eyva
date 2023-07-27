@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Worker" max_length="40" name="x_802331_eyva_worker" sizeclass="8" type="collection">
+    <element db_object_id="a6ddf041476321102dabcd9bd36d43b4" label="Worker" max_length="40" name="x_802331_eyva_worker" type="collection">
+        <element default="False" hint="Is the worker an adult? (i.e. out of high school)" label="Adult" max_length="255" name="adult" type="boolean"/>
+        <element hint="Parking group the worker is volunteering for" label="Group" max_length="40" name="group" type="string"/>
         <element hint="Things to know about the worker" label="Notes" max_length="500" name="notes" type="string"/>
         <element display="true" hint="The associated user" label="User" mandatory="true" max_length="32" name="user" reference="sys_user" type="reference"/>
         <index name="index">
