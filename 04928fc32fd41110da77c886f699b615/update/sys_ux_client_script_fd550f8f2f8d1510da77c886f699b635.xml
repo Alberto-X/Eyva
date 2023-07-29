@@ -13,33 +13,128 @@
 * @param {ApiHelpers} params.helpers
 */
 function handler({api, event, helpers, imports}) {
+    if (event.payload.abortAction) {
+        return;
+    }
+
     // Update active worker's position
 	var activeWorker = api.state.active_worker;
 	activeWorker.position = event.payload.newPosition;
     
-    // Update shift position worker on server
-    if (event.payload.operation == 'create') {
-        api.data.create_record_1.execute({
-            'table': 'x_802331_eyva_shift_position_worker',
-            'templateFields': event.payload.templateFields,
-            'useSetDisplayValue': false
-        });
-        // active_worker.shiftPositionWorker is updated after successful create action
-    } else if (event.payload.operation == 'delete') {
-        api.data.delete_record_1.execute({
-            'table': 'x_802331_eyva_shift_position_worker',
-            'recordId': event.payload.recordId,
-        });
-        activeWorker.shiftPositionWorker = null;
+    if (api.state.auto_save) {
+        // Update shift position worker on server
+        if (event.payload.operation == 'create') {
+            api.data.create_record_1.execute({
+                'table': 'x_802331_eyva_shift_position_worker',
+                'templateFields': event.payload.templateFields,
+                'useSetDisplayValue': false
+            });
+            // active_worker.shiftPositionWorker is updated after successful create action
+        } else if (event.payload.operation == 'delete') {
+            api.data.delete_record_1.execute({
+                'table': 'x_802331_eyva_shift_position_worker',
+                'recordId': event.payload.recordId,
+            });
+            activeWorker.shiftPositionWorker = null;
+        } else {
+            //console.log('Updating record: ' + event.payload.recordId);
+            //console.log('> Using template fields: ' + event.payload.templateFields);
+            api.data.update_record_1.execute({
+                'table': 'x_802331_eyva_shift_position_worker',
+                'recordId': event.payload.recordId,
+                'templateFields': event.payload.templateFields,
+                'useSetDisplayValue': false
+            });
+        }
     } else {
-        //console.log('Updating record: ' + event.payload.recordId);
-        //console.log('> Using template fields: ' + event.payload.templateFields);
-        api.data.update_record_1.execute({
-            'table': 'x_802331_eyva_shift_position_worker',
-            'recordId': event.payload.recordId,
-            'templateFields': event.payload.templateFields,
-            'useSetDisplayValue': false
-        });
+        // Only update client-version of spw list
+        var shiftPositionWorkers = api.state.shift_position_workers_replica;
+        if (event.payload.operation == 'create') {
+            if (!event.payload.shiftPositionWorker) {
+                console.log('create / create');
+                // spw hasn't been created on server
+                // Remember 'create' operation, and add replica to spw list
+                var spwSysid = event.payload.shiftWorker._row_data.uniqueValue; //Use shift worker SYSID as a temp id; shift worker can only be linked to one spw
+                shiftPositionWorkers.push({
+                    operation: event.payload.operation,
+                    templateFields: event.payload.templateFields,
+                    _row_data: {
+                        displayValue: 'SPW (replica)',
+                        uniqueValue: spwSysid
+                    },
+                    shift_worker: {
+                        value: event.payload.shiftWorker._row_data.uniqueValue,
+                        _reference: event.payload.shiftWorker
+                    },
+                    shift_position: {
+                        value: event.payload.shiftPosition._row_data.uniqueValue,
+                        _reference: event.payload.shiftPosition
+                    }
+                });
+                activeWorker.shiftPositionWorker = spwSysid;
+            } else {
+                console.log('create / update');
+                // spw exists on server
+                // Change operation to 'update'
+                event.payload.shiftPositionWorker.operation = 'update';
+                event.payload.shiftPositionWorker.recordId = event.payload.recordId;
+                event.payload.shiftPositionWorker.templateFields = event.payload.templateFieldsUpdate;
+                event.payload.shiftPositionWorker.shift_position = {
+                    displayValue: event.payload.shiftPosition._row_data.displayValue,
+                    value: event.payload.shiftPosition._row_data.uniqueValue,
+                    _reference: event.payload.shiftPosition
+                };
+            }
+        } else if (event.payload.operation == 'delete') {
+            if (event.payload.shiftPositionWorker.operation != 'create') {
+                console.log('delete / delete');
+                // spw exists on server
+                // Remember 'delete' operation
+                event.payload.shiftPositionWorker.operation = event.payload.operation;
+                event.payload.shiftPositionWorker.recordId = event.payload.recordId;
+                event.payload.shiftPositionWorker.templateFields = null;
+                event.payload.shiftPositionWorker.shift_position = {
+                    displayValue: event.payload.shiftPosition._row_data.displayValue,
+                    value: event.payload.shiftPosition._row_data.uniqueValue,
+                    _reference: event.payload.shiftPosition
+                };
+            } else {
+                console.log('delete / remove');
+                // spw hasn't been created on server
+                // Remove spw from replica list
+                shiftPositionWorkers = shiftPositionWorkers.filter(spw => spw._row_data.uniqueValue != event.payload.recordId);
+                activeWorker.shiftPositionWorker = 'unassigned';
+            }
+            
+        } else {
+            if (event.payload.shiftPositionWorker.operation != 'create') {
+                console.log('update / update');
+                // spw exists on server
+                // Remember 'update' operation
+                event.payload.shiftPositionWorker.operation = event.payload.operation;
+                event.payload.shiftPositionWorker.recordId = event.payload.recordId;
+                event.payload.shiftPositionWorker.templateFields = event.payload.templateFields;
+                event.payload.shiftPositionWorker.shift_position = {
+                    displayValue: event.payload.shiftPosition._row_data.displayValue,
+                    value: event.payload.shiftPosition._row_data.uniqueValue,
+                    _reference: event.payload.shiftPosition
+                };
+            } else {
+                console.log('update / create');
+                // spw hasn't been created on server
+                // Change to 'create' operation
+                event.payload.shiftPositionWorker.operation = 'create';
+                event.payload.shiftPositionWorker.recordId = null;
+                event.payload.shiftPositionWorker.templateFields = event.payload.templateFieldsCreate;
+                event.payload.shiftPositionWorker.shift_position = {
+                    displayValue: event.payload.shiftPosition._row_data.displayValue,
+                    value: event.payload.shiftPosition._row_data.uniqueValue,
+                    _reference: event.payload.shiftPosition
+                };
+            }
+        }
+        // Might not need below line
+        api.setState('shift_position_workers_replica', shiftPositionWorkers);
     }
     api.setState('active_worker', activeWorker);
 }]]></script>
@@ -48,14 +143,14 @@ function handler({api, event, helpers, imports}) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-08-06 07:00:58</sys_created_on>
         <sys_id>fd550f8f2f8d1510da77c886f699b635</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>32</sys_mod_count>
         <sys_name>Reassign worker</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_client_script_fd550f8f2f8d1510da77c886f699b635</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-07-27 16:14:48</sys_updated_on>
+        <sys_updated_on>2023-07-29 02:22:43</sys_updated_on>
         <target/>
         <type>default</type>
     </sys_ux_client_script>
