@@ -25,6 +25,8 @@ function evaluateProperty({api, helpers}) {
         && it.shift_worker._reference.shift._reference.order_in_the_day.value == api.state.selected_shift;
     });
   } else {
+
+    /*
     var assignedWorkersIds = shiftPositionWorkers.filter(function(it) {
       return it.shift_worker._reference.shift._reference.order_in_the_day.value == api.state.selected_shift
         && it.shift_position.value != 'unassigned';
@@ -37,7 +39,7 @@ function evaluateProperty({api, helpers}) {
         && !assignedWorkersIds.includes(it.worker.value);
     });
 
-    // Show unassigned workers
+    // Show unassigned workers (simulate data from a "shift position worker" record)
     var unassignedShiftWorkers = [];
     unassignedWorkers.forEach(function(it) {
       unassignedShiftWorkers.push({
@@ -51,7 +53,12 @@ function evaluateProperty({api, helpers}) {
         }
       });
     });
-    return unassignedShiftWorkers;
+    */
+    if (api.state.auto_save) {
+      return api.state.unassigned_workers;
+    } else {
+      return api.state.unassigned_workers_replica;
+    }
   }
 }]]></script>
         <script_api_version>2.0.0</script_api_version>
@@ -59,14 +66,14 @@ function evaluateProperty({api, helpers}) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-23 05:27:27</sys_created_on>
         <sys_id>93a922262f701110da77c886f699b6bf</sys_id>
-        <sys_mod_count>17</sys_mod_count>
+        <sys_mod_count>20</sys_mod_count>
         <sys_name>repeater_3_repeatWith</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_client_script_93a922262f701110da77c886f699b6bf</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-07-29 01:54:26</sys_updated_on>
+        <sys_updated_on>2023-07-29 21:02:38</sys_updated_on>
         <target/>
         <type>transform</type>
     </sys_ux_client_script>

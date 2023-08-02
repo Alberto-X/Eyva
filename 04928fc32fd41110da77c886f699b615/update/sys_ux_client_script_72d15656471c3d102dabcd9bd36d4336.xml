@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="INSERT_OR_UPDATE">
+        <includes/>
+        <macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</macroponent>
+        <name>Add worker from worker search</name>
+        <preset/>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+	if (!api.state.worker_search_input) {
+		return;
+	}
+    var shiftWorkersOnModal = api.state.msp_modal_data.shiftWorkers;
+	console.log('searching for: ');
+	console.log(api.state.worker_search_input);
+	console.log(shiftWorkersOnModal);
+	var workerSearchedOnModal = shiftWorkersOnModal.find(wkr => {
+		return wkr.label.toLowerCase() == api.state.worker_search_input.toLowerCase();
+	});
+	var workerSearched = api.data.look_up_workers.results.find(wkr => {
+		return wkr._row_data.displayValue.toLowerCase() == api.state.worker_search_input.toLowerCase(); //Todo: Use worker id
+	});
+
+	if (workerSearchedOnModal) {
+		// If find worker in modal list, make active and move out of unassigned column
+		workerSearchedOnModal.active = true;
+		workerSearchedOnModal.unassigned = false;
+	} else if (workerSearched) {
+		// If find worker in complete worker list, add record
+		shiftWorkersOnModal.push({
+			id: workerSearched._row_data.uniqueValue,
+			label: workerSearched._row_data.displayValue,
+			adult: workerSearched.adult.value,
+			active: true,
+			unassigned: false
+		});
+	} else {
+		// If can't find worker input, add artificial record
+		shiftWorkersOnModal.push({
+			id: 'new-worker',
+			label: api.state.worker_search_input,
+			adult: !api.state.kid_status_input,
+			active: true,
+			unassigned: false
+		});
+	}
+	api.setState('msp_modal_data', JSON.parse(JSON.stringify(api.state.msp_modal_data))); //since object should be small, use a "deep copy" to trigger a "change in client state"
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-07-30 04:55:48</sys_created_on>
+        <sys_id>72d15656471c3d102dabcd9bd36d4336</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Add worker from worker search</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_client_script_72d15656471c3d102dabcd9bd36d4336</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-31 06:17:33</sys_updated_on>
+        <target>macroponent</target>
+        <type>default</type>
+    </sys_ux_client_script>
+</record_update>

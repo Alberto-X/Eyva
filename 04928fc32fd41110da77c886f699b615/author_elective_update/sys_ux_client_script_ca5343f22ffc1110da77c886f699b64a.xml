@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="DELETE">
+        <includes/>
+        <macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</macroponent>
+        <name>card_base_header_1_heading</name>
+        <preset/>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+  * @param {params} params
+  * @param {api} params.api
+  * @param {TransformApiHelpers} params.helpers
+  */
+function evaluateProperty({api, helpers}) {
+	return {
+    "label": "", //api.item.value.position.displayValue,
+    "size": "md"
+  };
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-07-24 01:58:04</sys_created_on>
+        <sys_id>ca5343f22ffc1110da77c886f699b64a</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>card_base_header_1_heading</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_client_script_ca5343f22ffc1110da77c886f699b64a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-29 05:09:16</sys_updated_on>
+        <target/>
+        <type>transform</type>
+    </sys_ux_client_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Eyva">04928fc32fd41110da77c886f699b615</application>
+        <file_path/>
+        <instance_id>27b446f6db6de1180b9d21c405961992</instance_id>
+        <instance_name>dev165277</instance_name>
+        <name>sys_ux_client_script_ca5343f22ffc1110da77c886f699b64a</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ux_client_script"&gt;&lt;sys_ux_client_script action="INSERT_OR_UPDATE"&gt;&lt;includes/&gt;&lt;macroponent display_value="Assignments"&gt;d86858672f101110da77c886f699b6d4&lt;/macroponent&gt;&lt;name&gt;card_base_header_1_heading&lt;/name&gt;&lt;preset/&gt;&lt;required_translations&gt;[ ]&lt;/required_translations&gt;&lt;script&gt;&lt;![CDATA[/**
+  * @param {params} params
+  * @param {api} params.api
+  * @param {TransformApiHelpers} params.helpers
+  */
+function evaluateProperty({api, helpers}) {
+	return {
+    "label": "", //api.item.value.position.displayValue,
+    "size": "md"
+  };
+}]]&gt;&lt;/script&gt;&lt;script_api_version&gt;2.0.0&lt;/script_api_version&gt;&lt;sys_class_name&gt;sys_ux_client_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-24 01:58:04&lt;/sys_created_on&gt;&lt;sys_id&gt;ca5343f22ffc1110da77c886f699b64a&lt;/sys_id&gt;&lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;&lt;sys_name&gt;card_base_header_1_heading&lt;/sys_name&gt;&lt;sys_package display_value="Eyva" source="x_802331_eyva"&gt;04928fc32fd41110da77c886f699b615&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Eyva"&gt;04928fc32fd41110da77c886f699b615&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ux_client_script_ca5343f22ffc1110da77c886f699b64a&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-29 05:09:16&lt;/sys_updated_on&gt;&lt;target/&gt;&lt;type&gt;transform&lt;/type&gt;&lt;/sys_ux_client_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1446663634</payload_hash>
+        <record_name>card_base_header_1_heading</record_name>
+        <reverted_from/>
+        <source>682e7085472321102dabcd9bd36d43b1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-07-29 05:09:17</sys_created_on>
+        <sys_id>e25bc5424718f9102dabcd9bd36d438f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>189a00d0cbd0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-29 05:09:17</sys_updated_on>
+        <type>UX Client Script</type>
+        <update_guid>6a5bc542a218f910b9cba5a64574728e</update_guid>
+        <update_guid_history>6a5bc542a218f910b9cba5a64574728e:-1446663634,0b90818692d4f91087f934b3587b4ecf:1842455371,2f9f3ca5b7d0f110469b39b35aae733a:-199679270,4a3f34e155d0f110fd4e44e8c5c767db:0,cbd9f4e56c10f110dff20e0d9683fecb:-199679270,6a4bfca10550f110780192b7938498ca:0,d6555e41bb543110523b1e4cafa4498b:-199679270,300e388175632110706a86c47efdb169:-1470089408</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-07-31 06:17:36</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_client_script">sys_ux_client_script</sys_db_object>
+        <sys_id>11831a2df7e645d4a30a7d5b23c4ee24</sys_id>
+        <sys_metadata>ca5343f22ffc1110da77c886f699b64a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>card_base_header_1_heading</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_scope_delete display_value="">240812431724428091a64e1ecd53f240</sys_scope_delete>
+        <sys_update_name>sys_ux_client_script_ca5343f22ffc1110da77c886f699b64a</sys_update_name>
+        <sys_update_version display_value="sys_ux_client_script_ca5343f22ffc1110da77c886f699b64a">e25bc5424718f9102dabcd9bd36d438f</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-31 06:17:36</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
