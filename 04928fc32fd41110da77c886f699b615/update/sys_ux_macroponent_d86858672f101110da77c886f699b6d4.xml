@@ -983,7 +983,7 @@
           "propertyValues" : {
             "size" : {
               "type" : "JSON_LITERAL",
-              "value" : "lg"
+              "value" : "sm"
             },
             "sidebar" : {
               "type" : "JSON_LITERAL",
@@ -1019,7 +1019,7 @@
               "propertyValues" : {
                 "fullWidth" : {
                   "type" : "JSON_LITERAL",
-                  "value" : false
+                  "value" : true
                 },
                 "blockSpacing" : {
                   "type" : "JSON_LITERAL",
@@ -2056,7 +2056,7 @@
                           "script" : {
                             "apiVersion" : "1.0.0",
                             "controllerElementId" : null,
-                            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tif (event.payload.action.id != \"manage\") {\n\t\treturn;\n\t}\n\n\tvar prop = {\n\t\tpropName: 'msp_modal_data',\n\t\tvalue: {\n\t\t\tshiftPosition: api.item.value,\n\t\t\tshiftWorkers: []\n\t\t}\n\t};\n\tif (!api.state.auto_save) {\n\t\t// Todo: Enable \"Manage\" action when auto-save off\n\t\treturn prop;\n\t}\n\n\tvar shiftPositionWorkers;\n\tif (api.state.auto_save) {\n\t\tshiftPositionWorkers = api.data.look_up_shift_position_workers.results;\n\t} else {\n\t\tshiftPositionWorkers = api.state.shift_position_workers_replica;\n\t\treturn;\n\t}\n\n\t// When auto-saving, will never loop over unassigned workers\n\tprop.value.shiftWorkers = shiftPositionWorkers.filter(spw =&gt; {\n\t\treturn spw.shift_worker._reference.shift._reference.order_in_the_day.value == api.state.selected_shift;\n\t}).map(spw =&gt; {\n\t\tvar isWorkerInSelectedPosition = spw.shift_position.value == api.item.value._row_data.uniqueValue;\n\t\treturn {\n\t\t\tid: spw.shift_worker._reference.worker.value,\n\t\t\tlabel: spw.shift_worker._reference.worker.displayValue,\n\t\t\tadult: spw.shift_worker._reference.worker._reference.adult.value,\n\t\t\tactive: isWorkerInSelectedPosition,\n\t\t\tshiftWorker: spw.shift_worker.value,\n\t\t\tshiftPositionWorker: spw._row_data.uniqueValue\n\t\t};\n\t});\n\n\t// Add unassigned workers (stored in state as artificial spw's)\n\tapi.state.unassigned_workers.forEach(wkr =&gt; {\n\t\tprop.value.shiftWorkers.push({\n\t\t\tid: wkr.shift_worker._reference.worker.value,\n\t\t\tlabel: wkr.shift_worker._reference.worker.displayValue,\n\t\t\tadult: wkr.shift_worker._reference.worker._reference.adult.value,\n\t\t\tactive: true,\n\t\t\tshiftWorker: wkr.shift_worker.value,\n\t\t\tunassigned: true\n\t\t});\n\t});\n\treturn prop;\n}",
+                            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tif (event.payload.action.id != \"manage\") {\n\t\treturn;\n\t}\n\n\tvar prop = {\n\t\tpropName: 'msp_modal_data',\n\t\tvalue: {\n\t\t\tshiftPosition: api.item.value,\n\t\t\tshiftWorkers: []\n\t\t}\n\t};\n\tif (!api.state.auto_save) {\n\t\t// Todo: Enable \"Manage\" action when auto-save off\n\t\treturn prop;\n\t}\n\n\tvar shiftPositionWorkers;\n\tif (api.state.auto_save) {\n\t\tshiftPositionWorkers = api.data.look_up_shift_position_workers.results;\n\t} else {\n\t\tshiftPositionWorkers = api.state.shift_position_workers_replica;\n\t\treturn;\n\t}\n\n\t// When auto-saving, will never loop over unassigned workers\n\tprop.value.shiftWorkers = shiftPositionWorkers.filter(spw =&gt; {\n\t\treturn spw.shift_worker._reference.shift._reference.order_in_the_day.value == api.state.selected_shift;\n\t}).map(spw =&gt; {\n\t\tvar isWorkerInSelectedPosition = spw.shift_position.value == api.item.value._row_data.uniqueValue;\n\t\treturn {\n\t\t\tid: spw.shift_worker._reference.worker.value,\n\t\t\tlabel: spw.shift_worker._reference.worker.displayValue,\n\t\t\tadult: spw.shift_worker._reference.worker._reference.adult.value,\n\t\t\tactive: isWorkerInSelectedPosition,\n\t\t\tassigned: isWorkerInSelectedPosition,\n\t\t\tshiftWorker: spw.shift_worker.value,\n\t\t\tshiftPositionWorker: spw._row_data.uniqueValue\n\t\t};\n\t});\n\n\t// Add unassigned workers (stored in state as artificial spw's)\n\tapi.state.unassigned_workers.forEach(wkr =&gt; {\n\t\tprop.value.shiftWorkers.push({\n\t\t\tid: wkr.shift_worker._reference.worker.value,\n\t\t\tlabel: wkr.shift_worker._reference.worker.displayValue,\n\t\t\tadult: wkr.shift_worker._reference.worker._reference.adult.value,\n\t\t\tactive: true,\n\t\t\tassigned: false,\n\t\t\tshiftWorker: wkr.shift_worker.value\n\t\t});\n\t});\n\treturn prop;\n}",
                             "scriptSysId" : null,
                             "target" : null
                           }
@@ -2180,6 +2180,83 @@
                       },
                       "operation" : null,
                       "targetId" : "clkrbiiddqddaaddvrddohhvofaaavaiid",
+                      "type" : "EVENT"
+                    }, {
+                      "broker" : null,
+                      "clientScript" : null,
+                      "conditional" : null,
+                      "declarativeAction" : null,
+                      "event" : {
+                        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+                        "payload" : {
+                          "type" : "CLIENT_TRANSFORM_SCRIPT",
+                          "script" : {
+                            "apiVersion" : "1.0.0",
+                            "controllerElementId" : null,
+                            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tvar prop = {\n\t\tpropName: 'msp_modal_data',\n\t\tvalue: {\n\t\t\tshiftPosition: api.item.value,\n\t\t\tshiftWorkers: []\n\t\t}\n\t};\n\tif (!api.state.auto_save) {\n\t\t// Todo: Enable \"Manage\" action when auto-save off\n\t\treturn prop;\n\t}\n\n\tvar shiftPositionWorkers;\n\tif (api.state.auto_save) {\n\t\tshiftPositionWorkers = api.data.look_up_shift_position_workers.results;\n\t} else {\n\t\tshiftPositionWorkers = api.state.shift_position_workers_replica;\n\t\treturn;\n\t}\n\n\t// When auto-saving, will never loop over unassigned workers\n\tprop.value.shiftWorkers = shiftPositionWorkers.filter(spw =&gt; {\n\t\treturn spw.shift_worker._reference.shift._reference.order_in_the_day.value == api.state.selected_shift;\n\t}).map(spw =&gt; {\n\t\tvar isWorkerInSelectedPosition = spw.shift_position.value == api.item.value._row_data.uniqueValue;\n\t\treturn {\n\t\t\tid: spw.shift_worker._reference.worker.value,\n\t\t\tlabel: spw.shift_worker._reference.worker.displayValue,\n\t\t\tadult: spw.shift_worker._reference.worker._reference.adult.value,\n\t\t\tactive: isWorkerInSelectedPosition,\n\t\t\tassigned: isWorkerInSelectedPosition,\n\t\t\tshiftWorker: spw.shift_worker.value,\n\t\t\tshiftPositionWorker: spw._row_data.uniqueValue\n\t\t};\n\t});\n\n\t// Add unassigned workers (stored in state as artificial spw's)\n\tapi.state.unassigned_workers.forEach(wkr =&gt; {\n\t\tprop.value.shiftWorkers.push({\n\t\t\tid: wkr.shift_worker._reference.worker.value,\n\t\t\tlabel: wkr.shift_worker._reference.worker.displayValue,\n\t\t\tadult: wkr.shift_worker._reference.worker._reference.adult.value,\n\t\t\tactive: true,\n\t\t\tassigned: false,\n\t\t\tshiftWorker: wkr.shift_worker.value\n\t\t});\n\t});\n\treturn prop;\n}",
+                            "scriptSysId" : null,
+                            "target" : null
+                          }
+                        },
+                        "sysId" : "32408b42ff7a10109046e490703bf176"
+                      },
+                      "operation" : null,
+                      "targetId" : "clktkffqnjaaccddffddohhvgbbbukalz",
+                      "type" : "EVENT"
+                    }, {
+                      "broker" : null,
+                      "clientScript" : null,
+                      "conditional" : {
+                        "type" : "CLIENT_TRANSFORM",
+                        "transform" : {
+                          "operands" : {
+                            "type" : "LIST_CONTAINER",
+                            "container" : [ {
+                              "type" : "BINARY",
+                              "operation" : {
+                                "left" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "_row_data", "uniqueValue" ],
+                                    "category" : "value"
+                                  }
+                                },
+                                "operator" : "EQUAL",
+                                "right" : {
+                                  "type" : "JSON_LITERAL",
+                                  "value" : "unassigned"
+                                }
+                              }
+                            }, {
+                              "type" : "JSON_LITERAL",
+                              "value" : false
+                            }, {
+                              "type" : "JSON_LITERAL",
+                              "value" : true
+                            } ]
+                          },
+                          "operator" : "IF"
+                        }
+                      },
+                      "declarativeAction" : null,
+                      "event" : {
+                        "apiName" : "x_802331_eyva.MODAL_SELECTED_RELAY_d86858672f101110da77c886f699b6d4",
+                        "payload" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : {
+                            "modalId" : "[component-id$='manage_shift_position']",
+                            "showModal" : true,
+                            "displayOptions" : null,
+                            "bare" : true,
+                            "viewportElementId" : null,
+                            "viewportRoute" : null,
+                            "viewportFields" : null
+                          }
+                        },
+                        "sysId" : "8b29b6bf2fd45110da77c886f699b61f"
+                      },
+                      "operation" : null,
+                      "targetId" : "clktkiimnccaaccddmddohhvtidkaaaathh",
                       "type" : "EVENT"
                     } ]
                   } ],
@@ -3784,6 +3861,38 @@
     }
   },
   "eventMappings" : [ {
+    "eventMappingId" : "clkyzjjueehhaacciccddohhvipddizmrgg",
+    "isConfiguration" : false,
+    "offRowStorageId" : null,
+    "sourceEventApiName" : "sn_uxf_page.CANVAS_MODAL#CLOSED",
+    "sourceEventCorrelationId" : null,
+    "sourceEventDefinition" : {
+      "apiName" : "sn_uxf_page.CANVAS_MODAL#CLOSED",
+      "id" : null,
+      "type" : "UXEVENT"
+    },
+    "sourceEventSysId" : null,
+    "targets" : [ {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : {
+            "propName" : "worker_search_input",
+            "value" : null
+          }
+        },
+        "sysId" : "32408b42ff7a10109046e490703bf176"
+      },
+      "operation" : null,
+      "targetId" : "clkyzjjueehhaacciddddohhvreemxiimfv",
+      "type" : "EVENT"
+    } ]
+  }, {
     "eventMappingId" : "clkrggcwphaaccukddohhvemhhawoijj",
     "isConfiguration" : false,
     "offRowStorageId" : null,
@@ -4143,7 +4252,7 @@
                   "script" : {
                     "apiVersion" : "1.0.0",
                     "controllerElementId" : null,
-                    "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tif (!api.state.worker_search_input) {\n\t\treturn;\n\t}\n    var shiftWorkersOnModal = api.state.msp_modal_data.shiftWorkers;\n\tvar workerSearchedOnModal = shiftWorkersOnModal.find(wkr =&gt; {\n\t\treturn wkr.label.toLowerCase() == api.state.worker_search_input.toLowerCase();\n\t});\n\tvar workerSearched = api.data.look_up_workers.results.find(wkr =&gt; {\n\t\treturn wkr._row_data.displayValue.toLowerCase() == api.state.worker_search_input.toLowerCase(); //Todo: Use worker id\n\t});\n\n\tif (workerSearchedOnModal) {\n\t\t// If find worker in modal's shift worker list, make active, move out of unassigned column, ensure not marked for deletion\n\t\tworkerSearchedOnModal.active = true;\n\t\tworkerSearchedOnModal.unassigned = false;\n\t\tworkerSearchedOnModal.deleted = false;\n\t} else if (workerSearched) {\n\t\t// If find worker in complete worker list, add record\n\t\tshiftWorkersOnModal.push({\n\t\t\tid: workerSearched._row_data.uniqueValue,\n\t\t\tlabel: workerSearched._row_data.displayValue,\n\t\t\tadult: workerSearched.adult.value,\n\t\t\tactive: true,\n\t\t\tunassigned: false\n\t\t});\n\t} else {\n\t\t// If can't find worker input, add artificial record\n\t\tshiftWorkersOnModal.push({\n\t\t\tid: 'new-worker',\n\t\t\tlabel: api.state.worker_search_input,\n\t\t\tadult: !api.state.kid_status_input,\n\t\t\tactive: true,\n\t\t\tunassigned: false\n\t\t});\n\t}\n\treturn {\n\t\tpropName: 'msp_modal_data',\n\t\tvalue: JSON.parse(JSON.stringify(api.state.msp_modal_data)) //since object should be small, use a \"deep copy\" to trigger a \"change in client state\"\n\t};\n}",
+                    "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tif (!api.state.worker_search_input) {\n\t\treturn;\n\t}\n    var shiftWorkersOnModal = api.state.msp_modal_data.shiftWorkers;\n\tvar workerSearchedOnModal = shiftWorkersOnModal.find(wkr =&gt; {\n\t\treturn wkr.label.toLowerCase() == api.state.worker_search_input.toLowerCase();\n\t});\n\tvar workerSearched = api.data.look_up_workers.results.find(wkr =&gt; {\n\t\treturn wkr._row_data.displayValue.toLowerCase() == api.state.worker_search_input.toLowerCase(); //Todo: Use worker id\n\t});\n\n\tif (workerSearchedOnModal) {\n\t\t// If find worker in modal's shift worker list, make active, move out of unassigned column, ensure not marked for deletion\n\t\tworkerSearchedOnModal.active = true;\n\t\tworkerSearchedOnModal.assigned = true;\n\t\tworkerSearchedOnModal.deleted = false;\n\t} else if (workerSearched) {\n\t\t// If find worker in complete worker list, add record\n\t\tshiftWorkersOnModal.push({\n\t\t\tid: workerSearched._row_data.uniqueValue,\n\t\t\tlabel: workerSearched._row_data.displayValue,\n\t\t\tadult: workerSearched.adult.value,\n\t\t\tactive: true,\n\t\t\tassigned: true\n\t\t});\n\t} else {\n\t\t// If can't find worker input, add artificial record\n\t\tshiftWorkersOnModal.push({\n\t\t\tid: 'new-worker',\n\t\t\tlabel: api.state.worker_search_input,\n\t\t\tadult: !api.state.kid_status_input,\n\t\t\tactive: true,\n\t\t\tassigned: true\n\t\t});\n\t}\n\treturn {\n\t\tpropName: 'msp_modal_data',\n\t\tvalue: JSON.parse(JSON.stringify(api.state.msp_modal_data)) //since object should be small, use a \"deep copy\" to trigger a \"change in client state\"\n\t};\n}",
                     "scriptSysId" : null,
                     "target" : null
                   }
@@ -4562,7 +4671,7 @@
                                   "script" : {
                                     "apiVersion" : "1.0.0",
                                     "controllerElementId" : null,
-                                    "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tif (api.item.value.shiftWorker) {\n\t\t// If clicked worker on selected shift, mark for deletion\n\t\tapi.item.value.deleted = true;\n\t\tapi.item.value.active = false;\n\t} else {\n\t\t// If worker not already on selected shift, filter out worker\n\t\tapi.state.msp_modal_data.shiftWorkers = api.state.msp_modal_data.shiftWorkers.filter(wkr =&gt; {\n\t\t\treturn wkr.label != api.item.value.label; //Todo: Use worker id, but would require new workers to have unique id, maybe current time (to the second)\n\t\t});\n\t}\n\treturn {\n\t\tpropName: 'msp_modal_data',\n\t\tvalue: JSON.parse(JSON.stringify(api.state.msp_modal_data)) //since object should be small, use a \"deep copy\" to trigger a \"change in client state\"\n\t};\n}",
+                                    "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tif (api.item.value.shiftWorker) {\n\t\t// If clicked worker on selected shift, mark for deletion\n\t\tapi.item.value.deleted = true;\n\t\tapi.item.value.active = false;\n\t\tapi.item.value.assigned = false;\n\t} else {\n\t\t// If worker not already on selected shift, filter out worker\n\t\tapi.state.msp_modal_data.shiftWorkers = api.state.msp_modal_data.shiftWorkers.filter(wkr =&gt; {\n\t\t\treturn wkr.label != api.item.value.label; //Todo: Use worker id, but would require new workers to have unique id, maybe current time (to the second)\n\t\t});\n\t}\n\treturn {\n\t\tpropName: 'msp_modal_data',\n\t\tvalue: JSON.parse(JSON.stringify(api.state.msp_modal_data)) //since object should be small, use a \"deep copy\" to trigger a \"change in client state\"\n\t};\n}",
                                     "scriptSysId" : null,
                                     "target" : null
                                   }
@@ -4685,7 +4794,7 @@
                                   "script" : {
                                     "apiVersion" : "1.0.0",
                                     "controllerElementId" : null,
-                                    "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tapi.item.value.unassigned = !api.item.value.unassigned;\n\treturn {\n\t\tpropName: 'msp_modal_data',\n\t\tvalue: JSON.parse(JSON.stringify(api.state.msp_modal_data)) //since object should be small, use a \"deep copy\" to trigger a \"change in client state\"\n\t};\n}",
+                                    "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tapi.item.value.assigned = !api.item.value.assigned;\n\treturn {\n\t\tpropName: 'msp_modal_data',\n\t\tvalue: JSON.parse(JSON.stringify(api.state.msp_modal_data)) //since object should be small, use a \"deep copy\" to trigger a \"change in client state\"\n\t};\n}",
                                     "scriptSysId" : null,
                                     "target" : null
                                   }
@@ -5935,7 +6044,7 @@
           "script" : {
             "apiVersion" : "1.0.0",
             "controllerElementId" : null,
-            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tvar items = [];\n\titems.push({\n\t\theader: 'Saved!',\n\t\tcontent: 'Worker assignments updated',\n\t\tstatus: 'positive',\n\t\ticon: 'clipboard-check-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('event.payload.data.output: ');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Saved!',\n\t\tcontent: 'Worker assignments updated',\n\t\tstatus: 'positive',\n\t\ticon: 'clipboard-check-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
             "scriptSysId" : null,
             "target" : null
           }
@@ -5969,6 +6078,40 @@
       "operation" : null,
       "targetId" : "clktavwakaacceeaaddobojxrvxvbbbb",
       "type" : "EVENT"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : null,
+      "operation" : {
+        "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
+        "operationName" : "REFRESH",
+        "parentResourceId" : "look_up_shift_workers",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : { }
+        }
+      },
+      "targetId" : "clkzbbccaaddaaaacciaddohhvhccxfohhbbb",
+      "type" : "DATABROKER_OP"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : null,
+      "operation" : {
+        "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
+        "operationName" : "REFRESH",
+        "parentResourceId" : "look_up_shift_position_workers",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : { }
+        }
+      },
+      "targetId" : "clkzbbddaahddaaccijddohhvklajjljqy",
+      "type" : "DATABROKER_OP"
     } ]
   }, {
     "eventMappingId" : "clktiiggiiqhaaccffffddohhvffcoeeoffigg",
@@ -6392,14 +6535,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>407</sys_mod_count>
+        <sys_mod_count>421</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-02 06:07:54</sys_updated_on>
+        <sys_updated_on>2023-08-06 05:54:03</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=d86858672f101110da77c886f699b6d4"/>
 </record_update>

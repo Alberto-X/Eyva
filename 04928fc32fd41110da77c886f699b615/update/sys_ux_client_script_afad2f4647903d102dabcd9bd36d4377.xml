@@ -12,9 +12,9 @@
   */
 function evaluateProperty({api, helpers}) {
   if (api.item.value.unassignedWorkers) {
-    return api.state.msp_modal_data.shiftWorkers.filter(wkr => wkr.active && wkr.unassigned);
+    return api.state.msp_modal_data.shiftWorkers.filter(wkr => wkr.active && !wkr.assigned);
   } else {
-    return api.state.msp_modal_data.shiftWorkers.filter(wkr => wkr.active && !wkr.unassigned);
+    return api.state.msp_modal_data.shiftWorkers.filter(wkr => wkr.active && wkr.assigned);
   }
 }]]></script>
         <script_api_version>2.0.0</script_api_version>
@@ -22,14 +22,14 @@ function evaluateProperty({api, helpers}) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-07-29 16:58:31</sys_created_on>
         <sys_id>afad2f4647903d102dabcd9bd36d4377</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>repeater_11/NODE__repeatWith</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_client_script_afad2f4647903d102dabcd9bd36d4377</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-07-31 06:17:35</sys_updated_on>
+        <sys_updated_on>2023-08-03 14:13:26</sys_updated_on>
         <target>macroponent</target>
         <type>transform</type>
     </sys_ux_client_script>

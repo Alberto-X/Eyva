@@ -11,8 +11,8 @@
   "description": "The response from the server",&#13;
   "fieldType": "object",&#13;
   "properties": {&#13;
-    "message": {&#13;
-      "description": "A response message from the server",&#13;
+    "changes": {&#13;
+      "description": "A list of all changes made by the server",&#13;
       "fieldType": "string"&#13;
     }&#13;
   }&#13;
@@ -54,50 +54,111 @@
 } ]</required_translations>
         <schema_version>1.0.0</schema_version>
         <script><![CDATA[function transform(input) {
-	input.workers.forEach(function(wkr) {
-		if (wkr.deleted && wkr.shiftPositionWorker) {
-			var grToDelete = new GlideRecord('x_802331_eyva_shift_position_worker');
-			grToDelete.get(wkr.shiftPositionWorker);
-			gs.info('Delete ' + wkr.label);
+	var changes = [];
+	for (var wkrIdx in input.workers) { //I'd like to use for/of, but server doesn't yet support ES6; there shouldn't be non-numeric keys in input.workers and order doesn't matter, so ok to use for/in
+		var shiftPosJson = input.shiftPosition;
+		var userSysId;
+		var workerSysId;
+		var shiftWorkerSysId;
+		var shiftPositionWorkerSysId;
+
+		wkr = input.workers[wkrIdx];
+		if (wkr.shiftPositionWorker && (wkr.deleted || (!wkr.assigned && wkr.active))) {
+			// Remove worker from position (because removed entirely from shift or moved to unassigned)
+			var shiftPositionWorkerToDelete = new GlideRecord('x_802331_eyva_shift_position_worker');
+			shiftPositionWorkerToDelete.get(wkr.shiftPositionWorker);
+			var oldPosition = shiftPositionWorkerToDelete.shift_position.position.getDisplayValue();
+			var isDeleted = shiftPositionWorkerToDelete.deleteRecord();
+			changes.push((isDeleted ? 'Removed ' : 'Failed to remove ') + wkr.label + ' from position ' + oldPosition);
 		}
-		if (wkr.deleted && wkr.shiftWorker) {
-			var grToDelete = new GlideRecord('x_802331_eyva_shift');
-			grToDelete.get(wkr.shiftWorker);
-			gs.info('Delete ' + wkr.label);
+		if (wkr.shiftWorker && wkr.deleted) {
+			// Remove worker from shift
+			var shiftWorkerToDelete = new GlideRecord('x_802331_eyva_shift_worker');
+			shiftWorkerToDelete.get(wkr.shiftWorker);
+			var oldShift = shiftWorkerToDelete.shift.getDisplayValue();
+			var isDeleted = shiftWorkerToDelete.deleteRecord();
+			changes.push((isDeleted ? 'Removed ' : 'Failed to remove ') + wkr.label + ' from shift: ' + oldShift);
 		}
 		if (!wkr.active) {
-			return;
+			// Don't do anything else for workers in other positions of selected shift or with delete flag
+			changes.push('No more changes: ' + wkr.label);
+			continue;
 		}
 		if (wkr.id == 'new-worker') {
 			// Create user and worker
+			var firstName = wkr.label.split(' ', 1)[0].trim();
+			var lastName = wkr.label.slice(firstName.length + 1).trim();
+			var userName = firstName.toLowerCase() + '.' + lastName.toLowerCase();
+
+			var userGr = new GlideRecord('sys_user');
+			userGr.initialize();
+			userGr.setValue('first_name', firstName);
+			userGr.setValue('last_name', lastName);
+			userGr.setValue('user_name', userName);
+			userSysId = userGr.insert();
+			
+			if (userSysId) {
+				var workerGr = new GlideRecord('x_802331_eyva_worker');
+				workerGr.initialize();
+				workerGr.setValue('user', userSysId);
+				workerGr.setValue('adult', wkr.adult);
+				workerSysId = workerGr.insert();
+				changes.push((workerSysId ? 'Created user & worker for ' : 'Failed to create worker for ') + wkr.label);
+			} else {
+				changes.push('Failed to create user for ' + wkr.label);
+			}
 		}
 		if (!wkr.shiftWorker) {
-			// Add worker to shift
+			if (workerSysId || wkr.id) {
+				// Add worker to shift
+				var shiftWorkerGr = new GlideRecord('x_802331_eyva_shift_worker');
+				shiftWorkerGr.initialize();
+				shiftWorkerGr.setValue('worker', workerSysId || wkr.id);
+				shiftWorkerGr.setValue('shift', shiftPosJson.shift.value);
+				shiftWorkerGr.setValue('arriving_at', '05:00:00');
+				shiftWorkerGr.setValue('leaving_at', '05:00:00');
+				shiftWorkerSysId = shiftWorkerGr.insert();
+				changes.push((shiftWorkerSysId ? 'Added ' : 'Failed to add ') + wkr.label + ' to shift ' + shiftPosJson.shift.displayValue);
+			} else {
+				changes.push('Failed to create worker, so could not add ' + wkr.label + ' to shift ' + shiftPosJson.shift.displayValue);
+			}
 		}
 		if (!wkr.shiftPositionWorker && wkr.assigned) {
-			// Add worker to position
-		}
-		if (wkr.shiftPositionWorker && !wkr.assigned) {
-			// Remove worker from position
+			if (wkr.shiftWorker || shiftWorkerSysId) {
+				// Add worker to position
+				var shiftPositionWorkerGr = new GlideRecord('x_802331_eyva_shift_position_worker');
+				shiftPositionWorkerGr.initialize();
+				shiftPositionWorkerGr.setValue('shift_worker', wkr.shiftWorker || shiftWorkerSysId);
+				shiftPositionWorkerGr.setValue('shift_position', shiftPosJson._row_data.uniqueValue);
+				shiftPositionWorkerSysId = shiftPositionWorkerGr.insert();
+				changes.push((shiftPositionWorkerSysId ? 'Added ' : 'Failed to add ') + wkr.label + ' to position ' + shiftPosJson._row_data.displayValue);
+			} else {
+				changes.push('Failed to find shift worker, so could not add ' + wkr.label + ' to position ' + shiftPosJson.position.displayValue);
+			}
 		}
 		if (wkr.shiftPositionWorker && wkr.assigned) {
 			// Move worker to new position
+			var shiftPositionWorkerGr = new GlideRecord('x_802331_eyva_shift_position_worker');
+			shiftPositionWorkerGr.get(wkr.shiftPositionWorker);
+			shiftPositionWorkerGr.setValue('shift_position', shiftPosJson._row_data.uniqueValue);
+			shiftPositionWorkerSysId = shiftPositionWorkerGr.update();
+			changes.push((shiftPositionWorkerSysId ? 'Moved ' : 'Failed to move ') + wkr.label + ' to position ' + shiftPosJson.position.displayValue);
 		}
-	});
-	return { message: 'Worker assignments updated' };
+	}
+	return { changes: changes };
 }]]></script>
         <sys_class_name>sys_ux_data_broker_transform</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-08-02 04:16:41</sys_created_on>
         <sys_id>2955a1d347d031102dabcd9bd36d438d</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>32</sys_mod_count>
         <sys_name>MSP modal save action</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_data_broker_transform_2955a1d347d031102dabcd9bd36d438d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-02 05:50:10</sys_updated_on>
+        <sys_updated_on>2023-08-06 08:45:40</sys_updated_on>
     </sys_ux_data_broker_transform>
     <sys_translated_text action="delete_multiple" query="documentkey=2955a1d347d031102dabcd9bd36d438d"/>
 </record_update>
