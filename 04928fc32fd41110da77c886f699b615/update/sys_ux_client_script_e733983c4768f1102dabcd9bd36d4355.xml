@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="INSERT_OR_UPDATE">
+        <includes/>
+        <macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</macroponent>
+        <name>Add worker to current shift</name>
+        <preset/>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+	if (!api.state.worker_search_input) {
+		return;
+	}
+    var shiftWorkers = api.data.look_up_shift_workers.results;
+	var workerFoundInCurrentShift = shiftWorkers.find(wkr => {
+		return wkr.worker.displayValue.toLowerCase() == api.state.worker_search_input.toLowerCase()
+            && wkr.shift._reference.order_in_the_day.value == api.state.selected_shift;
+	});
+
+	// If find worker among current shift workers, don't do anything
+	if (workerFoundInCurrentShift) {	
+		api.setState('awaiting_add_worker_to_shift', false);
+		api.emit('NOW_UXF_PAGE#SET_LOADING_STATE', {
+			loading: false,
+			label: null,
+			action: null,
+			nonBlocking: null
+		});
+		return;
+	}
+
+	// Search for worker in complete list
+	var workerFound = api.data.look_up_workers.results.find(wkr => {
+		return wkr._row_data.displayValue.toLowerCase() == api.state.worker_search_input.toLowerCase(); //Todo: Use worker id
+	});
+	var wkr;
+	if (workerFound) {
+		// Transfer worker values from "JSON-formatted GlideRecord" to "dropdown-item" style
+		wkr = {
+			id: workerFound._row_data.uniqueValue,
+			label: workerFound._row_data.displayValue,
+			adult: workerFound.adult.value
+		};
+	} else {
+		// If worker doesn't exist yet, create artificial dropdown item
+		wkr = {
+			id: 'new-worker',
+			label: api.state.worker_search_input,
+			adult: !api.state.kid_status_input
+		};
+	}
+	console.log('wkr');
+	console.log(wkr);
+	// Transfer shift values from "JSON-formatted GlideRecord" to "dropdown-item" style
+	var shiftFound = api.data.look_up_shifts_for_selected_day.results[api.state.selected_shift - 1];
+	console.log('shiftFound');
+	console.log(shiftFound);
+	var shft = {
+		id: shiftFound._row_data.uniqueValue,
+		label: shiftFound._row_data.displayValue
+	};
+
+	// Add worker to current shift
+	api.data.add_worker_to_shift.execute({
+		worker: wkr,
+		shift: shft
+	});
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-06 14:07:26</sys_created_on>
+        <sys_id>e733983c4768f1102dabcd9bd36d4355</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Add worker to current shift</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_client_script_e733983c4768f1102dabcd9bd36d4355</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-08 09:08:08</sys_updated_on>
+        <target>macroponent</target>
+        <type>default</type>
+    </sys_ux_client_script>
+</record_update>

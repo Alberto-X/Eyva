@@ -439,26 +439,15 @@
       "type" : "EVENT"
     }, {
       "broker" : null,
-      "clientScript" : null,
+      "clientScript" : {
+        "sysId" : "06c4734a47903d102dabcd9bd36d4327"
+      },
       "conditional" : null,
       "declarativeAction" : null,
-      "event" : {
-        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
-        "payload" : {
-          "type" : "CLIENT_TRANSFORM_SCRIPT",
-          "script" : {
-            "apiVersion" : "1.0.0",
-            "controllerElementId" : null,
-            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\treturn {\n\t\tpropName: 'selected_shift_obj',\n\t\tvalue: api.data.look_up_shifts_for_selected_day[event.payload.selectedTabIndex - 1]\n\t};\n}",
-            "scriptSysId" : null,
-            "target" : null
-          }
-        },
-        "sysId" : "32408b42ff7a10109046e490703bf176"
-      },
+      "event" : null,
       "operation" : null,
-      "targetId" : "clkqktiinkaaccggbbddobnwhhhheddaahhgg",
-      "type" : "EVENT"
+      "targetId" : "cllaagggffbbgaacciyddoborzggggiiaaffdd",
+      "type" : "CLIENT_SCRIPT"
     } ]
   } ],
   "slot" : null,
@@ -3330,23 +3319,6 @@
           "clientScript" : null,
           "conditional" : null,
           "declarativeAction" : null,
-          "event" : null,
-          "operation" : {
-            "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
-            "operationName" : "REFRESH",
-            "parentResourceId" : "look_up_shifts_for_selected_day",
-            "payload" : {
-              "type" : "JSON_LITERAL",
-              "value" : { }
-            }
-          },
-          "targetId" : "clkzcqotbaaccccnddohhvgbyzuthhdd",
-          "type" : "DATABROKER_OP"
-        }, {
-          "broker" : null,
-          "clientScript" : null,
-          "conditional" : null,
-          "declarativeAction" : null,
           "event" : {
             "apiName" : "sn_uxf_page.NOW_UXF_PAGE#SET_LOADING_STATE",
             "payload" : {
@@ -3515,8 +3487,12 @@
           "value" : null
         },
         "helperContent" : {
-          "type" : "JSON_LITERAL",
-          "value" : null
+          "type" : "TRANSLATION_LITERAL",
+          "value" : {
+            "code" : null,
+            "message" : "Search for a worker to add to the shift",
+            "comment" : ""
+          }
         },
         "optional" : {
           "type" : "JSON_LITERAL",
@@ -3579,121 +3555,328 @@
           "value" : null
         },
         "items" : {
-          "type" : "LIST_CONTAINER",
-          "container" : [ {
-            "type" : "MAP_CONTAINER",
-            "container" : {
-              "id" : {
-                "type" : "JSON_LITERAL",
-                "value" : "usr1"
-              },
-              "label" : {
-                "type" : "TRANSLATION_LITERAL",
-                "value" : {
-                  "code" : null,
-                  "message" : "User 1",
-                  "comment" : ""
-                }
-              },
-              "sublabel" : {
-                "type" : "TRANSLATION_LITERAL",
-                "value" : {
-                  "code" : null,
-                  "message" : "user1@servicenow.com",
-                  "comment" : ""
-                }
-              },
-              "avatarProps" : {
-                "type" : "JSON_LITERAL",
-                "value" : {
-                  "userName" : "User 1",
-                  "imageSrc" : "http://i.pravatar.cc/24?u=33",
-                  "presence" : "away"
-                }
-              }
-            }
-          }, {
-            "type" : "MAP_CONTAINER",
-            "container" : {
-              "id" : {
-                "type" : "JSON_LITERAL",
-                "value" : "usr2"
-              },
-              "label" : {
-                "type" : "TRANSLATION_LITERAL",
-                "value" : {
-                  "code" : null,
-                  "message" : "User 2",
-                  "comment" : ""
-                }
-              },
-              "sublabel" : {
-                "type" : "TRANSLATION_LITERAL",
-                "value" : {
-                  "code" : null,
-                  "message" : "user2@servicenow.com",
-                  "comment" : ""
-                }
-              },
-              "avatarProps" : {
-                "type" : "JSON_LITERAL",
-                "value" : {
-                  "userName" : "User 2",
-                  "imageSrc" : "http://i.pravatar.cc/24?u=34",
-                  "presence" : "busy"
-                }
-              },
-              "disabled" : {
-                "type" : "JSON_LITERAL",
-                "value" : true
-              }
-            }
-          }, {
-            "type" : "MAP_CONTAINER",
-            "container" : {
-              "id" : {
-                "type" : "JSON_LITERAL",
-                "value" : "usr3"
-              },
-              "label" : {
-                "type" : "TRANSLATION_LITERAL",
-                "value" : {
-                  "code" : null,
-                  "message" : "User 3",
-                  "comment" : ""
-                }
-              },
-              "sublabel" : {
-                "type" : "TRANSLATION_LITERAL",
-                "value" : {
-                  "code" : null,
-                  "message" : "user3@servicenow.com",
-                  "comment" : ""
-                }
-              },
-              "avatarProps" : {
-                "type" : "JSON_LITERAL",
-                "value" : {
-                  "userName" : "User 3",
-                  "imageSrc" : "http://i.pravatar.cc/24?u=35",
-                  "presence" : "offline"
-                }
-              }
-            }
-          } ]
+          "type" : "DATA_OUTPUT_BINDING",
+          "binding" : {
+            "address" : [ "transform_workers_into_typeahead_data_1", "output" ]
+          }
         },
         "hideRequiredIndicator" : {
           "type" : "JSON_LITERAL",
           "value" : false
         }
       },
-      "eventMappings" : [ ],
+      "eventMappings" : [ {
+        "eventMappingId" : "cllaaeggzbbkaaccdgddobohaartkpkii",
+        "isConfiguration" : false,
+        "offRowStorageId" : null,
+        "sourceEventApiName" : "sn_typeahead.NOW_TYPEAHEAD#LIST_VISIBLE",
+        "sourceEventCorrelationId" : null,
+        "sourceEventDefinition" : {
+          "apiName" : "sn_typeahead.NOW_TYPEAHEAD#LIST_VISIBLE",
+          "id" : null,
+          "type" : "UXEVENT"
+        },
+        "sourceEventSysId" : null,
+        "targets" : [ {
+          "broker" : null,
+          "clientScript" : null,
+          "conditional" : {
+            "type" : "CLIENT_TRANSFORM",
+            "transform" : {
+              "operands" : {
+                "type" : "LIST_CONTAINER",
+                "container" : [ {
+                  "type" : "UNARY",
+                  "operation" : {
+                    "operand" : {
+                      "type" : "DATA_OUTPUT_BINDING",
+                      "binding" : {
+                        "address" : [ "look_up_workers", "results" ]
+                      }
+                    },
+                    "operator" : "NOT"
+                  }
+                }, {
+                  "type" : "JSON_LITERAL",
+                  "value" : true
+                }, {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                } ]
+              },
+              "operator" : "IF"
+            }
+          },
+          "declarativeAction" : null,
+          "event" : null,
+          "operation" : {
+            "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
+            "operationName" : "REFRESH",
+            "parentResourceId" : "look_up_workers",
+            "payload" : {
+              "type" : "JSON_LITERAL",
+              "value" : { }
+            }
+          },
+          "targetId" : "cllaaeggzbbkaaccdhddobobbgeeqgvix",
+          "type" : "DATABROKER_OP"
+        } ]
+      }, {
+        "eventMappingId" : "cllaaeaalopaaccbjddoboaarjjovjjwff",
+        "isConfiguration" : false,
+        "offRowStorageId" : null,
+        "sourceEventApiName" : "sn_typeahead.NOW_TYPEAHEAD#LIST_HIDDEN",
+        "sourceEventCorrelationId" : null,
+        "sourceEventDefinition" : {
+          "apiName" : "sn_typeahead.NOW_TYPEAHEAD#LIST_HIDDEN",
+          "id" : null,
+          "type" : "UXEVENT"
+        },
+        "sourceEventSysId" : null,
+        "targets" : [ {
+          "broker" : null,
+          "clientScript" : {
+            "sysId" : "e733983c4768f1102dabcd9bd36d4355"
+          },
+          "conditional" : null,
+          "declarativeAction" : null,
+          "event" : null,
+          "operation" : null,
+          "targetId" : "cllaaeaaloqaaccbkddobogdekntqaa",
+          "type" : "CLIENT_SCRIPT"
+        }, {
+          "broker" : null,
+          "clientScript" : null,
+          "conditional" : {
+            "type" : "CLIENT_TRANSFORM",
+            "transform" : {
+              "operands" : {
+                "type" : "LIST_CONTAINER",
+                "container" : [ {
+                  "type" : "STATE_BINDING",
+                  "binding" : {
+                    "address" : [ "worker_search_input" ]
+                  }
+                }, {
+                  "type" : "JSON_LITERAL",
+                  "value" : true
+                }, {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                } ]
+              },
+              "operator" : "IF"
+            }
+          },
+          "declarativeAction" : null,
+          "event" : {
+            "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+            "payload" : {
+              "type" : "JSON_LITERAL",
+              "value" : {
+                "propName" : "awaiting_add_worker_to_shift",
+                "value" : true
+              }
+            },
+            "sysId" : "32408b42ff7a10109046e490703bf176"
+          },
+          "operation" : null,
+          "targetId" : "cllbbbbchjbbaaffceeddobopclovhmdd",
+          "type" : "EVENT"
+        }, {
+          "broker" : null,
+          "clientScript" : null,
+          "conditional" : {
+            "type" : "CLIENT_TRANSFORM",
+            "transform" : {
+              "operands" : {
+                "type" : "LIST_CONTAINER",
+                "container" : [ {
+                  "type" : "STATE_BINDING",
+                  "binding" : {
+                    "address" : [ "worker_search_input" ]
+                  }
+                }, {
+                  "type" : "JSON_LITERAL",
+                  "value" : true
+                }, {
+                  "type" : "JSON_LITERAL",
+                  "value" : false
+                } ]
+              },
+              "operator" : "IF"
+            }
+          },
+          "declarativeAction" : null,
+          "event" : {
+            "apiName" : "sn_uxf_page.NOW_UXF_PAGE#SET_LOADING_STATE",
+            "payload" : {
+              "type" : "JSON_LITERAL",
+              "value" : {
+                "loading" : true,
+                "label" : "Adding worker",
+                "action" : null,
+                "nonBlocking" : true
+              }
+            },
+            "sysId" : "0404f68486f1baab1dc7ef2a27a3de50"
+          },
+          "operation" : null,
+          "targetId" : "cllbbbbcraauaaffccddobocociifbbep",
+          "type" : "EVENT"
+        } ]
+      }, {
+        "eventMappingId" : "clkzhkffaadaaccrhddohhvsdeqdccsbb",
+        "isConfiguration" : false,
+        "offRowStorageId" : null,
+        "sourceEventApiName" : "sn_typeahead.NOW_TYPEAHEAD#VALUE_SET",
+        "sourceEventCorrelationId" : null,
+        "sourceEventDefinition" : {
+          "apiName" : "sn_typeahead.NOW_TYPEAHEAD#VALUE_SET",
+          "id" : null,
+          "type" : "UXEVENT"
+        },
+        "sourceEventSysId" : null,
+        "targets" : [ {
+          "broker" : null,
+          "clientScript" : null,
+          "conditional" : null,
+          "declarativeAction" : null,
+          "event" : {
+            "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+            "payload" : {
+              "type" : "CLIENT_TRANSFORM_SCRIPT",
+              "script" : {
+                "apiVersion" : "1.0.0",
+                "controllerElementId" : null,
+                "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\treturn {\n\t\tpropName: 'worker_search_input',\n\t\tvalue: event.payload.value.trim()\n\t};\n}",
+                "scriptSysId" : null,
+                "target" : null
+              }
+            },
+            "sysId" : "32408b42ff7a10109046e490703bf176"
+          },
+          "operation" : null,
+          "targetId" : "clkzhkffaadaaccriddohhvtjjtgffvbbf",
+          "type" : "EVENT"
+        } ]
+      } ],
       "slot" : null,
       "definition" : {
         "id" : "095242e0cab6bcbaa95ff93cf7c4f952",
         "type" : "MACROPONENT"
       },
-      "overrides" : null,
+      "overrides" : {
+        "composition" : [ {
+          "elementId" : "toggle_1",
+          "elementLabel" : "Toggle 1",
+          "propertyValues" : {
+            "size" : {
+              "type" : "JSON_LITERAL",
+              "value" : "sm"
+            },
+            "labelPosition" : {
+              "type" : "JSON_LITERAL",
+              "value" : "end"
+            },
+            "checked" : {
+              "type" : "JSON_LITERAL",
+              "value" : false
+            },
+            "disabled" : {
+              "type" : "JSON_LITERAL",
+              "value" : false
+            },
+            "label" : {
+              "type" : "JSON_LITERAL",
+              "value" : "Kid"
+            },
+            "configAria" : {
+              "type" : "JSON_LITERAL",
+              "value" : null
+            }
+          },
+          "eventMappings" : [ {
+            "eventMappingId" : "cllaadzjjuiiaaccawddoboeewaaqpljl",
+            "isConfiguration" : false,
+            "offRowStorageId" : null,
+            "sourceEventApiName" : "sn_toggle.NOW_TOGGLE#CHECKED_SET",
+            "sourceEventCorrelationId" : null,
+            "sourceEventDefinition" : {
+              "apiName" : "sn_toggle.NOW_TOGGLE#CHECKED_SET",
+              "id" : null,
+              "type" : "UXEVENT"
+            },
+            "sourceEventSysId" : null,
+            "targets" : [ {
+              "broker" : null,
+              "clientScript" : null,
+              "conditional" : null,
+              "declarativeAction" : null,
+              "event" : {
+                "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+                "payload" : {
+                  "type" : "MAP_CONTAINER",
+                  "container" : {
+                    "propName" : {
+                      "type" : "JSON_LITERAL",
+                      "value" : "kid_status_input"
+                    },
+                    "value" : {
+                      "type" : "EVENT_PAYLOAD_BINDING",
+                      "binding" : {
+                        "address" : [ "value" ]
+                      }
+                    }
+                  }
+                },
+                "sysId" : "32408b42ff7a10109046e490703bf176"
+              },
+              "operation" : null,
+              "targetId" : "cllaadzjjuiiaaccaxddobogghhugwhhnc",
+              "type" : "EVENT"
+            }, {
+              "broker" : null,
+              "clientScript" : null,
+              "conditional" : null,
+              "declarativeAction" : null,
+              "event" : {
+                "apiName" : "sn_uxf_page.NOW_UXF_PAGE#ADD_NOTIFICATIONS",
+                "payload" : {
+                  "type" : "CLIENT_TRANSFORM_SCRIPT",
+                  "script" : {
+                    "apiVersion" : "1.0.0",
+                    "controllerElementId" : null,
+                    "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('api.state.selected_date');\n\tconsole.log(api.state.selected_date);\n\treturn {\n\t\titems: null\n\t};\n}",
+                    "scriptSysId" : null,
+                    "target" : null
+                  }
+                },
+                "sysId" : "49fe7d575f983bb3f8eea3fa8d40694c"
+              },
+              "operation" : null,
+              "targetId" : "cllaaebccgfaaccdvddoboggggbebddob",
+              "type" : "EVENT"
+            } ]
+          } ],
+          "slot" : "end",
+          "definition" : {
+            "id" : "aad020b8b826fc5b585082458b66ea33",
+            "type" : "MACROPONENT"
+          },
+          "overrides" : null,
+          "isHidden" : {
+            "type" : "JSON_LITERAL",
+            "value" : null
+          },
+          "isHero" : false,
+          "extensionPoints" : [ ],
+          "isNonDestructive" : false,
+          "items" : [ ],
+          "styles" : { }
+        } ],
+        "layout" : null
+      },
       "isHidden" : {
         "type" : "JSON_LITERAL",
         "value" : null
@@ -3881,6 +4064,25 @@
       "operation" : null,
       "targetId" : "clkyzjjueehhaacciddddohhvreemxiimfv",
       "type" : "EVENT"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : {
+            "propName" : "kid_status_input",
+            "value" : false
+          }
+        },
+        "sysId" : "32408b42ff7a10109046e490703bf176"
+      },
+      "operation" : null,
+      "targetId" : "cllaadeebxjjaaccdduddoboaallddzhhoj",
+      "type" : "EVENT"
     } ]
   }, {
     "eventMappingId" : "clkrggcwphaaccukddohhvemhhawoijj",
@@ -3928,6 +4130,44 @@
       },
       "targetId" : "clkrggdiiswaaccumddohhvfffbbaaaaqggdd",
       "type" : "DATABROKER_OP"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : {
+            "propName" : "worker_search_input",
+            "value" : null
+          }
+        },
+        "sysId" : "32408b42ff7a10109046e490703bf176"
+      },
+      "operation" : null,
+      "targetId" : "clkzhmeewwaaccsccddohhvdddqcaxeef",
+      "type" : "EVENT"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : {
+            "propName" : "kid_status_input",
+            "value" : false
+          }
+        },
+        "sysId" : "32408b42ff7a10109046e490703bf176"
+      },
+      "operation" : null,
+      "targetId" : "cllaadeexmffaacceebbddobollkddgddiio",
+      "type" : "EVENT"
     } ]
   } ],
   "slot" : null,
@@ -5403,23 +5643,6 @@
       "declarativeAction" : null,
       "event" : null,
       "operation" : {
-        "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
-        "operationName" : "REFRESH",
-        "parentResourceId" : "look_up_shifts_for_selected_day",
-        "payload" : {
-          "type" : "JSON_LITERAL",
-          "value" : { }
-        }
-      },
-      "targetId" : "clkngdlhlaaffkwddobojfuhhscceez",
-      "type" : "DATABROKER_OP"
-    }, {
-      "broker" : null,
-      "clientScript" : null,
-      "conditional" : null,
-      "declarativeAction" : null,
-      "event" : null,
-      "operation" : {
         "dataBrokerId" : "8955576447a4f1102dabcd9bd36d434b",
         "operationName" : "REFRESH",
         "parentResourceId" : "transform_event_dates_into_select_data_1",
@@ -5712,7 +5935,77 @@
   "dependencies" : { },
   "elementId" : "look_up_shift_workers",
   "elementLabel" : "Look Up Shift Workers",
-  "eventMappings" : [ ],
+  "eventMappings" : [ {
+    "eventMappingId" : "cllbbaagiitdaaddiiaddobohyccbbpdk",
+    "isConfiguration" : false,
+    "offRowStorageId" : null,
+    "sourceEventApiName" : "sn_uxf.DATA_FETCH_SUCCEEDED",
+    "sourceEventCorrelationId" : null,
+    "sourceEventDefinition" : {
+      "apiName" : "sn_uxf.DATA_FETCH_SUCCEEDED",
+      "id" : null,
+      "type" : "UXEVENT"
+    },
+    "sourceEventSysId" : null,
+    "targets" : [ {
+      "broker" : null,
+      "clientScript" : {
+        "sysId" : "06c4734a47903d102dabcd9bd36d4327"
+      },
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : null,
+      "operation" : null,
+      "targetId" : "cllbbaagiitdaaddiibddoboomenmfju",
+      "type" : "CLIENT_SCRIPT"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf_page.NOW_UXF_PAGE#SET_LOADING_STATE",
+        "payload" : {
+          "type" : "CLIENT_TRANSFORM_SCRIPT",
+          "script" : {
+            "apiVersion" : "1.0.0",
+            "controllerElementId" : null,
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tif (api.state.awaiting_add_worker_to_shift) {\n\t\treturn {\n\t\t\tloading: false,\n\t\t\tlabel: null,\n\t\t\taction: null,\n\t\t\tnonBlocking: null\n\t\t};\n\t}\n}",
+            "scriptSysId" : null,
+            "target" : null
+          }
+        },
+        "sysId" : "0404f68486f1baab1dc7ef2a27a3de50"
+      },
+      "operation" : null,
+      "targetId" : "cllbbaayggccraaffiixddoboffllbbiprq",
+      "type" : "EVENT"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : {
+        "type" : "STATE_BINDING",
+        "binding" : {
+          "address" : [ "awaiting_add_worker_to_shift" ]
+        }
+      },
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : {
+            "propName" : "awaiting_add_worker_to_shift",
+            "value" : false
+          }
+        },
+        "sysId" : "32408b42ff7a10109046e490703bf176"
+      },
+      "operation" : null,
+      "targetId" : "cllbbbbdvyccaaffcxddobomccjjvffhot",
+      "type" : "EVENT"
+    } ]
+  } ],
   "inputValues" : {
     "table" : {
       "type" : "JSON_LITERAL",
@@ -6092,7 +6385,7 @@
           "script" : {
             "apiVersion" : "1.0.0",
             "controllerElementId" : null,
-            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tvar items = [];\n\titems.push({\n\t\theader: 'Failed!',\n\t\tcontent: 'Could not save worker assignments',\n\t\tstatus: 'critical',\n\t\ticon: 'triangle-exclamation-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('Server response:');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Failed!',\n\t\tcontent: 'Could not save worker assignments',\n\t\tstatus: 'critical',\n\t\ticon: 'triangle-exclamation-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
             "scriptSysId" : null,
             "target" : null
           }
@@ -6127,7 +6420,7 @@
           "script" : {
             "apiVersion" : "1.0.0",
             "controllerElementId" : null,
-            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('event.payload.data.output: ');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Saved!',\n\t\tcontent: 'Worker assignments updated',\n\t\tstatus: 'positive',\n\t\ticon: 'clipboard-check-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('Server response:');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Saved!',\n\t\tcontent: 'Worker assignments updated',\n\t\tstatus: 'positive',\n\t\ticon: 'clipboard-check-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
             "scriptSysId" : null,
             "target" : null
           }
@@ -6330,23 +6623,18 @@
       "clientScript" : null,
       "conditional" : null,
       "declarativeAction" : null,
-      "event" : {
-        "apiName" : "sn_uxf_page.NOW_UXF_PAGE#ADD_NOTIFICATIONS",
+      "event" : null,
+      "operation" : {
+        "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
+        "operationName" : "REFRESH",
+        "parentResourceId" : "look_up_shifts_for_selected_day",
         "payload" : {
-          "type" : "CLIENT_TRANSFORM_SCRIPT",
-          "script" : {
-            "apiVersion" : "1.0.0",
-            "controllerElementId" : null,
-            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('event');\n\tconsole.log(event);\n\treturn {\n\t\titems: null\n\t};\n}",
-            "scriptSysId" : null,
-            "target" : null
-          }
-        },
-        "sysId" : "49fe7d575f983bb3f8eea3fa8d40694c"
+          "type" : "JSON_LITERAL",
+          "value" : { }
+        }
       },
-      "operation" : null,
-      "targetId" : "clkzdvffveaaccdgddohhvfdwxxvzs",
-      "type" : "EVENT"
+      "targetId" : "cllaazmflaaaaddbbdddoboarrwrcchhy",
+      "type" : "DATABROKER_OP"
     } ]
   } ],
   "inputValues" : {
@@ -6357,6 +6645,147 @@
       }
     }
   },
+  "readEvaluationMode" : "EXPLICIT"
+}, {
+  "cachePolicy" : null,
+  "definition" : {
+    "id" : "71e38b30476435102dabcd9bd36d4320",
+    "type" : "TRANSFORM"
+  },
+  "dependencies" : { },
+  "elementId" : "add_worker_to_shift",
+  "elementLabel" : "Add worker to shift",
+  "eventMappings" : [ {
+    "eventMappingId" : "cllaaeeemcjaacccoddoboyjhqpyddp",
+    "isConfiguration" : false,
+    "offRowStorageId" : null,
+    "sourceEventApiName" : "sn_uxf.DATA_OP_FAILED",
+    "sourceEventCorrelationId" : null,
+    "sourceEventDefinition" : {
+      "apiName" : "sn_uxf.DATA_OP_FAILED",
+      "id" : null,
+      "type" : "UXEVENT"
+    },
+    "sourceEventSysId" : null,
+    "targets" : [ {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf_page.NOW_UXF_PAGE#ADD_NOTIFICATIONS",
+        "payload" : {
+          "type" : "CLIENT_TRANSFORM_SCRIPT",
+          "script" : {
+            "apiVersion" : "1.0.0",
+            "controllerElementId" : null,
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {y\n\tconsole.log('Server response:');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Failed!',\n\t\tcontent: 'Could not save worker assignments',\n\t\tstatus: 'critical',\n\t\ticon: 'triangle-exclamation-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
+            "scriptSysId" : null,
+            "target" : null
+          }
+        },
+        "sysId" : "49fe7d575f983bb3f8eea3fa8d40694c"
+      },
+      "operation" : null,
+      "targetId" : "cllaaeeemcjaacccpddoboibjqsowbb",
+      "type" : "EVENT"
+    } ]
+  }, {
+    "eventMappingId" : "cllaaeccpszaacccddddobodftnlffxdd",
+    "isConfiguration" : false,
+    "offRowStorageId" : null,
+    "sourceEventApiName" : "sn_uxf.DATA_OP_SUCCEEDED",
+    "sourceEventCorrelationId" : null,
+    "sourceEventDefinition" : {
+      "apiName" : "sn_uxf.DATA_OP_SUCCEEDED",
+      "id" : null,
+      "type" : "UXEVENT"
+    },
+    "sourceEventSysId" : null,
+    "targets" : [ {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf_page.NOW_UXF_PAGE#ADD_NOTIFICATIONS",
+        "payload" : {
+          "type" : "CLIENT_TRANSFORM_SCRIPT",
+          "script" : {
+            "apiVersion" : "1.0.0",
+            "controllerElementId" : null,
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('Server response:');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Saved!',\n\t\tcontent: 'Worker assignments updated',\n\t\tstatus: 'positive',\n\t\ticon: 'clipboard-check-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
+            "scriptSysId" : null,
+            "target" : null
+          }
+        },
+        "sysId" : "49fe7d575f983bb3f8eea3fa8d40694c"
+      },
+      "operation" : null,
+      "targetId" : "cllaaeccpszaaccceeddobonqteebbaik",
+      "type" : "EVENT"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : null,
+      "operation" : {
+        "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
+        "operationName" : "REFRESH",
+        "parentResourceId" : "look_up_shift_workers",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : { }
+        }
+      },
+      "targetId" : "cllaaeeeaabbpaaccciddoboqiqffxeeoii",
+      "type" : "DATABROKER_OP"
+    } ]
+  } ],
+  "inputValues" : { },
+  "readEvaluationMode" : "EXPLICIT"
+}, {
+  "cachePolicy" : null,
+  "definition" : {
+    "id" : "00cd9b8353211010cbc2ddeeff7b1205",
+    "type" : "GRAPHQL"
+  },
+  "dependencies" : { },
+  "elementId" : "delete_worker_from_shift",
+  "elementLabel" : "Delete worker from shift",
+  "eventMappings" : [ {
+    "eventMappingId" : "cllaacnjjosaacccceeddoboccelzddedd",
+    "isConfiguration" : false,
+    "offRowStorageId" : null,
+    "sourceEventApiName" : "sn_uxf.DATA_OP_SUCCEEDED",
+    "sourceEventCorrelationId" : null,
+    "sourceEventDefinition" : {
+      "apiName" : "sn_uxf.DATA_OP_SUCCEEDED",
+      "id" : null,
+      "type" : "UXEVENT"
+    },
+    "sourceEventSysId" : null,
+    "targets" : [ {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : null,
+      "operation" : {
+        "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
+        "operationName" : "REFRESH",
+        "parentResourceId" : "look_up_shift_workers",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : { }
+        }
+      },
+      "targetId" : "cllaacnjjosaaccccffddoboxjjffjjddua",
+      "type" : "DATABROKER_OP"
+    } ]
+  } ],
+  "inputValues" : { },
   "readEvaluationMode" : "EXPLICIT"
 } ]</data>
         <description/>
@@ -6430,7 +6859,7 @@
   "default" : {
     "children" : null,
     "isInline" : null,
-    "items" : [{"element_id":"page_title","styles":{"align-self":"center"}},{"element_id":"event","styles":{"width":"initial","padding":"var(--now-static-space--lg)"}},{"element_id":"container_2","styles":{"width":"100%"}},{"element_id":"repeater_7","styles":{"align-self":"center"}},{"element_id":"viewport_qag","styles":{}},{"element_id":"container_3","styles":{"width":"100%"}},{"element_id":"repeater_1","styles":{"align-self":"center"}}],
+    "items" : [{"element_id":"page_title","styles":{"align-self":"center","padding":"var(--now-static-space--sm)"}},{"element_id":"event","styles":{"width":"initial","padding":"var(--now-static-space--lg)"}},{"element_id":"container_2","styles":{"width":"100%"}},{"element_id":"repeater_7","styles":{"align-self":"center"}},{"element_id":"viewport_qag","styles":{}},{"element_id":"container_3","styles":{"width":"100%"}},{"element_id":"repeater_1","styles":{"align-self":"center"}}],
     "root" : null,
     "rules" : null,
     "styles" : {"flex-direction":"column","display":"flex","grid-template-columns":"1fr 1fr","grid-template-rows":"1fr","gap":""},
@@ -6444,6 +6873,9 @@
         <output_prop_mapping/>
         <props>[ ]</props>
         <required_translations>[ {
+  "message" : "Adding worker",
+  "comment" : ""
+}, {
   "message" : "Afternoon",
   "comment" : ""
 }, {
@@ -6492,16 +6924,10 @@
   "message" : "Search for a worker",
   "comment" : ""
 }, {
+  "message" : "Search for a worker to add to the shift",
+  "comment" : ""
+}, {
   "message" : "Updating",
-  "comment" : ""
-}, {
-  "message" : "User 1",
-  "comment" : ""
-}, {
-  "message" : "User 2",
-  "comment" : ""
-}, {
-  "message" : "User 3",
   "comment" : ""
 }, {
   "message" : "Western &amp; Southern 2022",
@@ -6511,15 +6937,6 @@
   "comment" : ""
 }, {
   "message" : "Worker search",
-  "comment" : ""
-}, {
-  "message" : "user1@servicenow.com",
-  "comment" : ""
-}, {
-  "message" : "user2@servicenow.com",
-  "comment" : ""
-}, {
-  "message" : "user3@servicenow.com",
   "comment" : ""
 } ]</required_translations>
         <root_component/>
@@ -6698,19 +7115,30 @@
     "type" : "JSON_LITERAL",
     "value" : null
   }
+}, {
+  "name" : "awaiting_add_worker_to_shift",
+  "label" : "awaiting_add_worker_to_shift",
+  "fieldType" : "boolean",
+  "valueType" : "boolean",
+  "shape" : "",
+  "description" : "",
+  "initialValue" : {
+    "type" : "JSON_LITERAL",
+    "value" : false
+  }
 } ]</state_properties>
         <sys_class_name>sys_ux_macroponent</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>448</sys_mod_count>
+        <sys_mod_count>477</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-06 12:41:04</sys_updated_on>
+        <sys_updated_on>2023-08-08 09:26:51</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=d86858672f101110da77c886f699b6d4"/>
 </record_update>

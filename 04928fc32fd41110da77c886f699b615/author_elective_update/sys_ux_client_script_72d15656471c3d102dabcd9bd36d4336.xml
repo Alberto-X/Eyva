@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="DELETE">
+        <includes/>
+        <macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</macroponent>
+        <name>Add worker from worker search</name>
+        <preset/>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+	if (!api.state.worker_search_input) {
+		return;
+	}
+    var shiftWorkersOnModal = api.state.msp_modal_data.shiftWorkers;
+	console.log('searching for: ');
+	console.log(api.state.worker_search_input);
+	console.log(shiftWorkersOnModal);
+	var workerSearchedOnModal = shiftWorkersOnModal.find(wkr => {
+		return wkr.label.toLowerCase() == api.state.worker_search_input.toLowerCase();
+	});
+	var workerSearched = api.data.look_up_workers.results.find(wkr => {
+		return wkr._row_data.displayValue.toLowerCase() == api.state.worker_search_input.toLowerCase(); //Todo: Use worker id
+	});
+
+	if (workerSearchedOnModal) {
+		// If find worker in modal list, make active and move out of unassigned column
+		workerSearchedOnModal.active = true;
+		workerSearchedOnModal.unassigned = false;
+	} else if (workerSearched) {
+		// If find worker in complete worker list, add record
+		shiftWorkersOnModal.push({
+			id: workerSearched._row_data.uniqueValue,
+			label: workerSearched._row_data.displayValue,
+			adult: workerSearched.adult.value,
+			active: true,
+			unassigned: false
+		});
+	} else {
+		// If can't find worker input, add artificial record
+		shiftWorkersOnModal.push({
+			id: 'new-worker',
+			label: api.state.worker_search_input,
+			adult: !api.state.kid_status_input,
+			active: true,
+			unassigned: false
+		});
+	}
+	api.setState('msp_modal_data', JSON.parse(JSON.stringify(api.state.msp_modal_data))); //since object should be small, use a "deep copy" to trigger a "change in client state"
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-07-30 04:55:48</sys_created_on>
+        <sys_id>72d15656471c3d102dabcd9bd36d4336</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Add worker from worker search</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_client_script_72d15656471c3d102dabcd9bd36d4336</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-31 06:17:33</sys_updated_on>
+        <target>macroponent</target>
+        <type>default</type>
+    </sys_ux_client_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Eyva">04928fc32fd41110da77c886f699b615</application>
+        <file_path/>
+        <instance_id>27b446f6db6de1180b9d21c405961992</instance_id>
+        <instance_name>dev165277</instance_name>
+        <name>sys_ux_client_script_72d15656471c3d102dabcd9bd36d4336</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ux_client_script"&gt;&lt;sys_ux_client_script action="INSERT_OR_UPDATE"&gt;&lt;includes/&gt;&lt;macroponent display_value="Assignments"&gt;d86858672f101110da77c886f699b6d4&lt;/macroponent&gt;&lt;name&gt;Add worker from worker search&lt;/name&gt;&lt;preset/&gt;&lt;required_translations&gt;[ ]&lt;/required_translations&gt;&lt;script&gt;&lt;![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+	if (!api.state.worker_search_input) {
+		return;
+	}
+    var shiftWorkersOnModal = api.state.msp_modal_data.shiftWorkers;
+	console.log('searching for: ');
+	console.log(api.state.worker_search_input);
+	console.log(shiftWorkersOnModal);
+	var workerSearchedOnModal = shiftWorkersOnModal.find(wkr =&gt; {
+		return wkr.label.toLowerCase() == api.state.worker_search_input.toLowerCase();
+	});
+	var workerSearched = api.data.look_up_workers.results.find(wkr =&gt; {
+		return wkr._row_data.displayValue.toLowerCase() == api.state.worker_search_input.toLowerCase(); //Todo: Use worker id
+	});
+
+	if (workerSearchedOnModal) {
+		// If find worker in modal list, make active and move out of unassigned column
+		workerSearchedOnModal.active = true;
+		workerSearchedOnModal.unassigned = false;
+	} else if (workerSearched) {
+		// If find worker in complete worker list, add record
+		shiftWorkersOnModal.push({
+			id: workerSearched._row_data.uniqueValue,
+			label: workerSearched._row_data.displayValue,
+			adult: workerSearched.adult.value,
+			active: true,
+			unassigned: false
+		});
+	} else {
+		// If can't find worker input, add artificial record
+		shiftWorkersOnModal.push({
+			id: 'new-worker',
+			label: api.state.worker_search_input,
+			adult: !api.state.kid_status_input,
+			active: true,
+			unassigned: false
+		});
+	}
+	api.setState('msp_modal_data', JSON.parse(JSON.stringify(api.state.msp_modal_data))); //since object should be small, use a "deep copy" to trigger a "change in client state"
+}]]&gt;&lt;/script&gt;&lt;script_api_version&gt;2.0.0&lt;/script_api_version&gt;&lt;sys_class_name&gt;sys_ux_client_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-30 04:55:48&lt;/sys_created_on&gt;&lt;sys_id&gt;72d15656471c3d102dabcd9bd36d4336&lt;/sys_id&gt;&lt;sys_mod_count&gt;12&lt;/sys_mod_count&gt;&lt;sys_name&gt;Add worker from worker search&lt;/sys_name&gt;&lt;sys_package display_value="Eyva" source="x_802331_eyva"&gt;04928fc32fd41110da77c886f699b615&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Eyva"&gt;04928fc32fd41110da77c886f699b615&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ux_client_script_72d15656471c3d102dabcd9bd36d4336&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-31 06:17:33&lt;/sys_updated_on&gt;&lt;target&gt;macroponent&lt;/target&gt;&lt;type&gt;default&lt;/type&gt;&lt;/sys_ux_client_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1355915765</payload_hash>
+        <record_name>Add worker from worker search</record_name>
+        <reverted_from/>
+        <source>682e7085472321102dabcd9bd36d43b1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-07-31 06:17:34</sys_created_on>
+        <sys_id>da2eebea4710bd102dabcd9bd36d43ea</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>189aa9849900000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-07-31 06:17:34</sys_updated_on>
+        <type>UX Client Script</type>
+        <update_guid>522eebeada10bd108820a8cd68a04dea</update_guid>
+        <update_guid_history>522eebeada10bd108820a8cd68a04dea:-1355915765,cb51656af5187d1079dbae650b4400e4:1202614776,ed9add222f187d10bc09e67962aa9b41:-104347430,bab95122b1187d109d274c6593bb172f:-11689339,d97999ee5ed47d10209ec8207626da65:-456502379,4366992e9bd47d1090b12126b86791b3:-729384619,40f451ea0dd47d103e34a65e4f81d835:1615790494,7461d06e1bd07d10f1277b18a85f6803:1183550830,5cb0942effd07d1004abe00e1efb3e06:1589628668,06cf44eae9d07d1047e2ca031df6789d:1220813993,ad64ded6c11c3d103b36ce62d5ec3c78:-1155564958,3433da96941c3d10877489564b86c307:1813704650,cbd15656661c3d1071bdaecc58ad8e4c:1752345540</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-06 14:11:16</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_client_script">sys_ux_client_script</sys_db_object>
+        <sys_id>04fc5bb7c65040a186bbf89a5d708141</sys_id>
+        <sys_metadata>72d15656471c3d102dabcd9bd36d4336</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Add worker from worker search</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_scope_delete display_value="">240812431724428091a64e1ecd53f240</sys_scope_delete>
+        <sys_update_name>sys_ux_client_script_72d15656471c3d102dabcd9bd36d4336</sys_update_name>
+        <sys_update_version display_value="sys_ux_client_script_72d15656471c3d102dabcd9bd36d4336">da2eebea4710bd102dabcd9bd36d43ea</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-06 14:11:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
