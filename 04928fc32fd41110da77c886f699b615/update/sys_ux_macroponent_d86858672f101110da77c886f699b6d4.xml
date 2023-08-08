@@ -1612,8 +1612,14 @@
                       },
                       "overrides" : null,
                       "isHidden" : {
-                        "type" : "JSON_LITERAL",
-                        "value" : null
+                        "type" : "CLIENT_TRANSFORM_SCRIPT",
+                        "script" : {
+                          "apiVersion" : "2.0.0",
+                          "controllerElementId" : null,
+                          "inlineScript" : null,
+                          "scriptSysId" : "e85cadd147ec75102dabcd9bd36d43be",
+                          "target" : null
+                        }
                       },
                       "isHero" : false,
                       "extensionPoints" : [ ],
@@ -1904,12 +1910,170 @@
                       "isNonDestructive" : false,
                       "items" : [ ],
                       "styles" : null
+                    }, {
+                      "elementId" : "button_iconic_3",
+                      "elementLabel" : "Button iconic 3",
+                      "propertyValues" : {
+                        "size" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : "sm"
+                        },
+                        "highContrast" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : false
+                        },
+                        "icon" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : "circle-close-fill"
+                        },
+                        "variant" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : "secondary"
+                        },
+                        "disabled" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : false
+                        },
+                        "tooltipContent" : {
+                          "type" : "TRANSLATION_LITERAL",
+                          "value" : {
+                            "code" : null,
+                            "message" : "Remove worker",
+                            "comment" : ""
+                          }
+                        },
+                        "bare" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : false
+                        },
+                        "configAria" : {
+                          "type" : "MAP_CONTAINER",
+                          "container" : {
+                            "aria-label" : {
+                              "type" : "TRANSLATION_LITERAL",
+                              "value" : {
+                                "code" : null,
+                                "message" : "Search",
+                                "comment" : ""
+                              }
+                            }
+                          }
+                        },
+                        "hidePadding" : {
+                          "type" : "JSON_LITERAL",
+                          "value" : false
+                        }
+                      },
+                      "eventMappings" : [ {
+                        "eventMappingId" : "cllccffhtiilaaffyeddobohruylkjjo",
+                        "isConfiguration" : false,
+                        "offRowStorageId" : null,
+                        "sourceEventApiName" : "sn_button.NOW_BUTTON_ICONIC#CLICKED",
+                        "sourceEventCorrelationId" : null,
+                        "sourceEventDefinition" : {
+                          "apiName" : "sn_button.NOW_BUTTON_ICONIC#CLICKED",
+                          "id" : null,
+                          "type" : "UXEVENT"
+                        },
+                        "sourceEventSysId" : null,
+                        "targets" : [ {
+                          "broker" : null,
+                          "clientScript" : null,
+                          "conditional" : null,
+                          "declarativeAction" : null,
+                          "event" : null,
+                          "operation" : {
+                            "dataBrokerId" : "00cd9b8353211010cbc2ddeeff7b1205",
+                            "operationName" : "EXECUTE",
+                            "parentResourceId" : "delete_worker_from_shift",
+                            "payload" : {
+                              "type" : "MAP_CONTAINER",
+                              "container" : {
+                                "table" : {
+                                  "type" : "JSON_LITERAL",
+                                  "value" : "x_802331_eyva_shift_worker"
+                                },
+                                "recordId" : {
+                                  "type" : "REPEATER_ITEM_BINDING",
+                                  "binding" : {
+                                    "address" : [ "shift_worker", "value" ],
+                                    "category" : "value"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "targetId" : "cllccffhtiimaaffyfddoboixxfjkcy",
+                          "type" : "DATABROKER_OP"
+                        }, {
+                          "broker" : null,
+                          "clientScript" : null,
+                          "conditional" : null,
+                          "declarativeAction" : null,
+                          "event" : {
+                            "apiName" : "sn_uxf_page.NOW_UXF_PAGE#SET_LOADING_STATE",
+                            "payload" : {
+                              "type" : "JSON_LITERAL",
+                              "value" : {
+                                "loading" : true,
+                                "label" : "Removing worker",
+                                "action" : null,
+                                "nonBlocking" : true
+                              }
+                            },
+                            "sysId" : "0404f68486f1baab1dc7ef2a27a3de50"
+                          },
+                          "operation" : null,
+                          "targetId" : "cllccffzhhuhhaaggbbwddobopddiiggbtzv",
+                          "type" : "EVENT"
+                        }, {
+                          "broker" : null,
+                          "clientScript" : null,
+                          "conditional" : null,
+                          "declarativeAction" : null,
+                          "event" : {
+                            "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+                            "payload" : {
+                              "type" : "JSON_LITERAL",
+                              "value" : {
+                                "propName" : "awaiting_remove_worker_from_shift",
+                                "value" : true
+                              }
+                            },
+                            "sysId" : "32408b42ff7a10109046e490703bf176"
+                          },
+                          "operation" : null,
+                          "targetId" : "cllccggffkkiiaaggeecddobozvjjmffppo",
+                          "type" : "EVENT"
+                        } ]
+                      } ],
+                      "slot" : null,
+                      "definition" : {
+                        "id" : "844d56291d91b330f2269558e3f47701",
+                        "type" : "MACROPONENT"
+                      },
+                      "overrides" : null,
+                      "isHidden" : {
+                        "type" : "CLIENT_TRANSFORM_SCRIPT",
+                        "script" : {
+                          "apiVersion" : "2.0.0",
+                          "controllerElementId" : null,
+                          "inlineScript" : null,
+                          "scriptSysId" : "7499e9dd47ac75102dabcd9bd36d4387",
+                          "target" : null
+                        }
+                      },
+                      "isHero" : false,
+                      "extensionPoints" : [ ],
+                      "isNonDestructive" : false,
+                      "items" : [ ],
+                      "styles" : null
                     } ],
                     "layout" : {
                       "default" : {
                         "children" : null,
                         "isInline" : null,
-                        "items" : [{"element_id":"button_iconic_2","styles":{}},{"element_id":"checkbox_1","styles":{"grid-row":"1 / -1","padding":"initial","padding-top":"var(--now-static-space--xs)"}},{"element_id":"button_bare_1","styles":{}},{"element_id":"button_bare_2","styles":{"background":"RGBA(var(--now-button--secondary--background-color,var(--now-color_background--tertiary,var(--now-color--neutral-2,228,230,231))),var(--now-button--secondary--background-color-alpha,1))"}},{"element_id":"button_bare_3","styles":{"background":"RGBA(var(--now-button--secondary-positive--background-color,var(--now-color_alert--positive-0,201,224,202)),var(--now-button--secondary-positive--background-color-alpha,1))"}},{"element_id":"button_bare_7","styles":{"background":"RGBA(var(--now-button--secondary--background-color))"}},{"element_id":"button_bare_8","styles":{"background":"RGBA(var(--now-button--secondary-negative--background-color))"}},{"element_id":"pill_1","styles":{}},{"element_id":"pill_2","styles":{}},{"element_id":"button_iconic_1","styles":{"grid-row":"1 / -1","padding":"initial","padding-left":"var(--now-static-space--sm)"}}],
+                        "items" : [{"element_id":"button_iconic_2","styles":{}},{"element_id":"checkbox_1","styles":{"grid-row":"1 / -1","padding":"initial","padding-top":"var(--now-static-space--xs)","padding-left":"var(--now-static-space--xs)"}},{"element_id":"button_iconic_3","styles":{"grid-row":"1 / -1","padding":"initial","padding-right":"var(--now-static-space--sm)","padding-top":"var(--now-static-space--xs)"}},{"element_id":"button_bare_1","styles":{}},{"element_id":"button_bare_2","styles":{"background":"RGBA(var(--now-button--secondary--background-color,var(--now-color_background--tertiary,var(--now-color--neutral-2,228,230,231))),var(--now-button--secondary--background-color-alpha,1))"}},{"element_id":"button_bare_3","styles":{"background":"RGBA(var(--now-button--secondary-positive--background-color,var(--now-color_alert--positive-0,201,224,202)),var(--now-button--secondary-positive--background-color-alpha,1))"}},{"element_id":"button_bare_7","styles":{"background":"RGBA(var(--now-button--secondary--background-color))"}},{"element_id":"button_bare_8","styles":{"background":"RGBA(var(--now-button--secondary-negative--background-color))"}},{"element_id":"pill_1","styles":{}},{"element_id":"pill_2","styles":{}},{"element_id":"button_iconic_1","styles":{"grid-row":"1 / -1","padding":"initial","padding-left":"var(--now-static-space--sm)"}}],
                         "root" : null,
                         "rules" : null,
                         "styles" : {"flex-direction":"column","display":"grid","grid-template-columns":"min-content 1fr min-content","grid-template-rows":"min-content min-content min-content min-content min-content","grid-auto-flow":"column","align-items":"start","justify-items":"start","justify-content":"space-between","grid-auto-columns":"min-content","grid-auto-rows":"min-content"},
@@ -4851,7 +5015,7 @@
                               "type" : "TRANSLATION_LITERAL",
                               "value" : {
                                 "code" : null,
-                                "message" : "Enter a label",
+                                "message" : "Remove worker",
                                 "comment" : ""
                               }
                             },
@@ -5970,7 +6134,7 @@
           "script" : {
             "apiVersion" : "1.0.0",
             "controllerElementId" : null,
-            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tif (api.state.awaiting_add_worker_to_shift) {\n\t\treturn {\n\t\t\tloading: false,\n\t\t\tlabel: null,\n\t\t\taction: null,\n\t\t\tnonBlocking: null\n\t\t};\n\t}\n}",
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tif (api.state.awaiting_add_worker_to_shift || api.state.awaiting_remove_worker_from_shift) {\n\t\treturn {\n\t\t\tloading: false,\n\t\t\tlabel: null,\n\t\t\taction: null,\n\t\t\tnonBlocking: null\n\t\t};\n\t}\n}",
             "scriptSysId" : null,
             "target" : null
           }
@@ -6003,6 +6167,30 @@
       },
       "operation" : null,
       "targetId" : "cllbbbbdvyccaaffcxddobomccjjvffhot",
+      "type" : "EVENT"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : {
+        "type" : "STATE_BINDING",
+        "binding" : {
+          "address" : [ "awaiting_remove_worker_from_shift" ]
+        }
+      },
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+        "payload" : {
+          "type" : "JSON_LITERAL",
+          "value" : {
+            "propName" : "awaiting_remove_worker_from_shift",
+            "value" : false
+          }
+        },
+        "sysId" : "32408b42ff7a10109046e490703bf176"
+      },
+      "operation" : null,
+      "targetId" : "cllccggddxsaaaaggdduddoboagyweerww",
       "type" : "EVENT"
     } ]
   } ],
@@ -6679,7 +6867,7 @@
           "script" : {
             "apiVersion" : "1.0.0",
             "controllerElementId" : null,
-            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {y\n\tconsole.log('Server response:');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Failed!',\n\t\tcontent: 'Could not save worker assignments',\n\t\tstatus: 'critical',\n\t\ticon: 'triangle-exclamation-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('Server response:');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Failed!',\n\t\tcontent: 'Could not add worker to shift',\n\t\tstatus: 'critical',\n\t\ticon: 'triangle-exclamation-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
             "scriptSysId" : null,
             "target" : null
           }
@@ -6714,7 +6902,7 @@
           "script" : {
             "apiVersion" : "1.0.0",
             "controllerElementId" : null,
-            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('Server response:');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Saved!',\n\t\tcontent: 'Worker assignments updated',\n\t\tstatus: 'positive',\n\t\ticon: 'clipboard-check-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tconsole.log('Server response:');\n\tconsole.log(event.payload.data.output);\n\tvar items = [];\n\titems.push({\n\t\theader: 'Saved!',\n\t\tcontent: 'Worker added to shift',\n\t\tstatus: 'positive',\n\t\ticon: 'clipboard-check-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
             "scriptSysId" : null,
             "target" : null
           }
@@ -6755,6 +6943,41 @@
   "elementId" : "delete_worker_from_shift",
   "elementLabel" : "Delete worker from shift",
   "eventMappings" : [ {
+    "eventMappingId" : "cllccfflggbsaaffzxddobokddffxggddf",
+    "isConfiguration" : false,
+    "offRowStorageId" : null,
+    "sourceEventApiName" : "sn_uxf.DATA_OP_FAILED",
+    "sourceEventCorrelationId" : null,
+    "sourceEventDefinition" : {
+      "apiName" : "sn_uxf.DATA_OP_FAILED",
+      "id" : null,
+      "type" : "UXEVENT"
+    },
+    "sourceEventSysId" : null,
+    "targets" : [ {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf_page.NOW_UXF_PAGE#ADD_NOTIFICATIONS",
+        "payload" : {
+          "type" : "CLIENT_TRANSFORM_SCRIPT",
+          "script" : {
+            "apiVersion" : "1.0.0",
+            "controllerElementId" : null,
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tvar items = [];\n\titems.push({\n\t\theader: 'Failed!',\n\t\tcontent: 'Could not remove worker from shift',\n\t\tstatus: 'critical',\n\t\ticon: 'triangle-exclamation-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
+            "scriptSysId" : null,
+            "target" : null
+          }
+        },
+        "sysId" : "49fe7d575f983bb3f8eea3fa8d40694c"
+      },
+      "operation" : null,
+      "targetId" : "cllccfflggbsaaffzyddobovgddoffqgy",
+      "type" : "EVENT"
+    } ]
+  }, {
     "eventMappingId" : "cllaacnjjosaacccceeddoboccelzddedd",
     "isConfiguration" : false,
     "offRowStorageId" : null,
@@ -6771,6 +6994,28 @@
       "clientScript" : null,
       "conditional" : null,
       "declarativeAction" : null,
+      "event" : {
+        "apiName" : "sn_uxf_page.NOW_UXF_PAGE#ADD_NOTIFICATIONS",
+        "payload" : {
+          "type" : "CLIENT_TRANSFORM_SCRIPT",
+          "script" : {
+            "apiVersion" : "1.0.0",
+            "controllerElementId" : null,
+            "inlineScript" : "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\tvar items = [];\n\titems.push({\n\t\theader: 'Saved!',\n\t\tcontent: 'Worker removed from shift',\n\t\tstatus: 'positive',\n\t\ticon: 'clipboard-check-outline',\n\t\taction: {type: 'dismiss'}\n\t});\n\treturn {\n\t\titems: items\n\t};\n}",
+            "scriptSysId" : null,
+            "target" : null
+          }
+        },
+        "sysId" : "49fe7d575f983bb3f8eea3fa8d40694c"
+      },
+      "operation" : null,
+      "targetId" : "cllccffjqnlaaffzoddobowsroiifflx",
+      "type" : "EVENT"
+    }, {
+      "broker" : null,
+      "clientScript" : null,
+      "conditional" : null,
+      "declarativeAction" : null,
       "event" : null,
       "operation" : {
         "dataBrokerId" : "b997a84053021010cbc2ddeeff7b1228",
@@ -6781,7 +7026,7 @@
           "value" : { }
         }
       },
-      "targetId" : "cllaacnjjosaaccccffddoboxjjffjjddua",
+      "targetId" : "cllccffkaukaaffzwddobomeebbeeezbbdd",
       "type" : "DATABROKER_OP"
     } ]
   } ],
@@ -6904,6 +7149,12 @@
   "comment" : ""
 }, {
   "message" : "Open chat window",
+  "comment" : ""
+}, {
+  "message" : "Remove worker",
+  "comment" : ""
+}, {
+  "message" : "Removing worker",
   "comment" : ""
 }, {
   "message" : "Retrieving shifts",
@@ -7126,19 +7377,30 @@
     "type" : "JSON_LITERAL",
     "value" : false
   }
+}, {
+  "name" : "awaiting_remove_worker_from_shift",
+  "label" : "awaiting_remove_worker_from_shift",
+  "fieldType" : "boolean",
+  "valueType" : "boolean",
+  "shape" : "",
+  "description" : "",
+  "initialValue" : {
+    "type" : "JSON_LITERAL",
+    "value" : false
+  }
 } ]</state_properties>
         <sys_class_name>sys_ux_macroponent</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-07-01 00:55:11</sys_created_on>
         <sys_id>d86858672f101110da77c886f699b6d4</sys_id>
-        <sys_mod_count>477</sys_mod_count>
+        <sys_mod_count>486</sys_mod_count>
         <sys_name>Assignments</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_d86858672f101110da77c886f699b6d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-08 09:26:51</sys_updated_on>
+        <sys_updated_on>2023-08-08 10:39:28</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=d86858672f101110da77c886f699b6d4"/>
 </record_update>
