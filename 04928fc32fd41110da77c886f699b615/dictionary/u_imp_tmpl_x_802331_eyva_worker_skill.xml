@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="ada21fb1472431102dabcd9bd36d4313" extends="sys_import_set_row" label="Imp Tmpl X 802331 Eyva Worker Skill" max_length="40" name="u_imp_tmpl_x_802331_eyva_worker_skill" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Mastery" label="Mastery" max_length="32" name="u_mastery" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Skill" label="Skill" max_length="32" name="u_skill" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Worker" label="Worker" max_length="32" name="u_worker" type="string"/>
+    </element>
+</database>

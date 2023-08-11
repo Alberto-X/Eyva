@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="m2m_app_config_theme">
+    <m2m_app_config_theme action="DELETE">
+        <applicability display_value="Public">c757146732101110869598d5a19c4323</applicability>
+        <order>0</order>
+        <sys_class_name>m2m_app_config_theme</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2022-07-01 00:50:45</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>cf57146722101110f6f523ec11ea8423</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>m2m_app_config_theme_cf57146722101110f6f523ec11ea8423</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-08 10:50:08</sys_updated_on>
+        <theme display_value="Light Theme">4b5714676510111033dd60503b247723</theme>
+        <ux_app_configuration display_value="Eyva Config">fe57d0672f101110da77c886f699b6e8</ux_app_configuration>
+    </m2m_app_config_theme>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Eyva">04928fc32fd41110da77c886f699b615</application>
+        <file_path/>
+        <instance_id>27b446f6db6de1180b9d21c405961992</instance_id>
+        <instance_name>dev165277</instance_name>
+        <name>m2m_app_config_theme_cf57146722101110f6f523ec11ea8423</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="m2m_app_config_theme"><m2m_app_config_theme action="INSERT_OR_UPDATE"><applicability display_value="Public">c757146732101110869598d5a19c4323</applicability><order>0</order><sys_class_name>m2m_app_config_theme</sys_class_name><sys_created_by>system</sys_created_by><sys_created_on>2022-07-01 00:50:45</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>cf57146722101110f6f523ec11ea8423</sys_id><sys_mod_count>7</sys_mod_count><sys_name/><sys_overrides/><sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package><sys_policy/><sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope><sys_update_name>m2m_app_config_theme_cf57146722101110f6f523ec11ea8423</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-08-08 10:50:08</sys_updated_on><theme display_value="Light Theme">4b5714676510111033dd60503b247723</theme><ux_app_configuration display_value="Eyva Config">fe57d0672f101110da77c886f699b6e8</ux_app_configuration></m2m_app_config_theme></record_update>]]></payload>
+        <payload_hash>581852313</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>682e7085472321102dabcd9bd36d43b1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-08 10:50:08</sys_created_on>
+        <sys_id>4d4931954720b5102dabcd9bd36d4351</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>189d4c4b6990000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-08 10:50:08</sys_updated_on>
+        <type>UX App Theme</type>
+        <update_guid>744931952520b510f8806a36aec0ce51</update_guid>
+        <update_guid_history>744931952520b510f8806a36aec0ce51:581852313,22bda54d27ec35109cc5d6feac6566ed:845935114,f0ad218da4ec3510b2ee3d6f7ecb506c:-704225096,048da50da2ec3510c6696595b44517a6:581852313,e05de1c9d4ec351091ca44f7501688e7:845935114,040ded89adec3510ea45c8f3c71b7724:952392451,b0eced8941ec35107a1460f8fd8a631d:845935114,b2ed3c415063211091c048c95a8245c5:-161322051</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">3689b9954720b5102dabcd9bd36d43dd</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-08 10:51:21</sys_created_on>
+        <sys_db_object display_value="" name="m2m_app_config_theme">m2m_app_config_theme</sys_db_object>
+        <sys_id>52d4bec0f8eb4d22992c98f686928751</sys_id>
+        <sys_metadata>cf57146722101110f6f523ec11ea8423</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_scope_delete display_value="">240812431724428091a64e1ecd53f240</sys_scope_delete>
+        <sys_update_name>m2m_app_config_theme_cf57146722101110f6f523ec11ea8423</sys_update_name>
+        <sys_update_version display_value="m2m_app_config_theme_cf57146722101110f6f523ec11ea8423">4d4931954720b5102dabcd9bd36d4351</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-08 10:51:21</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

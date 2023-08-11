@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="INSERT_OR_UPDATE">
+        <includes/>
+        <macroponent display_value="Assignments">d86858672f101110da77c886f699b6d4</macroponent>
+        <name>repeater_12/NODE__repeatWith</name>
+        <preset/>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+  * @param {params} params
+  * @param {api} params.api
+  * @param {TransformApiHelpers} params.helpers
+  */
+function evaluateProperty({api, helpers}) {
+  if (!api.state.active_worker) {
+    return '';
+  }
+
+	// Get active worker
+	var activeWorker = api.data.look_up_shift_workers.results.find(function(it) {
+    return api.state.active_worker && (it.worker.value == api.state.active_worker.id);
+  });
+
+  // Get active worker's shifts for the selected day
+  var todaysShiftsForActiveWorker = [];
+  api.data.look_up_shift_workers.results.filter(sw => {
+    return sw.worker.value == api.state.active_worker.id;
+  }).map(sw => {
+    var assignedShiftNumber = sw.shift._reference.order_in_the_day.value;
+    todaysShiftsForActiveWorker[assignedShiftNumber - 1] = true;
+  });
+
+  // Get active worker's positions across all shifts (list of shift position workers is for selected day)
+  var todaysAssignmentsForActiveWorker = [];
+  api.data.look_up_shift_position_workers.results.filter(spw => {
+    return spw.shift_worker._reference.worker.value == api.state.active_worker.id;
+  }).map(spw => {
+    var assignedShiftNumber = spw.shift_worker._reference.shift._reference.order_in_the_day.value;
+    todaysAssignmentsForActiveWorker[assignedShiftNumber - 1] = spw.shift_position._reference.position.displayValue;
+  });
+  
+  // For each shift in the day, determine where active worker is located
+  var assignments = api.data.look_up_shifts_for_selected_day.results.map(shift => {
+    var inShift = todaysShiftsForActiveWorker[shift.order_in_the_day.value - 1];
+    var assignedPosition = todaysAssignmentsForActiveWorker[shift.order_in_the_day.value - 1];
+    var label = (inShift && (assignedPosition || '[Unassigned]'))
+      || '[Home]';
+    var isActiveShift = shift.order_in_the_day.value == api.state.selected_shift;
+    var isBeforeActiveShift = shift.order_in_the_day.value < api.state.selected_shift;
+    
+    // Return object with 'pill' options
+    return {
+      label: label,
+      disabled: true,
+      selected: isActiveShift,
+      size: isActiveShift ? 'md' : 'sm',
+      tooltipContent: isBeforeActiveShift ? `Coming from ${label}` : `Going to ${label}`
+    };
+  });
+
+	return assignments;
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 05:08:55</sys_created_on>
+        <sys_id>0cf7c0da47a471102dabcd9bd36d43ca</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>repeater_12/NODE__repeatWith</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_client_script_0cf7c0da47a471102dabcd9bd36d43ca</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 05:22:09</sys_updated_on>
+        <target>macroponent</target>
+        <type>transform</type>
+    </sys_ux_client_script>
+</record_update>

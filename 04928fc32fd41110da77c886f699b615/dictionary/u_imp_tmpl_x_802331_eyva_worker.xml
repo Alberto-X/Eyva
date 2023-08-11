@@ -3,6 +3,7 @@
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Adult" label="Adult" max_length="255" name="u_adult" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Group" label="Group" max_length="40" name="u_group" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Notes" label="Notes" max_length="500" name="u_notes" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Sys ID" label="Sys ID" max_length="40" name="u_sys_id" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=User" label="User" max_length="32" name="u_user" type="string"/>
     </element>
 </database>
