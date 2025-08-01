@@ -16,6 +16,7 @@
                 <element inactive_on_update="false" label="Orange/Echo" sequence="1" value="orange"/>
             </choice>
         </element>
+        <element label="Normally for kids" max_length="40" name="normally_for_kids" type="boolean"/>
         <element default="1" label="Active" max_length="40" name="active" type="boolean"/>
         <element display="true" hint="Name of the position" label="Name" mandatory="true" max_length="40" name="name" type="string"/>
         <element hint="Color to use when displaying this position" label="Primary color" max_length="40" name="primary_color" type="color"/>

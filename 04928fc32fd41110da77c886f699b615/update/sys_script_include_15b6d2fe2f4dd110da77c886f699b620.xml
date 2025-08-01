@@ -6,14 +6,16 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Utility functions for managing worker assignments with Eyva.</description>
+        <mobile_callable>false</mobile_callable>
         <name>EyvaUtils</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[var EyvaUtils = Class.create();
 EyvaUtils.prototype = {
     initialize: function() {
-		this.PROFICIENT = {label: 'proficient', id: '5ad8b8532f9c1110da77c886f699b644'};
-		this.NEEDSTRAINING = {label: 'needsTraining', id: '170a34532f9c1110da77c886f699b638'};
-		this.NEEDSHELP = {label: 'needsHelp', id: '3a0938532f9c1110da77c886f699b64c'};
-		this.UNQUALIFIED = {label: '', id: 'f49a34d32f9c1110da77c886f699b6e6'};
+		this.PROFICIENT = {label: 'proficient', id: '258bfeb747bfa1102dabcd9bd36d438b'};
+		this.NEEDSTRAINING = {label: 'needsTraining', id: '55eb7e7347bfa1102dabcd9bd36d43e2'};
+		this.NEEDSHELP = {label: 'needsHelp', id: 'b5fb7aff477fa1102dabcd9bd36d4350'};
+		this.UNQUALIFIED = {label: '', id: '3ffbfeb747bfa1102dabcd9bd36d438e'};
     },
 	
 	/**
@@ -37,25 +39,45 @@ EyvaUtils.prototype = {
 			var skillId = workerSkillGr.getValue('skill');
 			workerSkills[skillId] = workerSkillGr.getValue('mastery');
 		}
+
+		// Check for shuttle-only worker
+		var shuttleSkillId = 'a4043eff477fa1102dabcd9bd36d43be';
+		if (workerSkillGr.getRowCount() == 1 && workerSkills[shuttleSkillId]) {
+			if (position.getValue('work_performed') != "shuttle") {
+				return this.UNQUALIFIED.label;
+			}
+		}
 		
 		// Get required skills for the position
 		var positionSkillGr = new GlideRecord('x_802331_eyva_position_skill');
 		positionSkillGr.addQuery('position', position.sys_id);
 		positionSkillGr.query();
+
+		// No skills required
+		if (positionSkillGr.getRowCount() <= 0) {
+			if (position.getValue('normally_for_kids') != worker.getValue('adult')) {
+				// (Position is normally for kids + kid worker) OR (Position is normally for adults + adult worker)
+				return this.PROFICIENT.label;
+			} else {
+				return this.UNQUALIFIED.label;
+			}
+		}
+
+		// One or more skills required
 		while (positionSkillGr.next()) {
 			var skillId = positionSkillGr.getValue('skill');
 			
-			// If worker doesn't have a skill
-			if (!workerSkills[skillId] || workerSkills[skillId] == this.UNQUALIFIED.id) {
-				return this.UNQUALIFIED.label;
+			// If worker has at least one required skill
+			if (workerSkills[skillId] == this.PROFICIENT.id) {
+				return this.PROFICIENT.label;
 			} // If worker needs help with a skill
 			else if (workerSkills[skillId] == this.NEEDSTRAINING.id || workerSkills[skillId] == this.NEEDSHELP.id) {
 				return this.NEEDSHELP.label;
 			}
 		}
 		
-		// If made it here, worker is proficient (or position requires nothing special)
-		return this.PROFICIENT.label;
+		// If made it here, worker doesn't have any required skill
+		return this.UNQUALIFIED.label;
 	},
 	
 	getNextOrder: function(table, filter, groupByField, orderField) {
@@ -112,13 +134,24 @@ EyvaUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-08-05 09:58:37</sys_created_on>
         <sys_id>15b6d2fe2f4dd110da77c886f699b620</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>EyvaUtils</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_script_include_15b6d2fe2f4dd110da77c886f699b620</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-08-10 15:59:42</sys_updated_on>
+        <sys_updated_on>2025-08-01 03:10:37</sys_updated_on>
     </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>15b6d2fe2f4dd110da77c886f699b620</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-01 00:12:12</sys_created_on>
+        <sys_id>0b46005a83836210f664b2dfeeaad3f0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-01 00:12:12</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>
