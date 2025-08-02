@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_data_broker_transform">
+    <sys_ux_data_broker_transform action="INSERT_OR_UPDATE">
+        <acl_failure_result/>
+        <api_name>x_802331_eyva.Get skills for shift workers</api_name>
+        <batch_exclude>false</batch_exclude>
+        <description>Retrieves a list of skills for each shift worker.</description>
+        <mutates_server_data>false</mutates_server_data>
+        <name>Get skills for shift workers</name>
+        <output_schema/>
+        <private>false</private>
+        <props>[&#13;
+  {&#13;
+    "name": "shiftWorkers",&#13;
+    "label": "Shift workers",&#13;
+    "description": "Array of shift workers",&#13;
+    "readOnly": "false",&#13;
+    "fieldType": "array",&#13;
+    "mandatory": "true",&#13;
+    "defaultValue": []&#13;
+  }&#13;
+]</props>
+        <required_translations>[ {
+  "message" : "Array of shift workers",
+  "comment" : ""
+}, {
+  "message" : "Shift workers",
+  "comment" : ""
+} ]</required_translations>
+        <schema_version>1.0.0</schema_version>
+        <script><![CDATA[function transform(input) {
+	var eyvaUtils  = new EyvaUtils();
+	var workerSkills = {};
+	input.shiftWorkers.forEach(function(shWkr) {
+		var worker = shWkr.worker;
+
+		var workerGr = new GlideRecord('x_802331_eyva_worker');
+		workerGr.get(worker.value);
+
+		// Get worker's skills
+		shWkr.worker.skills = eyvaUtils.getWorkerSkills(workerGr);
+	});
+
+	return input.shiftWorkers;
+}]]></script>
+        <sys_class_name>sys_ux_data_broker_transform</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-02 07:45:22</sys_created_on>
+        <sys_id>1634e62a8383e210f664b2dfeeaad31b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Get skills for shift workers</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_data_broker_transform_1634e62a8383e210f664b2dfeeaad31b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-02 07:45:22</sys_updated_on>
+    </sys_ux_data_broker_transform>
+    <sys_translated_text action="delete_multiple" query="documentkey=1634e62a8383e210f664b2dfeeaad31b"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>1634e62a8383e210f664b2dfeeaad31b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-02 07:45:22</sys_created_on>
+        <sys_id>4b97ba228307e210f664b2dfeeaad3e5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-02 07:45:22</sys_updated_on>
+        <table>sys_ux_data_broker_transform</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

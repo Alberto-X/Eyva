@@ -16,6 +16,146 @@ EyvaUtils.prototype = {
 		this.NEEDSTRAINING = {label: 'needsTraining', id: '55eb7e7347bfa1102dabcd9bd36d43e2'};
 		this.NEEDSHELP = {label: 'needsHelp', id: 'b5fb7aff477fa1102dabcd9bd36d4350'};
 		this.UNQUALIFIED = {label: '', id: '3ffbfeb747bfa1102dabcd9bd36d438e'};
+		this.SKILLS = [{
+			name: 'Lot',
+			getMasteryByWorker: (worker) => {
+				// All kids have this skill
+				return worker.getValue('adult') == false ? this.PROFICIENT.label : this.UNQUALIFIED.label;
+			},
+			getPositions: function() {
+				// ===== TODO: Use position skills =====
+				var positions = [];
+				var positionGr = new GlideRecord('x_802331_eyva_position');
+				positionGr.addQuery('normally_for_kids', true);
+				positionGr.query();
+				while (positionGr.next()) {
+					positions.push({
+						name: positionGr.name.getDisplayValue(),
+						sys_id: positionGr.sys_id.toString()
+					});
+				}
+				return positions;
+			}
+		},
+		{
+			name: 'Shuttle',
+			getMasteryByWorker: (worker) => {
+				var workerSkillGr = new GlideRecord('x_802331_eyva_worker_skill');
+				workerSkillGr.addQuery('worker', worker.sys_id);
+				workerSkillGr.addQuery('skill.name', 'Shuttle');
+				workerSkillGr.query();
+				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+			},
+			getPositions: function() {
+				// ===== TODO: Use position skills =====
+				var positions = [];
+				var positionGr = new GlideRecord('x_802331_eyva_position');
+				positionGr.addQuery('work_performed', 'shuttle');
+				positionGr.query();
+				while (positionGr.next()) {
+					positions.push({
+						name: positionGr.name.getDisplayValue(),
+						sys_id: positionGr.sys_id.toString()
+					});
+				}
+				return positions;
+			}
+		},
+		{
+			name: 'Sitting',
+			getMasteryByWorker: (worker) => {
+				// All adults have this skill
+				return worker.getValue('adult') == true ? this.PROFICIENT.label : this.UNQUALIFIED.label;
+			},
+			getPositions: function() {
+				// ===== TODO: Use position skills =====
+				return [];
+			}
+		},
+		{
+			name: 'Standing',
+			getMasteryByWorker: (worker) => {
+				var workerSkillGr = new GlideRecord('x_802331_eyva_worker_skill');
+				workerSkillGr.addQuery('worker', worker.sys_id);
+				workerSkillGr.addEncodedQuery('skill.name=Basic Adult^ORskill.name=Basic Kid');
+				workerSkillGr.query();
+				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+			},
+			getPositions: function() {
+				// ===== TODO: Use position skills =====
+				return [];
+			}
+		},
+		{
+			name: 'Basic Point',
+			getMasteryByWorker: (worker) => {
+				var workerSkillGr = new GlideRecord('x_802331_eyva_worker_skill');
+				workerSkillGr.addQuery('worker', worker.sys_id);
+				workerSkillGr.addQuery('skill.name', 'Basic Point');
+				workerSkillGr.query();
+				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+			},
+			getPositions: function() {
+				// ===== TODO: Use position skills =====
+				return [];
+			}
+		},
+		{
+			name: 'Point Alpha',
+			getMasteryByWorker: (worker) => {
+				var workerSkillGr = new GlideRecord('x_802331_eyva_worker_skill');
+				workerSkillGr.addQuery('worker', worker.sys_id);
+				workerSkillGr.addQuery('skill.name', 'Point Alpha');
+				workerSkillGr.query();
+				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+			},
+			getPositions: function() {
+				// ===== TODO: Use position skills =====
+				return [];
+			}
+		},
+		{
+			name: 'Point Bravo',
+			getMasteryByWorker: (worker) => {
+				var workerSkillGr = new GlideRecord('x_802331_eyva_worker_skill');
+				workerSkillGr.addQuery('worker', worker.sys_id);
+				workerSkillGr.addQuery('skill.name', 'Point Bravo');
+				workerSkillGr.query();
+				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+			},
+			getPositions: function() {
+				// ===== TODO: Use position skills =====
+				return [];
+			}
+		},
+		{
+			name: 'Drink Cart',
+			getMasteryByWorker: (worker) => {
+				var workerSkillGr = new GlideRecord('x_802331_eyva_worker_skill');
+				workerSkillGr.addQuery('worker', worker.sys_id);
+				workerSkillGr.addQuery('skill.name', 'Drink Cart');
+				workerSkillGr.query();
+				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+			},
+			getPositions: function() {
+				// ===== TODO: Use position skills =====
+				return [];
+			}
+		},
+		{
+			name: 'Zone Supervisor',
+			getMasteryByWorker: (worker) => {
+				var workerSkillGr = new GlideRecord('x_802331_eyva_worker_skill');
+				workerSkillGr.addQuery('worker', worker.sys_id);
+				workerSkillGr.addQuery('skill.name', 'Zone Supervisor');
+				workerSkillGr.query();
+				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+			},
+			getPositions: function() {
+				// ===== TODO: Use position skills =====
+				return [];
+			}
+		}];
     },
 	
 	/**
@@ -128,30 +268,50 @@ EyvaUtils.prototype = {
 		// Shuttles
 	},
 
+	/**
+	  * Get a worker's skills.
+	  *
+	  * @params
+	  *     worker       : GlideRecord of worker
+	  *
+	  * @returns
+	  *     array of skills (as expected by front-end)
+	  */
+	getWorkerSkills: function(worker) {
+		var skills = {};
+		this.SKILLS.forEach(function(skl) {
+			skills[skl.name.toLowerCase().replaceAll(' ', '_')] = {
+				name: skl.name,
+				mastery: skl.getMasteryByWorker(worker)
+			};
+		});
+		return skills;
+	},
+
     type: 'EyvaUtils'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-08-05 09:58:37</sys_created_on>
         <sys_id>15b6d2fe2f4dd110da77c886f699b620</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>44</sys_mod_count>
         <sys_name>EyvaUtils</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_script_include_15b6d2fe2f4dd110da77c886f699b620</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-01 03:10:37</sys_updated_on>
+        <sys_updated_on>2025-08-02 10:47:50</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>15b6d2fe2f4dd110da77c886f699b620</id>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-01 00:12:12</sys_created_on>
         <sys_id>0b46005a83836210f664b2dfeeaad3f0</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-01 00:12:12</sys_updated_on>
+        <sys_updated_on>2025-08-02 08:23:36</sys_updated_on>
         <table>sys_script_include</table>
-        <use_es_latest>false</use_es_latest>
+        <use_es_latest>true</use_es_latest>
     </sys_es_latest_script>
 </record_update>

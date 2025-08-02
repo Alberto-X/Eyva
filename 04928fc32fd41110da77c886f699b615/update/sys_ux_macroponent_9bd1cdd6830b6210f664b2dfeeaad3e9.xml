@@ -219,6 +219,34 @@
     },
     {
         "definition": {
+            "id": "2d56f06d55f46bbd4e79b5e624beb940",
+            "type": "MACROPONENT"
+        },
+        "elementId": "rich_text_1",
+        "elementLabel": "Rich text 1",
+        "eventMappings": [],
+        "isHidden": {
+            "type": "JSON_LITERAL",
+            "value": null
+        },
+        "preset": null,
+        "propertyValues": {
+            "html": {
+                "script": {
+                    "apiVersion": "2.0.0",
+                    "controllerElementId": null,
+                    "inlineScript": null,
+                    "scriptSysId": "697e15a6834fa210f664b2dfeeaad3a4",
+                    "target": null
+                },
+                "type": "CLIENT_TRANSFORM_SCRIPT"
+            }
+        },
+        "slot": null,
+        "styles": null
+    },
+    {
+        "definition": {
             "id": "REPEATER",
             "type": "REPEATER"
         },
@@ -233,75 +261,893 @@
             "composition": [
                 {
                     "definition": {
-                        "id": "67d8bc45906c355a3100c0782f45487b",
+                        "id": "d356d14b6e293a3020a244b63d278d8f",
                         "type": "MACROPONENT"
                     },
-                    "elementId": "button_bare_1",
-                    "elementLabel": "Button bare 1",
+                    "elementId": "grid_container_1",
+                    "elementLabel": "Grid Container 1",
                     "eventMappings": [],
-                    "isHidden": {
-                        "type": "JSON_LITERAL",
-                        "value": null
+                    "isHidden": null,
+                    "overrides": {
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "67d8bc45906c355a3100c0782f45487b",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_bare_1",
+                                "elementLabel": "Button bare 1",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIconEnd": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "animatedIconStart": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hideBlockPadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "iconEnd": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "iconStart": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "label": {
+                                        "script": {
+                                            "apiVersion": "2.0.0",
+                                            "controllerElementId": null,
+                                            "inlineScript": null,
+                                            "scriptSysId": "a97e15a6834fa210f664b2dfeeaad3a4",
+                                            "target": null
+                                        },
+                                        "type": "CLIENT_TRANSFORM_SCRIPT"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "showInlinePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "primary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "844d56291d91b330f2269558e3f47701",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_iconic_1",
+                                "elementLabel": "Button iconic 1",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "script": {
+                                        "apiVersion": "2.0.0",
+                                        "controllerElementId": null,
+                                        "inlineScript": null,
+                                        "scriptSysId": "4d80c76e8307e210f664b2dfeeaad3b6",
+                                        "target": null
+                                    },
+                                    "type": "CLIENT_TRANSFORM_SCRIPT"
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "bare": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "icon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_sunflower.png"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "tooltipContent": {
+                                        "binding": {
+                                            "address": [
+                                                "worker",
+                                                "skills",
+                                                "lot",
+                                                "name"
+                                            ],
+                                            "category": "value"
+                                        },
+                                        "type": "REPEATER_ITEM_BINDING"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "secondary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "844d56291d91b330f2269558e3f47701",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_iconic_2",
+                                "elementLabel": "Button iconic 2",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "script": {
+                                        "apiVersion": "2.0.0",
+                                        "controllerElementId": null,
+                                        "inlineScript": null,
+                                        "scriptSysId": "0d80c76e8307e210f664b2dfeeaad3b6",
+                                        "target": null
+                                    },
+                                    "type": "CLIENT_TRANSFORM_SCRIPT"
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "bare": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "icon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_steering-wheel.png"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "tooltipContent": {
+                                        "binding": {
+                                            "address": [
+                                                "worker",
+                                                "skills",
+                                                "shuttle",
+                                                "name"
+                                            ],
+                                            "category": "value"
+                                        },
+                                        "type": "REPEATER_ITEM_BINDING"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "secondary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "844d56291d91b330f2269558e3f47701",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_iconic_3",
+                                "elementLabel": "Button iconic 3",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "script": {
+                                        "apiVersion": "2.0.0",
+                                        "controllerElementId": null,
+                                        "inlineScript": null,
+                                        "scriptSysId": "c980c76e8307e210f664b2dfeeaad3b6",
+                                        "target": null
+                                    },
+                                    "type": "CLIENT_TRANSFORM_SCRIPT"
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "bare": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "icon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_chair.png"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "tooltipContent": {
+                                        "binding": {
+                                            "address": [
+                                                "worker",
+                                                "skills",
+                                                "sitting",
+                                                "name"
+                                            ],
+                                            "category": "value"
+                                        },
+                                        "type": "REPEATER_ITEM_BINDING"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "secondary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "844d56291d91b330f2269558e3f47701",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_iconic_4",
+                                "elementLabel": "Button iconic 4",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "script": {
+                                        "apiVersion": "2.0.0",
+                                        "controllerElementId": null,
+                                        "inlineScript": null,
+                                        "scriptSysId": "49cd176e83c7e210f664b2dfeeaad384",
+                                        "target": null
+                                    },
+                                    "type": "CLIENT_TRANSFORM_SCRIPT"
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "bare": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "icon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_walk.png"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "tooltipContent": {
+                                        "binding": {
+                                            "address": [
+                                                "worker",
+                                                "skills",
+                                                "standing",
+                                                "name"
+                                            ],
+                                            "category": "value"
+                                        },
+                                        "type": "REPEATER_ITEM_BINDING"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "secondary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "844d56291d91b330f2269558e3f47701",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_iconic_5",
+                                "elementLabel": "Button iconic 5",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "script": {
+                                        "apiVersion": "2.0.0",
+                                        "controllerElementId": null,
+                                        "inlineScript": null,
+                                        "scriptSysId": "89cd176e83c7e210f664b2dfeeaad384",
+                                        "target": null
+                                    },
+                                    "type": "CLIENT_TRANSFORM_SCRIPT"
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "bare": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "icon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_road.png"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "tooltipContent": {
+                                        "binding": {
+                                            "address": [
+                                                "worker",
+                                                "skills",
+                                                "basic_point",
+                                                "name"
+                                            ],
+                                            "category": "value"
+                                        },
+                                        "type": "REPEATER_ITEM_BINDING"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "secondary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "844d56291d91b330f2269558e3f47701",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_iconic_6",
+                                "elementLabel": "Button iconic 6",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "script": {
+                                        "apiVersion": "2.0.0",
+                                        "controllerElementId": null,
+                                        "inlineScript": null,
+                                        "scriptSysId": "c9cd176e83c7e210f664b2dfeeaad384",
+                                        "target": null
+                                    },
+                                    "type": "CLIENT_TRANSFORM_SCRIPT"
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "bare": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "icon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_info.png"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "tooltipContent": {
+                                        "binding": {
+                                            "address": [
+                                                "worker",
+                                                "skills",
+                                                "point_alpha",
+                                                "name"
+                                            ],
+                                            "category": "value"
+                                        },
+                                        "type": "REPEATER_ITEM_BINDING"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "secondary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "844d56291d91b330f2269558e3f47701",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_iconic_7",
+                                "elementLabel": "Button iconic 7",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "script": {
+                                        "apiVersion": "2.0.0",
+                                        "controllerElementId": null,
+                                        "inlineScript": null,
+                                        "scriptSysId": "0dcd176e83c7e210f664b2dfeeaad384",
+                                        "target": null
+                                    },
+                                    "type": "CLIENT_TRANSFORM_SCRIPT"
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "bare": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "icon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_explosion.png"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "tooltipContent": {
+                                        "binding": {
+                                            "address": [
+                                                "worker",
+                                                "skills",
+                                                "point_bravo",
+                                                "name"
+                                            ],
+                                            "category": "value"
+                                        },
+                                        "type": "REPEATER_ITEM_BINDING"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "secondary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "844d56291d91b330f2269558e3f47701",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_iconic_8",
+                                "elementLabel": "Button iconic 8",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "script": {
+                                        "apiVersion": "2.0.0",
+                                        "controllerElementId": null,
+                                        "inlineScript": null,
+                                        "scriptSysId": "4dcd176e83c7e210f664b2dfeeaad384",
+                                        "target": null
+                                    },
+                                    "type": "CLIENT_TRANSFORM_SCRIPT"
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "bare": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "icon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_martini.png"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "tooltipContent": {
+                                        "binding": {
+                                            "address": [
+                                                "worker",
+                                                "skills",
+                                                "drink_cart",
+                                                "name"
+                                            ],
+                                            "category": "value"
+                                        },
+                                        "type": "REPEATER_ITEM_BINDING"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "secondary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "844d56291d91b330f2269558e3f47701",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "button_iconic_9",
+                                "elementLabel": "Button iconic 9",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "script": {
+                                        "apiVersion": "2.0.0",
+                                        "controllerElementId": null,
+                                        "inlineScript": null,
+                                        "scriptSysId": "8dcd176e83c7e210f664b2dfeeaad384",
+                                        "target": null
+                                    },
+                                    "type": "CLIENT_TRANSFORM_SCRIPT"
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "animatedIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "bare": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "configAria": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "disabled": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "highContrast": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "icon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_crown.png"
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "size": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "tooltipContent": {
+                                        "binding": {
+                                            "address": [
+                                                "worker",
+                                                "skills",
+                                                "zone_supervisor",
+                                                "name"
+                                            ],
+                                            "category": "value"
+                                        },
+                                        "type": "REPEATER_ITEM_BINDING"
+                                    },
+                                    "variant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "secondary"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            }
+                        ],
+                        "layout": {
+                            "default": {
+                                "children": null,
+                                "items": [
+                                    {
+                                        "element_id": "button_bare_1",
+                                        "styles": {
+                                            "width": "20em"
+                                        }
+                                    },
+                                    {
+                                        "element_id": "button_iconic_1",
+                                        "styles": {
+                                            "grid-column": "2"
+                                        }
+                                    },
+                                    {
+                                        "element_id": "button_iconic_2",
+                                        "styles": {
+                                            "grid-column": "3"
+                                        }
+                                    },
+                                    {
+                                        "element_id": "button_iconic_3",
+                                        "styles": {
+                                            "grid-column": "4"
+                                        }
+                                    },
+                                    {
+                                        "element_id": "button_iconic_4",
+                                        "styles": {
+                                            "grid-column": "5"
+                                        }
+                                    },
+                                    {
+                                        "element_id": "button_iconic_5",
+                                        "styles": {
+                                            "grid-column": "6"
+                                        }
+                                    },
+                                    {
+                                        "element_id": "button_iconic_6",
+                                        "styles": {
+                                            "grid-column": "7"
+                                        }
+                                    },
+                                    {
+                                        "element_id": "button_iconic_7",
+                                        "styles": {
+                                            "grid-column": "8"
+                                        }
+                                    },
+                                    {
+                                        "element_id": "button_iconic_8",
+                                        "styles": {
+                                            "grid-column": "9"
+                                        }
+                                    },
+                                    {
+                                        "element_id": "button_iconic_9",
+                                        "styles": {
+                                            "grid-column": "10"
+                                        }
+                                    }
+                                ],
+                                "root": null,
+                                "rules": null,
+                                "styles": {
+                                    "align-items": "center",
+                                    "display": "grid",
+                                    "gap": "var(--now-scalable-space--sm)",
+                                    "grid-auto-columns": "1fr",
+                                    "grid-auto-flow": "row",
+                                    "grid-auto-rows": "1fr",
+                                    "grid-template-columns": "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+                                    "grid-template-rows": "1fr",
+                                    "justify-items": "center"
+                                },
+                                "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                "type": "grid"
+                            },
+                            "version": "3.0.0"
+                        }
                     },
                     "preset": null,
                     "propertyValues": {
-                        "animatedIconEnd": {
+                        "ariaRegionHeadingLevel": {
                             "type": "JSON_LITERAL",
-                            "value": null
+                            "value": "1"
                         },
-                        "animatedIconStart": {
+                        "ariaRegionName": {
+                            "type": "TRANSLATION_LITERAL",
+                            "value": {
+                                "code": null,
+                                "comment": "",
+                                "message": ""
+                            }
+                        },
+                        "ariaRole": {
                             "type": "JSON_LITERAL",
-                            "value": null
+                            "value": ""
                         },
-                        "configAria": {
+                        "hideEmptyStateUi": {
                             "type": "JSON_LITERAL",
-                            "value": null
+                            "value": true
                         },
-                        "disabled": {
-                            "type": "JSON_LITERAL",
-                            "value": false
-                        },
-                        "hideBlockPadding": {
-                            "type": "JSON_LITERAL",
-                            "value": false
-                        },
-                        "highContrast": {
-                            "type": "JSON_LITERAL",
-                            "value": false
-                        },
-                        "iconEnd": {
-                            "type": "JSON_LITERAL",
-                            "value": null
-                        },
-                        "iconStart": {
-                            "type": "JSON_LITERAL",
-                            "value": null
-                        },
-                        "label": {
-                            "binding": {
-                                "address": [
-                                    "worker",
-                                    "displayValue"
-                                ],
-                                "category": "value"
-                            },
-                            "type": "REPEATER_ITEM_BINDING"
-                        },
-                        "landmark": {
-                            "type": "JSON_LITERAL",
-                            "value": null
-                        },
-                        "showInlinePadding": {
+                        "includeAriaHeading": {
                             "type": "JSON_LITERAL",
                             "value": false
                         },
-                        "size": {
+                        "slotWrapperBehavior": {
                             "type": "JSON_LITERAL",
-                            "value": "md"
+                            "value": "fullheight"
                         },
-                        "variant": {
+                        "type": {
                             "type": "JSON_LITERAL",
-                            "value": "primary"
+                            "value": "section"
                         }
                     },
                     "slot": null,
@@ -313,15 +1159,20 @@
                     "children": null,
                     "items": [
                         {
-                            "element_id": "button_bare_1",
-                            "styles": {}
+                            "element_id": "grid_container_1",
+                            "styles": {
+                                "width": "45em"
+                            }
                         }
                     ],
                     "root": null,
                     "rules": null,
                     "styles": {
+                        "align-content": "center",
                         "align-items": "center",
                         "flex-direction": "column",
+                        "flex-wrap": "wrap",
+                        "gap": "var(--now-scalable-space--sm)",
                         "justify-content": "flex-start"
                     },
                     "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
@@ -335,8 +1186,8 @@
         "repeatWith": {
             "binding": {
                 "address": [
-                    "look_up_shift_workers",
-                    "results"
+                    "get_skills_for_shift_workers_1",
+                    "output"
                 ]
             },
             "type": "DATA_OUTPUT_BINDING"
@@ -517,6 +1368,24 @@
                         "operation": null,
                         "targetId": "cmdsjyjsccaabbhhpddffiiiicsqyhreeo",
                         "type": "EVENT"
+                    },
+                    {
+                        "broker": null,
+                        "clientScript": null,
+                        "conditional": null,
+                        "declarativeAction": null,
+                        "event": null,
+                        "operation": {
+                            "dataBrokerId": "1634e62a8383e210f664b2dfeeaad31b",
+                            "operationName": "REFRESH",
+                            "parentResourceId": "get_skills_for_shift_workers_1",
+                            "payload": {
+                                "type": "JSON_LITERAL",
+                                "value": {}
+                            }
+                        },
+                        "targetId": "cmdtyaccfiaabbaasddffiiiiuaxddskyv",
+                        "type": "DATABROKER_OP"
                     }
                 ]
             },
@@ -596,7 +1465,7 @@
             },
             "limit": {
                 "type": "JSON_LITERAL",
-                "value": "200"
+                "value": "5"
             },
             "offset": {
                 "type": "JSON_LITERAL",
@@ -680,6 +1549,27 @@
             }
         },
         "readEvaluationMode": "EXPLICIT"
+    },
+    {
+        "definition": {
+            "id": "1634e62a8383e210f664b2dfeeaad31b",
+            "type": "TRANSFORM"
+        },
+        "elementId": "get_skills_for_shift_workers_1",
+        "elementLabel": "Get skills for shift workers 1",
+        "eventMappings": [],
+        "inputValues": {
+            "shiftWorkers": {
+                "binding": {
+                    "address": [
+                        "look_up_shift_workers",
+                        "results"
+                    ]
+                },
+                "type": "DATA_OUTPUT_BINDING"
+            }
+        },
+        "readEvaluationMode": "EXPLICIT"
     }
 ]</data>
         <description/>
@@ -712,10 +1602,15 @@
                 }
             },
             {
+                "element_id": "rich_text_1",
+                "styles": {}
+            },
+            {
                 "element_id": "repeater_1",
                 "styles": {
                     "align-self": "center",
-                    "flex": "none"
+                    "flex": "none",
+                    "width": ""
                 }
             }
         ],
@@ -789,14 +1684,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-01 04:32:28</sys_created_on>
         <sys_id>9bd1cdd6830b6210f664b2dfeeaad3e9</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>Default</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_macroponent_9bd1cdd6830b6210f664b2dfeeaad3e9</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-01 09:00:19</sys_updated_on>
+        <sys_updated_on>2025-08-02 10:52:22</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=9bd1cdd6830b6210f664b2dfeeaad3e9"/>
 </record_update>
