@@ -12,21 +12,22 @@
   * @param {TransformApiHelpers} params.helpers
   */
 function evaluateProperty({api, helpers}) {
-	return !api.item.value.worker.skills.lot.mastery;
+  var skillKey = api.item.value.key;
+	return api.item.parent.value.skills[skillKey].mastery != "";
 }]]></script>
         <script_api_version>2.0.0</script_api_version>
         <sys_class_name>sys_ux_client_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-02 10:31:47</sys_created_on>
         <sys_id>4d80c76e8307e210f664b2dfeeaad3b6</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>button_iconic_1/isHidden</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_client_script_4d80c76e8307e210f664b2dfeeaad3b6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-02 10:31:47</sys_updated_on>
+        <sys_updated_on>2025-08-06 08:15:59</sys_updated_on>
         <target>macroponent</target>
         <type>transform</type>
     </sys_ux_client_script>

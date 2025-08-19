@@ -16,6 +16,7 @@ EyvaUtils.prototype = {
 		this.NEEDSTRAINING = {label: 'needsTraining', id: '55eb7e7347bfa1102dabcd9bd36d43e2'};
 		this.NEEDSHELP = {label: 'needsHelp', id: 'b5fb7aff477fa1102dabcd9bd36d4350'};
 		this.UNQUALIFIED = {label: '', id: '3ffbfeb747bfa1102dabcd9bd36d438e'};
+		this.MASTERIES = [this.PROFICIENT, this.NEEDSTRAINING, this.NEEDSHELP, this.UNQUALIFIED];
 		this.SKILLS = [{
 			name: 'Lot',
 			getMasteryByWorker: (worker) => {
@@ -44,7 +45,11 @@ EyvaUtils.prototype = {
 				workerSkillGr.addQuery('worker', worker.sys_id);
 				workerSkillGr.addQuery('skill.name', 'Shuttle');
 				workerSkillGr.query();
-				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+				if (workerSkillGr.next()) {
+					return this.MASTERIES.find(mstry => mstry.id == workerSkillGr.mastery.sys_id).label;
+				} else {
+					return this.UNQUALIFIED.label;
+				}
 			},
 			getPositions: function() {
 				// ===== TODO: Use position skills =====
@@ -64,12 +69,38 @@ EyvaUtils.prototype = {
 		{
 			name: 'Sitting',
 			getMasteryByWorker: (worker) => {
-				// All adults have this skill
+				// All adults have this skill, unless they only have the shuttle skill			
+				var workerSkillGr = new GlideRecord('x_802331_eyva_worker_skill');
+				workerSkillGr.addQuery('worker', worker.sys_id);
+				workerSkillGr.query();
+				if (workerSkillGr.next() && workerSkillGr.getRowCount() == 1) {
+					if (workerSkillGr.skill.getDisplayValue() == "Shuttle") {
+						return false;
+					}
+				}
 				return worker.getValue('adult') == true ? this.PROFICIENT.label : this.UNQUALIFIED.label;
 			},
 			getPositions: function() {
-				// ===== TODO: Use position skills =====
-				return [];
+				// Find active positions, not normally for kids, with no skills required
+				var positions = [];
+				var positionGr = new GlideRecord('x_802331_eyva_position');
+				positionGr.addQuery('normally_for_kids', false);
+				positionGr.addActiveQuery();
+				positionGr.query();
+				while (positionGr.next()) {
+					var positionSkillGa = new GlideAggregate('x_802331_eyva_position_skill');
+					positionSkillGa.addQuery('position', positionGr.sys_id);
+					positionSkillGa.addAggregate('COUNT');
+					positionSkillGa.query();
+					positionSkillGa.next();
+					if (positionSkillGa.getAggregate('COUNT') <= 0) {
+						positions.push({
+							name: positionGr.name.getDisplayValue(),
+							sys_id: positionGr.sys_id.toString()
+						});
+					}
+				}
+				return positions;
 			}
 		},
 		{
@@ -82,8 +113,20 @@ EyvaUtils.prototype = {
 				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
 			},
 			getPositions: function() {
-				// ===== TODO: Use position skills =====
-				return [];
+				// Find active positions that require either 'Basic Adult' or 'Basic Kid'
+				var positions = [];
+				var positionSkillGa = new GlideAggregate('x_802331_eyva_position_skill');
+				positionSkillGa.addQuery('position.active', true);
+				positionSkillGa.addEncodedQuery('skill.name=Basic Adult^ORskill.name=Basic Kid');
+				positionSkillGa.groupBy('position');
+				positionSkillGa.query();
+				while (positionSkillGa.next()) {
+					positions.push({
+						name: positionSkillGa.position.name.getDisplayValue(),
+						sys_id: positionSkillGa.position.sys_id.toString()
+					});
+				}
+				return positions;
 			}
 		},
 		{
@@ -96,8 +139,19 @@ EyvaUtils.prototype = {
 				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
 			},
 			getPositions: function() {
-				// ===== TODO: Use position skills =====
-				return [];
+				// Find active positions that require 'Basic Point'
+				var positions = [];
+				var positionSkillGr = new GlideRecord('x_802331_eyva_position_skill');
+				positionSkillGr.addQuery('position.active', true);
+				positionSkillGr.addQuery('skill.name', 'Basic Point');
+				positionSkillGr.query();
+				while (positionSkillGr.next()) {
+					positions.push({
+						name: positionSkillGr.position.name.getDisplayValue(),
+						sys_id: positionSkillGr.position.sys_id.toString()
+					});
+				}
+				return positions;
 			}
 		},
 		{
@@ -107,11 +161,26 @@ EyvaUtils.prototype = {
 				workerSkillGr.addQuery('worker', worker.sys_id);
 				workerSkillGr.addQuery('skill.name', 'Point Alpha');
 				workerSkillGr.query();
-				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+				if (workerSkillGr.next()) {
+					return this.MASTERIES.find(mstry => mstry.id == workerSkillGr.mastery.sys_id).label;
+				} else {
+					return this.UNQUALIFIED.label;
+				}
 			},
 			getPositions: function() {
-				// ===== TODO: Use position skills =====
-				return [];
+				// Find active positions that require 'Point Alpha'
+				var positions = [];
+				var positionSkillGr = new GlideRecord('x_802331_eyva_position_skill');
+				positionSkillGr.addQuery('position.active', true);
+				positionSkillGr.addQuery('skill.name', 'Point Alpha');
+				positionSkillGr.query();
+				while (positionSkillGr.next()) {
+					positions.push({
+						name: positionSkillGr.position.name.getDisplayValue(),
+						sys_id: positionSkillGr.position.sys_id.toString()
+					});
+				}
+				return positions;
 			}
 		},
 		{
@@ -121,11 +190,26 @@ EyvaUtils.prototype = {
 				workerSkillGr.addQuery('worker', worker.sys_id);
 				workerSkillGr.addQuery('skill.name', 'Point Bravo');
 				workerSkillGr.query();
-				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+				if (workerSkillGr.next()) {
+					return this.MASTERIES.find(mstry => mstry.id == workerSkillGr.mastery.sys_id).label;
+				} else {
+					return this.UNQUALIFIED.label;
+				}
 			},
 			getPositions: function() {
-				// ===== TODO: Use position skills =====
-				return [];
+				// Find active positions that require 'Point Bravo'
+				var positions = [];
+				var positionSkillGr = new GlideRecord('x_802331_eyva_position_skill');
+				positionSkillGr.addQuery('position.active', true);
+				positionSkillGr.addQuery('skill.name', 'Point Bravo');
+				positionSkillGr.query();
+				while (positionSkillGr.next()) {
+					positions.push({
+						name: positionSkillGr.position.name.getDisplayValue(),
+						sys_id: positionSkillGr.position.sys_id.toString()
+					});
+				}
+				return positions;
 			}
 		},
 		{
@@ -135,11 +219,26 @@ EyvaUtils.prototype = {
 				workerSkillGr.addQuery('worker', worker.sys_id);
 				workerSkillGr.addQuery('skill.name', 'Drink Cart');
 				workerSkillGr.query();
-				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+				if (workerSkillGr.next()) {
+					return this.MASTERIES.find(mstry => mstry.id == workerSkillGr.mastery.sys_id).label;
+				} else {
+					return this.UNQUALIFIED.label;
+				}
 			},
 			getPositions: function() {
-				// ===== TODO: Use position skills =====
-				return [];
+				// Find active positions that require 'Drink Cart'
+				var positions = [];
+				var positionSkillGr = new GlideRecord('x_802331_eyva_position_skill');
+				positionSkillGr.addQuery('position.active', true);
+				positionSkillGr.addQuery('skill.name', 'Drink Cart');
+				positionSkillGr.query();
+				while (positionSkillGr.next()) {
+					positions.push({
+						name: positionSkillGr.position.name.getDisplayValue(),
+						sys_id: positionSkillGr.position.sys_id.toString()
+					});
+				}
+				return positions;
 			}
 		},
 		{
@@ -149,11 +248,26 @@ EyvaUtils.prototype = {
 				workerSkillGr.addQuery('worker', worker.sys_id);
 				workerSkillGr.addQuery('skill.name', 'Zone Supervisor');
 				workerSkillGr.query();
-				return workerSkillGr.getRowCount() >= 1 && this.PROFICIENT.label || this.UNQUALIFIED.label;
+				if (workerSkillGr.next()) {
+					return this.MASTERIES.find(mstry => mstry.id == workerSkillGr.mastery.sys_id).label;
+				} else {
+					return this.UNQUALIFIED.label;
+				}
 			},
 			getPositions: function() {
-				// ===== TODO: Use position skills =====
-				return [];
+				// Find active positions that require 'Zone Supervisor'
+				var positions = [];
+				var positionSkillGr = new GlideRecord('x_802331_eyva_position_skill');
+				positionSkillGr.addQuery('position.active', true);
+				positionSkillGr.addQuery('skill.name', 'Zone Supervisor');
+				positionSkillGr.query();
+				while (positionSkillGr.next()) {
+					positions.push({
+						name: positionSkillGr.position.name.getDisplayValue(),
+						sys_id: positionSkillGr.position.sys_id.toString()
+					});
+				}
+				return positions;
 			}
 		}];
     },
@@ -294,14 +408,14 @@ EyvaUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-08-05 09:58:37</sys_created_on>
         <sys_id>15b6d2fe2f4dd110da77c886f699b620</sys_id>
-        <sys_mod_count>44</sys_mod_count>
+        <sys_mod_count>49</sys_mod_count>
         <sys_name>EyvaUtils</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_script_include_15b6d2fe2f4dd110da77c886f699b620</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-02 10:47:50</sys_updated_on>
+        <sys_updated_on>2025-08-06 08:30:24</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>15b6d2fe2f4dd110da77c886f699b620</id>

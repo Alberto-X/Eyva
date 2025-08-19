@@ -10,9 +10,9 @@
         <private>false</private>
         <props>[&#13;
   {&#13;
-    "name": "shiftWorkers",&#13;
-    "label": "Shift workers",&#13;
-    "description": "Array of shift workers",&#13;
+    "name": "workers",&#13;
+    "label": "Workers",&#13;
+    "description": "Array of workers",&#13;
     "readOnly": "false",&#13;
     "fieldType": "array",&#13;
     "mandatory": "true",&#13;
@@ -20,40 +20,49 @@
   }&#13;
 ]</props>
         <required_translations>[ {
-  "message" : "Array of shift workers",
+  "message" : "Array of workers",
   "comment" : ""
 }, {
-  "message" : "Shift workers",
+  "message" : "Workers",
   "comment" : ""
 } ]</required_translations>
         <schema_version>1.0.0</schema_version>
         <script><![CDATA[function transform(input) {
 	var eyvaUtils  = new EyvaUtils();
-	var workerSkills = {};
-	input.shiftWorkers.forEach(function(shWkr) {
-		var worker = shWkr.worker;
-
+	input.workers.forEach(function(wkr) {
 		var workerGr = new GlideRecord('x_802331_eyva_worker');
-		workerGr.get(worker.value);
-
-		// Get worker's skills
-		shWkr.worker.skills = eyvaUtils.getWorkerSkills(workerGr);
+		workerGr.get(wkr.groupBy[0].value);
+		
+		// Get worker's skills and other info
+		wkr.skills = eyvaUtils.getWorkerSkills(workerGr);
+		wkr.age = {
+			"value": workerGr.getValue('age'),
+			"displayValue": workerGr.getDisplayValue('age')
+		};
+		wkr.comment = {
+			"value": workerGr.getValue('comment'),
+			"displayValue": workerGr.getDisplayValue('comment')
+		};
+		wkr.notes = {
+			"value": workerGr.getValue('notes'),
+			"displayValue": workerGr.getDisplayValue('notes')
+		};
 	});
 
-	return input.shiftWorkers;
+	return input.workers;
 }]]></script>
         <sys_class_name>sys_ux_data_broker_transform</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-02 07:45:22</sys_created_on>
         <sys_id>1634e62a8383e210f664b2dfeeaad31b</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Get skills for shift workers</sys_name>
         <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
         <sys_policy/>
         <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
         <sys_update_name>sys_ux_data_broker_transform_1634e62a8383e210f664b2dfeeaad31b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-02 07:45:22</sys_updated_on>
+        <sys_updated_on>2025-08-06 09:33:04</sys_updated_on>
     </sys_ux_data_broker_transform>
     <sys_translated_text action="delete_multiple" query="documentkey=1634e62a8383e210f664b2dfeeaad31b"/>
     <sys_es_latest_script action="INSERT_OR_UPDATE">

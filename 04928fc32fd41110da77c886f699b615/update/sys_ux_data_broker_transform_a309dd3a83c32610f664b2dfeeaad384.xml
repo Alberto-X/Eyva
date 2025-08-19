@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_data_broker_transform">
+    <sys_ux_data_broker_transform action="INSERT_OR_UPDATE">
+        <acl_failure_result/>
+        <api_name>x_802331_eyva.Get skills with associated positions</api_name>
+        <batch_exclude>false</batch_exclude>
+        <description>Retrieves a list of all skills and the positions associated with each one.</description>
+        <mutates_server_data>false</mutates_server_data>
+        <name>Get skills with associated positions</name>
+        <output_schema/>
+        <private>false</private>
+        <props/>
+        <required_translations>[ ]</required_translations>
+        <schema_version>1.0.0</schema_version>
+        <script><![CDATA[function transform() {
+	var eyvaUtils = new EyvaUtils();
+	var skills = {};
+	
+	eyvaUtils.SKILLS.forEach(skl => {
+		skills[skl.name.toLowerCase().replaceAll(' ', '_')] = {
+			name: skl.name,
+			positions: skl.getPositions()
+		};
+	});
+	return skills;
+}]]></script>
+        <sys_class_name>sys_ux_data_broker_transform</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-02 19:38:31</sys_created_on>
+        <sys_id>a309dd3a83c32610f664b2dfeeaad384</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Get skills with associated positions</sys_name>
+        <sys_package display_value="Eyva" source="x_802331_eyva">04928fc32fd41110da77c886f699b615</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Eyva">04928fc32fd41110da77c886f699b615</sys_scope>
+        <sys_update_name>sys_ux_data_broker_transform_a309dd3a83c32610f664b2dfeeaad384</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-02 19:38:31</sys_updated_on>
+    </sys_ux_data_broker_transform>
+    <sys_translated_text action="delete_multiple" query="documentkey=a309dd3a83c32610f664b2dfeeaad384"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>a309dd3a83c32610f664b2dfeeaad384</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-02 19:38:31</sys_created_on>
+        <sys_id>5dda1dfa83c32610f664b2dfeeaad3d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-02 19:38:31</sys_updated_on>
+        <table>sys_ux_data_broker_transform</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

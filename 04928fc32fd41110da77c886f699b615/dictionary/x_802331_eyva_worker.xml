@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="a6ddf041476321102dabcd9bd36d43b4" label="Worker" max_length="40" name="x_802331_eyva_worker" type="collection">
+        <element label="Comment" max_length="500" name="comment" type="string"/>
         <element hint="Parking group the worker is volunteering for" label="Group" max_length="40" name="group" type="string"/>
         <element hint="Things to know about the worker" label="Notes" max_length="500" name="notes" type="string"/>
         <element label="Age" max_length="3" name="age" type="integer"/>
